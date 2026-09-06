@@ -1,11 +1,11 @@
 {
-  "name": "SAM Automatización",
-  "short_name": "SAM",
-  "description": "Soluciones tecnológicas para digitalizar y automatizar negocios.",
+  "name": "CaSa Labs",
+  "short_name": "CaSa Labs",
+  "description": "Laboratorio en CaSa, dispuesto a innovar contigo.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#02040a",
-  "theme_color": "#02040a",
+  "background_color": "#0F1250",
+  "theme_color": "#2E3190",
   "icons": [
     {
       "src": "/assets/apple-touch-icon.png",
