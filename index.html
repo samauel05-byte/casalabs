@@ -1,189 +1,680 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CaSa Labs | Tecnología que simplifica tu negocio</title>
-<meta name="description" content="CaSa Labs – Facturación electrónica, CAMI para análisis fiscal, NALA para procesar facturas y generar formatos DGII, dominios, correo profesional y páginas web.">
-<meta name="theme-color" content="#2E3190">
-<link rel="canonical" href="https://sam-automatizacion.vercel.app/">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_DO">
-<meta property="og:title" content="CaSa Labs | Tecnología que simplifica tu negocio">
-<meta property="og:description" content="Soluciones de facturación electrónica, automatización, infraestructura y desarrollo web para negocios en República Dominicana.">
-<meta property="og:url" content="https://sam-automatizacion.vercel.app/">
-<meta property="og:image" content="https://sam-automatizacion.vercel.app/assets/og-sam.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CaSa Labs | Tecnología que simplifica tu negocio">
-<meta name="twitter:description" content="Soluciones tecnológicas prácticas para digitalizar y automatizar tu negocio.">
-<meta name="twitter:image" content="https://sam-automatizacion.vercel.app/assets/og-sam.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CaSa Labs | Desarrollo Web &amp; Tecnología</title>
+<meta name="description" content="CaSa Labs — páginas web, marketing digital, facturación electrónica y automatización fiscal para negocios en República Dominicana.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="css/style.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "CaSa Labs",
-  "url": "https://sam-automatizacion.vercel.app/",
-  "logo": "https://sam-automatizacion.vercel.app/assets/logo-mark.png",
-  "image": "https://sam-automatizacion.vercel.app/assets/og-sam.png",
-  "description": "Soluciones de automatización, facturación electrónica, infraestructura digital y desarrollo web para negocios.",
-  "telephone": "+1-809-986-3977",
-  "areaServed": { "@type": "Country", "name": "República Dominicana" },
-  "sameAs": [
-    "https://www.instagram.com/casalabs.rd/",
-    "https://www.facebook.com/share/18bCMAy1KV/?mibextid=wwXIfr",
-    "https://www.linkedin.com/in/samroa"
-  ]
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#2C3E82;
+    --indigo-deep:#1D2B5E;
+    --indigo-night:#12193E;
+    --forest:#1E5631;
+    --forest-deep:#143D22;
+    --forest-bright:#2F8C4D;
+    --gold:#C79A2C;
+    --gold-deep:#AF7E12;
+    --cream:#F6F4EE;
+    --paper:#FFFFFF;
+    --ink:#14181F;
+    --ink-soft:#535A6B;
+    --line:#E4E1D6;
+    --radius-s:6px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  h2,h3{color:var(--indigo-deep);}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--maxw);margin:0 auto;}
+  .nav-logo img{height:76px;width:auto;}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a{font-size:0.95rem;font-weight:500;color:var(--ink-soft);padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s ease, border-color .15s ease;}
+  .nav-links a:hover{color:var(--indigo);border-color:var(--gold);}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;padding:10px 18px;border-radius:var(--radius-s);font-weight:600;font-size:0.92rem;transition:background .15s ease;white-space:nowrap;}
+  .nav-cta:hover{background:var(--forest-deep);}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-btn span{display:block;width:24px;height:2px;background:var(--indigo-deep);margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--indigo-night);padding:96px 0 110px;isolation:isolate;}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:0.55;z-index:-1;}
+  .hero::before{width:480px;height:480px;background:var(--forest-bright);top:-160px;right:-120px;animation:drift1 22s ease-in-out infinite;}
+  .hero::after{width:420px;height:420px;background:var(--gold-deep);bottom:-180px;left:-100px;opacity:0.35;animation:drift2 26s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(-40px,30px);}}
+  @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,-25px);}}
+  @media (prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none;}}
+
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;position:relative;}
+  .eyebrow-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);color:#DCE1F5;font-size:0.85rem;font-weight:500;padding:7px 14px;border-radius:999px;}
+  .eyebrow-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--forest-bright);animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+  .hero h1{color:#fff;font-size:clamp(2.2rem,4vw,3.3rem);margin-top:22px;min-height:2.3em;}
+  .hero h1 .rotate-wrap{display:block;position:relative;height:1.15em;overflow:hidden;}
+  .hero h1 .rotate-word{
+    position:absolute;left:0;top:0;color:var(--forest-bright);
+    opacity:0;transform:translateY(100%);
+    transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .4s ease;
+  }
+  .hero h1 .rotate-word.active{opacity:1;transform:translateY(0);}
+  .hero h1 .rotate-word.exit{opacity:0;transform:translateY(-100%);}
+
+  .hero p.lead{margin-top:22px;font-size:1.12rem;color:#B9C0DA;max-width:50ch;}
+  .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:var(--radius-s);font-weight:600;font-size:0.98rem;transition:transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;}
+  .btn-primary{background:var(--forest-bright);color:#08150D;}
+  .btn-primary:hover{background:#3ea25c;transform:translateY(-1px);}
+  .btn-outline-light{border:1.5px solid rgba(255,255,255,0.35);color:#fff;}
+  .btn-outline-light:hover{border-color:var(--gold);color:var(--gold);}
+  .btn-outline{border:1.5px solid var(--indigo);color:var(--indigo-deep);}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  .hero-metrics{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;}
+  .hero-metrics div{border-left:2px solid rgba(255,255,255,0.2);padding-left:14px;}
+  .hero-metrics strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;color:#fff;}
+  .hero-metrics span{font-size:0.82rem;color:#9FA7C4;}
+
+  /* Terminal / product mock */
+  .hero-mock{
+    background:#0E1430;border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,0.35);
+    overflow:hidden;font-family:'JetBrains Mono',monospace;
+  }
+  .mock-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#0A0F26;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .mock-bar span{width:10px;height:10px;border-radius:50%;}
+  .mock-bar span:nth-child(1){background:#E5605A;}
+  .mock-bar span:nth-child(2){background:#E8B84B;}
+  .mock-bar span:nth-child(3){background:#57B96C;}
+  .mock-tabs{display:flex;gap:4px;padding:14px 16px 0;}
+  .mock-tab{
+    font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:600;color:#7C86B3;
+    padding:8px 12px;border-radius:6px 6px 0 0;cursor:default;
+  }
+  .mock-tab.active{color:#fff;background:#171E45;}
+  .mock-body{padding:20px 18px 26px;min-height:190px;}
+  .mock-line{font-size:0.86rem;color:#8DE2A6;margin-bottom:8px;white-space:pre;}
+  .mock-line .muted{color:#7C86B3;}
+  .mock-line .gold{color:#E8C468;}
+  .mock-panel{display:none;}
+  .mock-panel.active{display:block;}
+  .cursor-blink{display:inline-block;width:7px;height:15px;background:#8DE2A6;margin-left:2px;animation:blink 1s step-end infinite;vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.05rem;}
+  .section-head h2{font-size:clamp(1.7rem,2.6vw,2.3rem);}
+
+  /* ---------- SERVICE CATEGORY TABS ---------- */
+  .cat-tabs{display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+  .cat-tab{
+    display:flex;align-items:center;gap:10px;padding:16px 20px;border-radius:10px;
+    border:1.5px solid var(--line);background:#fff;cursor:pointer;flex:1;min-width:240px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .cat-tab .num{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--line);}
+  .cat-tab strong{display:block;font-size:1.02rem;color:var(--ink);}
+  .cat-tab span{display:block;font-size:0.85rem;color:var(--ink-soft);margin-top:2px;}
+  .cat-tab.active{border-color:var(--forest);background:#F2F8F3;}
+  .cat-tab.active .num{color:var(--forest);}
+  .cat-tab.tab-fiscal.active{border-color:var(--indigo);background:#F1F3FA;}
+  .cat-tab.tab-fiscal.active .num{color:var(--indigo);}
+
+  .cat-panel{display:none;padding-top:44px;}
+  .cat-panel.active{display:block;}
+  .cat-note{font-size:0.92rem;color:var(--ink-soft);margin:-24px 0 34px;padding:12px 16px;background:var(--cream);border-radius:8px;border-left:3px solid var(--gold);}
+
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .price-card{border:1px solid var(--line);border-radius:12px;padding:26px 24px;display:flex;flex-direction:column;}
+  .price-card h3{font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:700;color:var(--ink);}
+  .price-card .price{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--indigo-deep);margin-top:12px;}
+  .price-card .price small{font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:500;color:var(--ink-soft);}
+  .price-card p.desc{color:var(--ink-soft);font-size:0.92rem;margin-top:10px;}
+  .price-card ul{list-style:none;margin:16px 0 0;padding:0;flex-grow:1;}
+  .price-card li{font-size:0.88rem;color:var(--ink-soft);padding:6px 0;padding-left:20px;position:relative;}
+  .price-card li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:2px;background:var(--forest);}
+  .cat-panel.fiscal .price-card li::before{background:var(--indigo);}
+  .price-card .btn{margin-top:20px;justify-content:center;}
+  .price-card.featured{border-color:var(--forest);position:relative;}
+  .cat-panel.fiscal .price-card.featured{border-color:var(--indigo);}
+  .price-card.featured::before{
+    content:"Más elegido";position:absolute;top:-12px;left:24px;
+    background:var(--forest);color:#fff;font-size:0.72rem;font-weight:700;
+    padding:4px 10px;border-radius:999px;letter-spacing:0.02em;
+  }
+  .cat-panel.fiscal .price-card.featured::before{background:var(--indigo);content:"Paquete completo";}
+
+  /* ---------- WHY ---------- */
+  .why{background:var(--indigo-deep);color:#fff;}
+  .why .section-head h2{color:#fff;}
+  .why .section-head p{color:#C6CBE0;}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.18);}
+  .why-item{padding:34px 30px 0;border-left:1px solid rgba(255,255,255,0.18);}
+  .why-item:first-child{border-left:none;padding-left:0;}
+  .why-item h3{color:#fff;font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:600;}
+  .why-item p{color:#C6CBE0;margin-top:10px;font-size:0.98rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about .wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;}
+  .about-mark{display:flex;align-items:center;justify-content:center;background:var(--cream);border-radius:14px;padding:36px;}
+  .about-mark img{max-width:220px;}
+  .about h2{font-size:clamp(1.7rem,2.6vw,2.3rem);margin-bottom:18px;}
+  .about p{color:var(--ink-soft);font-size:1.05rem;margin-top:14px;}
+  .about strong{color:var(--indigo-deep);}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--cream);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 0;font-family:'Fraunces',serif;font-size:1.08rem;color:var(--indigo-deep);display:flex;justify-content:space-between;align-items:center;gap:20px;}
+  .faq-q .plus{font-family:'Inter',sans-serif;font-size:1.4rem;color:var(--gold-deep);transition:transform .2s ease;flex-shrink:0;}
+  .faq-item[data-open="true"] .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{margin:0 0 22px;color:var(--ink-soft);max-width:70ch;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--forest);color:#fff;}
+  .contact .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
+  .contact h2{color:#fff;font-size:clamp(1.6rem,2.8vw,2.1rem);max-width:22ch;}
+  .contact p{color:#CFE3D5;margin-top:12px;max-width:44ch;}
+  .contact .btn-primary{background:var(--gold);color:var(--forest-deep);}
+  .contact .btn-primary:hover{background:#c99417;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:48px 0 36px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--line);}
+  .footer-brand img{height:30px;margin-bottom:12px;}
+  .footer-brand p{color:var(--ink-soft);font-size:0.92rem;max-width:34ch;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:0.85rem;font-weight:700;color:var(--indigo-deep);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;}
+  .footer-col a:hover{color:var(--indigo);}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--forest);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,61,34,0.35);}
+  .wa-float:hover{background:var(--forest-deep);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    .nav-links{position:fixed;top:64px;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:transform .2s ease;}
+    .nav-links[data-open="true"]{transform:translateY(0);}
+    .nav-links a{width:100%;padding:16px 28px;border-bottom:1px solid var(--line);}
+    .nav-cta{display:none;}
+    .menu-btn{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-mock{order:-1;margin-bottom:8px;}
+    .why-grid{grid-template-columns:1fr;}
+    .why-item{border-left:none;border-top:1px solid rgba(255,255,255,0.18);padding:30px 0 0;}
+    .why-item:first-child{border-top:none;}
+    .about .wrap{grid-template-columns:1fr;}
+    .about-mark{order:-1;}
+    .contact .wrap{flex-direction:column;align-items:flex-start;}
+    .cat-tabs{flex-direction:column;}
+    .price-grid{grid-template-columns:1fr;}
+  }
+</style>
 </head>
 <body>
 
-<a class="skip-link" href="#main-content">Saltar al contenido principal</a>
-
-<header class="site">
-  <div class="nav-wrap">
-    <a href="index.html" class="logo" aria-label="CaSa Labs, ir al inicio"><img src="assets/logo-mark.svg" alt="" width="44" height="44"><span class="logo-text"><strong>CaSa</strong><small>Labs</small></span></a>
-    <nav class="main-nav" id="main-navigation" aria-label="Navegación principal">
-      <a href="index.html" class="active" aria-current="page">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="preguntas-frecuentes.html">Preguntas Frecuentes</a>
-      <a href="contacto.html">Contacto</a>
+<header>
+  <div class="nav">
+    <a href="#inicio" class="nav-logo"><img src="assets/img-hero-2.png" alt="CaSa Labs"></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#preguntas">Preguntas frecuentes</a>
+      <a href="#contacto">Contacto</a>
     </nav>
-    <div class="nav-cta">
-      <a href="https://wa.me/18099863977" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp</a>
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="main-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
+    <a class="nav-cta" href="https://wa.me/18099863977" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<main id="main-content">
-<section class="hero">
-  <div class="container">
-    <div class="hero-brand-wrap">
-      <img src="assets/logo-full.svg" class="hero-brand" width="256" height="256" alt="Logo CaSa Labs">
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow-chip"><span class="dot"></span>Nuevo: paquetes fiscales y digitales para PYMES</span>
+      <h1>
+        Automatizamos
+        <span class="rotate-wrap" id="rotateWrap"></span>
+      </h1>
+      <p class="lead">CaSa Labs junta en un solo equipo lo que casi siempre está separado: tu presencia digital y tu cumplimiento fiscal. Páginas web, marketing y facturación electrónica, pensados para negocios dominicanos.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/18099863977" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <a class="btn btn-outline-light" href="#servicios">Ver servicios y precios</a>
+      </div>
+      <div class="hero-metrics">
+        <div><strong>2</strong><span>áreas: digital &amp; fiscal</span></div>
+        <div><strong>100%</strong><span>soluciones a la medida</span></div>
+        <div><strong>&lt; 72h</strong><span>respuesta por WhatsApp</span></div>
+      </div>
     </div>
-    <div class="hero-copy">
-      <span class="eyebrow">Automatización &amp; Tecnología</span>
-      <h1>Tecnología que simplifica <span class="grad-text">tu negocio</span></h1>
-      <p class="lead">En CaSa Labs te ayudamos a digitalizar tu empresa con soluciones prácticas: facturación electrónica, servidores de dominio y correo, y páginas web funcionales, hechas a la medida de tu negocio.</p>
-      <div class="hero-actions">
-        <a href="https://wa.me/18099863977" class="btn btn-accent" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-        <a href="servicios.html" class="btn btn-outline">Ver servicios</a>
+
+    <div class="hero-mock">
+      <div class="mock-bar"><span></span><span></span><span></span></div>
+      <div class="mock-tabs">
+        <div class="mock-tab active" data-tab="web">sitio-web.casalabs</div>
+        <div class="mock-tab" data-tab="app">app.casalabs</div>
+        <div class="mock-tab" data-tab="fiscal">factura.casalabs</div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-panel active" data-panel="web">
+          <div class="mock-line"><span class="muted">$</span> npx casalabs deploy --sitio</div>
+          <div class="mock-line">✓ dominio conectado</div>
+          <div class="mock-line">✓ diseño a medida publicado</div>
+          <div class="mock-line"><span class="gold">✓ optimizado para SEO y móvil</span></div>
+          <div class="mock-line"><span class="muted">listo en</span> 15–20 días hábiles<span class="cursor-blink"></span></div>
+        </div>
+        <div class="mock-panel" data-panel="app">
+          <div class="mock-line"><span class="muted">$</span> casalabs cotizar --app</div>
+          <div class="mock-line">✓ definimos el alcance contigo</div>
+          <div class="mock-line">✓ diseño de flujo de usuario</div>
+          <div class="mock-line"><span class="gold">✓ propuesta a la medida</span></div>
+          <div class="mock-line"><span class="muted">estado:</span> cotización personalizada<span class="cursor-blink"></span></div>
+        </div>
+        <div class="mock-panel" data-panel="fiscal">
+          <div class="mock-line"><span class="muted">$</span> casalabs emitir --ecf</div>
+          <div class="mock-line">✓ comprobante firmado digitalmente</div>
+          <div class="mock-line">✓ enviado a DGII</div>
+          <div class="mock-line"><span class="gold">✓ aprobado en 1.2s</span></div>
+          <div class="mock-line"><span class="muted">estado:</span> validado<span class="cursor-blink"></span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="trust-strip" aria-label="Ventajas de CaSa Labs">
-  <div class="container">
-    <span>Atención directa</span>
-    <span>Soluciones a la medida</span>
-    <span>Servicio en República Dominicana</span>
-  </div>
-</div>
-
-<section class="section-alt">
-  <div class="container">
+<section id="servicios">
+  <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Nuestros Servicios</span>
-      <h2>Todo lo que tu negocio necesita para operar en digital</h2>
-      <p>Soluciones tecnológicas prácticas para modernizar y automatizar tu empresa.</p>
+      <h2>Dos áreas, un mismo equipo</h2>
+      <p>Organizamos nuestros servicios en dos frentes: tu presencia digital (web, dominio, correo y mantenimiento) y tu automatización fiscal. Todos los precios están en dólares (USD). El alcance final siempre se cotiza según tu negocio.</p>
     </div>
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h9l3 3v17l-2-1-2 1-2-1-2 1-2-1-2 1V2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
-        <h3>Facturador Electrónico</h3>
-        <p>Emisión y gestión de comprobantes fiscales electrónicos para que tu empresa cumpla con las normativas vigentes sin complicaciones.</p>
-        <a href="servicios.html#facturador" class="link">Conocer más →</a>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/><path d="m4 6 5-3 6 4 6-5"/></svg></div>
-        <h3>CAMI</h3>
-        <p>Control y Análisis de Movimientos e Impuestos: consolida compras, ventas, ITBIS, retenciones y formas de pago para facilitar tu revisión fiscal.</p>
-        <a href="servicios.html#analisis-itbis" class="link">Conocer más →</a>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2h7l4 4v16H7z"/><path d="M14 2v4h4M10 12h4M10 16h4"/><path d="M3 8V5a2 2 0 0 1 2-2M21 8V5a2 2 0 0 0-2-2M3 16v3a2 2 0 0 0 2 2M21 16v3a2 2 0 0 1-2 2"/></svg></div>
-        <h3>NALA</h3>
-        <p>Procesa fotos y archivos PDF, organiza los datos de cada comprobante y genera los formatos DGII 606, 607 e IR-17 en Excel y TXT.</p>
-        <a href="servicios.html#nala" class="link">Conocer más →</a>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".6" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r=".6" fill="currentColor" stroke="none"/></svg></div>
-        <h3>Servidor de Dominio</h3>
-        <p>Registro, configuración y administración de tu dominio web, con disponibilidad y seguridad para tu negocio.</p>
-        <a href="servicios.html#dominio" class="link">Conocer más →</a>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
-        <h3>Servidor de Correo</h3>
-        <p>Correos electrónicos profesionales con tu propio dominio, configurados y funcionando de forma confiable.</p>
-        <a href="servicios.html#correo" class="link">Conocer más →</a>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.8-3.8-9s1.3-6.5 3.8-9z"/></svg></div>
-        <h3>Creación y Funcionalidad de Páginas Web</h3>
-        <p>Diseño y desarrollo de sitios web funcionales, adaptados a las necesidades de tu negocio.</p>
-        <a href="servicios.html#web" class="link">Conocer más →</a>
+
+    <div class="cat-tabs">
+      <button class="cat-tab tab-web active" data-target="panel-web">
+        <span class="num">01</span>
+        <span><strong>Páginas Web &amp; Marketing Digital</strong><span>Sitios, tiendas, apps, dominio, correo y mantenimiento</span></span>
+      </button>
+      <button class="cat-tab tab-fiscal" data-target="panel-fiscal">
+        <span class="num">02</span>
+        <span><strong>Automatización Fiscal</strong><span>Facturación electrónica y procesamiento de comprobantes</span></span>
+      </button>
+    </div>
+
+    <div class="cat-panel web active" id="panel-web">
+      <div class="price-grid">
+        <div class="price-card">
+          <h3>Landing Page</h3>
+          <div class="price">Desde $280 <small>USD / proyecto</small></div>
+          <p class="desc">Una página enfocada en convertir visitas en clientes o mensajes de WhatsApp.</p>
+          <ul>
+            <li>Diseño a medida, 1 página</li>
+            <li>Formulario de contacto + WhatsApp</li>
+            <li>Optimizada para móvil</li>
+            <li>Entrega en 7–10 días hábiles</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card featured">
+          <h3>Sitio Web Empresarial</h3>
+          <div class="price">Desde $580 <small>USD / proyecto</small></div>
+          <p class="desc">Tu presencia digital completa: quiénes son, qué ofrecen y cómo contactarlos.</p>
+          <ul>
+            <li>Entre 5 y 8 secciones a medida</li>
+            <li>SEO on-page básico</li>
+            <li>Integración con WhatsApp</li>
+            <li>Entrega en 15–20 días hábiles</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Tienda Online</h3>
+          <div class="price">Desde $1,150 <small>USD / proyecto</small></div>
+          <p class="desc">Vende directamente desde tu sitio, con inventario y pagos en línea.</p>
+          <ul>
+            <li>Catálogo y carrito de compras</li>
+            <li>Pasarela de pago local</li>
+            <li>Panel de gestión de productos</li>
+            <li>Alcance final según catálogo</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Mantenimiento Web</h3>
+          <div class="price">A cotizar</div>
+          <p class="desc">Para que tu sitio siga funcionando y actualizado sin que tengas que pensarlo.</p>
+          <ul>
+            <li>Actualizaciones y respaldos</li>
+            <li>Cambios menores de contenido</li>
+            <li>Monitoreo de seguridad</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Servidor de Dominio</h3>
+          <div class="price">A cotizar</div>
+          <p class="desc">Tu dirección web registrada, configurada y renovada sin que se te olvide.</p>
+          <ul>
+            <li>Registro y configuración DNS</li>
+            <li>Renovación gestionada por nosotros</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Servidor de Correo</h3>
+          <div class="price">Desde $3.50 <small>USD / mes por correo</small></div>
+          <p class="desc">Correo profesional con tu propio dominio, configurado y funcionando.</p>
+          <ul>
+            <li>Correo @tudominio.com.do</li>
+            <li>Configuración incluida</li>
+            <li>Soporte ante fallos</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Desarrollo de App a Medida</h3>
+          <div class="price">A cotizar</div>
+          <p class="desc">¿Necesitas una app móvil o web para tu negocio? La cotizamos según tu proyecto.</p>
+          <ul>
+            <li>Apps móviles y web a medida</li>
+            <li>Integración con tus sistemas actuales</li>
+            <li>Alcance y precio definidos juntos</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
       </div>
     </div>
-    <div class="text-center mt-lg">
-      <a href="servicios.html" class="btn btn-outline-navy">Ver todos los servicios</a>
+
+    <div class="cat-panel fiscal" id="panel-fiscal">
+      <div class="price-grid">
+        <div class="price-card">
+          <h3>Facturador Electrónico</h3>
+          <div class="price">Ver precios en SIFE</div>
+          <p class="desc">Emite tus comprobantes fiscales electrónicos sin dolores de cabeza, con SIFE.</p>
+          <ul>
+            <li>Emisión ilimitada de e-CF</li>
+            <li>Firma digital automática</li>
+            <li>Envío y validación ante la DGII</li>
+          </ul>
+          <a class="btn btn-outline" href="https://sife.com.do" target="_blank" rel="noopener">Ir a SIFE</a>
+        </div>
+
+        <div class="price-card">
+          <h3>NALA</h3>
+          <div class="price">$150 <small>USD / mes</small></div>
+          <p class="desc">Convierte fotos y PDF de comprobantes en los formatos que pide la DGII.</p>
+          <ul>
+            <li>Digitalización de comprobantes</li>
+            <li>Formatos 606, 607 e IR-17</li>
+            <li>Entrega en Excel y TXT</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+
+        <div class="price-card featured">
+          <h3>NALA + CAMI</h3>
+          <div class="price">$200 <small>USD / mes</small></div>
+          <p class="desc">El paquete completo: procesamos tus comprobantes y te entregamos el análisis fiscal listo.</p>
+          <ul>
+            <li>Digitalización y formatos DGII (NALA)</li>
+            <li>Consolidado de ITBIS, retenciones y movimientos (CAMI)</li>
+            <li>Un solo pago mensual</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/18099863977" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section-navy">
-  <div class="container">
+<section class="why">
+  <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow" style="background:rgba(59,130,246,.18);color:#93c5fd">Por qué elegirnos</span>
       <h2>Tecnología pensada para tu negocio</h2>
       <p>Nos enfocamos en soluciones prácticas que resuelven necesidades reales de tu operación diaria.</p>
     </div>
-    <div class="grid grid-3">
-      <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.7 7.7 0 0 0 0-3l2-1.6-2-3.4-2.4.9a7.5 7.5 0 0 0-2.6-1.5L14 2h-4l-.4 2.4a7.5 7.5 0 0 0-2.6 1.5l-2.4-.9-2 3.4 2 1.6a7.7 7.7 0 0 0 0 3l-2 1.6 2 3.4 2.4-.9c.76.66 1.64 1.18 2.6 1.5L10 22h4l.4-2.4a7.5 7.5 0 0 0 2.6-1.5l2.4.9 2-3.4-2-1.6z"/></svg></div>
-        <h3 style="color:#fff">Soluciones a la medida</h3>
-        <p>Cada servicio se adapta a las necesidades específicas de tu empresa.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>Soluciones a la medida</h3>
+        <p>Cada servicio se adapta a las necesidades específicas de tu empresa, no al revés.</p>
       </div>
-      <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.8A8 8 0 1 1 21 12z"/></svg></div>
-        <h3 style="color:#fff">Acompañamiento cercano</h3>
-        <p>Atención directa vía WhatsApp durante todo el proceso.</p>
+      <div class="why-item">
+        <h3>Acompañamiento cercano</h3>
+        <p>Atención directa vía WhatsApp durante todo el proceso, de principio a fin.</p>
       </div>
-      <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
-        <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c3 2 5 6 5 10 0 2-1 4-2 5l-3 2-3-2c-1-1-2-3-2-5 0-4 2-8 5-10z"/><circle cx="12" cy="10" r="1.6"/><path d="M9 16l-2 4M15 16l2 4"/></svg></div>
-        <h3 style="color:#fff">Enfoque en simplicidad</h3>
-        <p>Convertimos procesos técnicos en soluciones fáciles de usar.</p>
+      <div class="why-item">
+        <h3>Enfoque en simplicidad</h3>
+        <p>Convertimos procesos técnicos en soluciones fáciles de entender y usar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="cta-band">
-    <h2>¿Listo para digitalizar tu negocio?</h2>
-    <p>Cuéntanos qué necesitas y te ayudamos a encontrar la solución adecuada.</p>
-    <a href="https://wa.me/18099863977" class="btn btn-accent" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+<section class="about" id="nosotros">
+  <div class="wrap">
+    <div class="about-mark">
+      <img src="assets/img-hero-1.png" alt="CaSa Labs">
+    </div>
+    <div>
+      <h2>Quiénes somos</h2>
+      <p><strong>CaSa Labs</strong> nace como una sociedad enfocada en desarrollo web y tecnología para negocios dominicanos. El nombre reúne dos ideas: la cercanía de trabajar como en <strong>casa</strong>, y la combinación de <strong>Capacidad y Saber</strong> que guía cada proyecto que entregamos.</p>
+      <p>Trabajamos de cerca con cada cliente para entender su operación real antes de proponer una solución, priorizando lo que de verdad simplifica el día a día del negocio sobre lo que solo se ve bien en una demo.</p>
+    </div>
   </div>
 </section>
 
-</main>
+<section class="faq" id="preguntas">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Preguntas frecuentes</h2>
+      <p>Lo que más nos preguntan antes de empezar a trabajar juntos.</p>
+    </div>
+    <div class="faq-list">
 
-<footer class="site" id="footer-placeholder"></footer>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Los precios publicados son el precio final?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Son precios de entrada ("desde") para el alcance más común de cada servicio. El monto final depende del tamaño de tu negocio, tu volumen de facturación o el número de secciones de tu sitio. Siempre confirmamos el precio exacto antes de empezar.</p></div>
+      </div>
 
-<a href="https://wa.me/18099863977" class="wa-float" target="_blank" rel="noopener" aria-label="Conversar por WhatsApp"></a>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿La facturación electrónica es obligatoria para mi empresa?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>La DGII está implementando la facturación electrónica por fases según el tipo de contribuyente. Te ayudamos a identificar en qué fase te encuentras y a dejar tu empresa cumpliendo a tiempo.</p></div>
+      </div>
 
-<script src="js/main.js"></script>
-<script src="js/footer.js"></script>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Qué diferencia hay entre CAMI y NALA?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>NALA procesa tus comprobantes (fotos o PDF) y genera los formatos 606, 607 e IR-17. CAMI toma esos datos ya organizados y te da un análisis consolidado de ITBIS, retenciones y movimientos. Ofrecemos NALA solo, o el paquete NALA + CAMI para el análisis completo.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Cuánto tiempo toma tener mi página web lista?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Una landing page toma entre 7 y 10 días hábiles; un sitio empresarial completo, entre 15 y 20 días. Una tienda online se estima según el tamaño del catálogo.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span>¿En qué moneda están los precios?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Todos nuestros precios, tanto de páginas web y marketing como de automatización fiscal, están en dólares (USD).</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Desarrollan aplicaciones móviles o web?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Sí. El desarrollo de apps se cotiza según la plataforma y las funcionalidades que necesites — escríbenos por WhatsApp para conversar sobre tu proyecto.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Cómo empiezo a trabajar con CaSa Labs?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Escríbenos por WhatsApp contándonos qué necesita tu negocio. A partir de ahí te guiamos hacia la solución adecuada, sin compromiso.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <h2>¿Listo para digitalizar tu negocio?</h2>
+      <p>Cuéntanos qué necesitas y te ayudamos a encontrar la solución adecuada.</p>
+    </div>
+    <a class="btn btn-primary" href="https://wa.me/18099863977" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img-hero-2.png" alt="CaSa Labs">
+        <p>Desarrollo web, marketing digital y automatización fiscal para negocios en República Dominicana.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#servicios">Servicios</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#preguntas">Preguntas frecuentes</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/18099863977" target="_blank" rel="noopener">WhatsApp: +1 809 986 3977</a>
+          <a href="mailto:info@casalabs.com.do">info@casalabs.com.do</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CaSa Labs. Todos los derechos reservados.</span>
+      <span>Punta Cana, República Dominicana</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/18099863977" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.82L2 22l5.4-1.36a9.9 9.9 0 004.64 1.18h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.06h-.01a8.16 8.16 0 01-4.16-1.14l-.3-.18-3.1.78.83-3.02-.19-.31a8.14 8.14 0 01-1.25-4.28c0-4.5 3.66-8.15 8.17-8.15 2.18 0 4.23.85 5.77 2.4a8.1 8.1 0 012.39 5.77c0 4.5-3.67 8.13-8.15 8.13zm4.47-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.68-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+  // Mobile nav
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.getAttribute('data-open') === 'true';
+    navLinks.setAttribute('data-open', String(!open));
+    menuBtn.setAttribute('aria-expanded', String(!open));
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.setAttribute('data-open', 'false');
+  }));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.getAttribute('data-open') === 'true';
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.setAttribute('data-open', 'false');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.setAttribute('data-open', 'true');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Hero rotating headline words
+  const words = ['tu facturación', 'tu marketing', 'tu página web', 'tus impuestos', 'tu app'];
+  const rotateWrap = document.getElementById('rotateWrap');
+  let wIdx = 0;
+  function renderWord(idx, cls){
+    const el = document.createElement('span');
+    el.className = 'rotate-word ' + cls;
+    el.textContent = words[idx];
+    rotateWrap.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('active')));
+    return el;
+  }
+  let current = renderWord(0, '');
+  setInterval(() => {
+    const prev = current;
+    prev.classList.remove('active');
+    prev.classList.add('exit');
+    wIdx = (wIdx + 1) % words.length;
+    current = renderWord(wIdx, '');
+    setTimeout(() => { if (prev.parentNode) prev.parentNode.removeChild(prev); }, 550);
+  }, 2600);
+
+  // Hero mock tabs
+  document.querySelectorAll('.mock-tab').forEach(tab => {
+    tab.addEventListener('click', () => activateMockTab(tab.dataset.tab));
+  });
+  function activateMockTab(name){
+    document.querySelectorAll('.mock-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+    document.querySelectorAll('.mock-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === name));
+  }
+  const mockOrder = ['web','app','fiscal'];
+  let mockIdx = 0;
+  setInterval(() => {
+    mockIdx = (mockIdx + 1) % mockOrder.length;
+    activateMockTab(mockOrder[mockIdx]);
+  }, 4200);
+
+  // Service category tabs
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>

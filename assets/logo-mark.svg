@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <circle cx="100" cy="100" r="94" fill="#ffffff" stroke="#2E3190" stroke-width="4"/>
-  <path d="M 131 56 A 53 53 0 1 0 131 122"
-        fill="none" stroke="#2E3190" stroke-width="22" stroke-linecap="round"/>
-  <path d="M 117 43 C 148 43 151 75 113 83 C 75 91 77 125 113 130"
-        fill="none" stroke="#2A5C30" stroke-width="17" stroke-linecap="round"/>
+  <!-- Blue C: thick arc centered at (89,89), opening on right at x=130 -->
+  <path d="M 130 57 A 52 52 0 1 0 130 121"
+        fill="none" stroke="#2E3190" stroke-width="23" stroke-linecap="round"/>
+  <!-- Green S: symmetric two-curve S, aligns with C's top and bottom caps -->
+  <path d="M 118 57 C 153 57 153 89 118 89 C 83 89 83 121 118 121"
+        fill="none" stroke="#2A5C30" stroke-width="18" stroke-linecap="round"/>
 </svg>
