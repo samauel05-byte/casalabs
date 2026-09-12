@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const servicio = String(data.get('servicio') || '').trim();
       const mensaje = String(data.get('mensaje') || '').trim();
       const text = `Hola, soy ${nombre}.\nServicio de interés: ${servicio}\nTeléfono: ${telefono}${mensaje ? `\nMensaje: ${mensaje}` : ''}`;
-      const url = new URL('https://wa.me/18099863977');
+      const url = new URL('https://wa.me/18494088173');
       url.searchParams.set('text', text);
       window.open(url.toString(), '_blank', 'noopener,noreferrer');
     });
