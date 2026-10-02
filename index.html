@@ -205,13 +205,24 @@
   .about strong{color:var(--indigo-deep);}
 
   /* ---------- FAQ ---------- */
-  .faq{background:var(--cream);}
+  .faq{background:var(--cream);padding:88px 0;}
+  .faq-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
+  .faq-aside h2{margin-bottom:16px;}
+  .faq-aside p{color:var(--ink-soft);font-size:0.95rem;line-height:1.65;margin:0 0 32px;}
+  .faq-aside .btn{display:inline-flex;}
+  .faq-list{display:flex;flex-direction:column;}
   .faq-item{border-bottom:1px solid var(--line);}
-  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 0;font-family:'Fraunces',serif;font-size:1.08rem;color:var(--indigo-deep);display:flex;justify-content:space-between;align-items:center;gap:20px;}
-  .faq-q .plus{font-family:'Inter',sans-serif;font-size:1.4rem;color:var(--gold-deep);transition:transform .2s ease;flex-shrink:0;}
-  .faq-item[data-open="true"] .plus{transform:rotate(45deg);}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
-  .faq-a p{margin:0 0 22px;color:var(--ink-soft);max-width:70ch;}
+  .faq-item:first-child{border-top:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 0;font-family:'Fraunces',serif;font-size:1rem;color:var(--indigo-deep);display:flex;justify-content:space-between;align-items:center;gap:20px;transition:color .15s;}
+  .faq-q:hover{color:var(--indigo);}
+  .faq-q .faq-chevron{flex-shrink:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--line);transition:background .2s, transform .25s;}
+  .faq-q .faq-chevron svg{transition:transform .25s;}
+  .faq-item[data-open="true"] .faq-q{color:var(--indigo-deep);}
+  .faq-item[data-open="true"] .faq-chevron{background:var(--gold-deep);}
+  .faq-item[data-open="true"] .faq-chevron svg{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-a p{margin:0 0 20px;color:var(--ink-soft);font-size:0.93rem;line-height:1.7;padding-left:0;border-left:3px solid var(--gold-deep);padding-left:14px;max-width:66ch;}
+  @media(max-width:768px){.faq-inner{grid-template-columns:1fr;gap:40px;}.faq{padding:64px 0;}}
 
   /* ---------- CONTACT ---------- */
   .contact{background:var(--forest);color:#fff;}
@@ -553,47 +564,50 @@
 
 <section class="faq" id="preguntas">
   <div class="wrap">
-    <div class="section-head">
-      <h2>Preguntas frecuentes</h2>
-      <p>Lo que más nos preguntan antes de empezar a trabajar juntos.</p>
-    </div>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-q"><span>¿Los precios publicados son el precio final?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Son precios de entrada ("desde") para el alcance más común de cada servicio. El monto final depende del tamaño de tu negocio, tu volumen de facturación o el número de secciones de tu sitio. Siempre confirmamos el precio exacto antes de empezar.</p></div>
+    <div class="faq-inner">
+      <div class="faq-aside">
+        <h2>Preguntas frecuentes</h2>
+        <p>Lo que más nos preguntan antes de empezar a trabajar juntos. Si la tuya no está aquí, escríbenos.</p>
+        <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener">Hacer una pregunta</a>
       </div>
+      <div class="faq-list">
 
-      <div class="faq-item">
-        <button class="faq-q"><span>¿La facturación electrónica es obligatoria para mi empresa?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>La DGII está implementando la facturación electrónica por fases según el tipo de contribuyente. Te ayudamos a identificar en qué fase te encuentras y a dejar tu empresa cumpliendo a tiempo.</p></div>
+        <div class="faq-item">
+          <button class="faq-q"><span>¿Los precios publicados son el precio final?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>Son precios de entrada ("desde") para el alcance más común de cada servicio. El monto final depende del tamaño de tu negocio, tu volumen de facturación o el número de secciones de tu sitio. Siempre confirmamos el precio exacto antes de empezar.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q"><span>¿La facturación electrónica es obligatoria para mi empresa?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>La DGII está implementando la facturación electrónica por fases según el tipo de contribuyente. Te ayudamos a identificar en qué fase te encuentras y a dejar tu empresa cumpliendo a tiempo.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q"><span>¿Qué diferencia hay entre CAMI y NALA?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>NALA procesa tus comprobantes (fotos o PDF) y genera los formatos 606, 607 e IR-17. CAMI toma esos datos ya organizados y te da un análisis consolidado de ITBIS, retenciones y movimientos. Ofrecemos NALA solo, o el paquete NALA + CAMI para el análisis completo.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q"><span>¿Cuánto tiempo toma tener mi página web lista?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>Una landing page toma entre 7 y 10 días hábiles; un sitio empresarial completo, entre 15 y 20 días. Una tienda online se estima según el tamaño del catálogo.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q"><span>¿En qué moneda están los precios?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>Todos nuestros precios, tanto de páginas web y marketing como de automatización fiscal, están en dólares (USD).</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q"><span>¿Desarrollan aplicaciones móviles o web?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>Sí. El desarrollo de apps se cotiza según la plataforma y las funcionalidades que necesites — escríbenos por WhatsApp para conversar sobre tu proyecto.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q"><span>¿Cómo empiezo a trabajar con CaSa Labs?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <div class="faq-a"><p>Escríbenos por WhatsApp contándonos qué necesita tu negocio. A partir de ahí te guiamos hacia la solución adecuada, sin compromiso.</p></div>
+        </div>
+
       </div>
-
-      <div class="faq-item">
-        <button class="faq-q"><span>¿Qué diferencia hay entre CAMI y NALA?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>NALA procesa tus comprobantes (fotos o PDF) y genera los formatos 606, 607 e IR-17. CAMI toma esos datos ya organizados y te da un análisis consolidado de ITBIS, retenciones y movimientos. Ofrecemos NALA solo, o el paquete NALA + CAMI para el análisis completo.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q"><span>¿Cuánto tiempo toma tener mi página web lista?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Una landing page toma entre 7 y 10 días hábiles; un sitio empresarial completo, entre 15 y 20 días. Una tienda online se estima según el tamaño del catálogo.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q"><span>¿En qué moneda están los precios?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Todos nuestros precios, tanto de páginas web y marketing como de automatización fiscal, están en dólares (USD).</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q"><span>¿Desarrollan aplicaciones móviles o web?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Sí. El desarrollo de apps se cotiza según la plataforma y las funcionalidades que necesites — escríbenos por WhatsApp para conversar sobre tu proyecto.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q"><span>¿Cómo empiezo a trabajar con CaSa Labs?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Escríbenos por WhatsApp contándonos qué necesita tu negocio. A partir de ahí te guiamos hacia la solución adecuada, sin compromiso.</p></div>
-      </div>
-
     </div>
   </div>
 </section>
