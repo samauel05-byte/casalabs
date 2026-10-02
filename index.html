@@ -154,6 +154,8 @@
   .cat-tab.active .num{color:var(--forest);}
   .cat-tab.tab-fiscal.active{border-color:var(--indigo);background:#F1F3FA;}
   .cat-tab.tab-fiscal.active .num{color:var(--indigo);}
+  .cat-tab.tab-nexo.active{border-color:var(--gold-deep);background:#FBF7EC;}
+  .cat-tab.tab-nexo.active .num{color:var(--gold-deep);}
 
   .cat-panel{display:none;padding-top:44px;}
   .cat-panel.active{display:block;}
@@ -178,6 +180,11 @@
     padding:4px 10px;border-radius:999px;letter-spacing:0.02em;
   }
   .cat-panel.fiscal .price-card.featured::before{background:var(--indigo);content:"Paquete completo";}
+  .cat-panel.nexo .price-card li::before{background:var(--gold-deep);}
+  .cat-panel.nexo .price-card.featured{border-color:var(--gold-deep);}
+  .cat-panel.nexo .price-card.featured::before{background:var(--gold-deep);content:"Plataforma";}
+  .cat-panel.nexo .price-card .btn-outline{border-color:var(--gold-deep);color:var(--gold-deep);}
+  .cat-panel.nexo .price-card .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 
   /* ---------- WHY ---------- */
   .why{background:var(--indigo-deep);color:#fff;}
@@ -338,6 +345,10 @@
         <span class="num">02</span>
         <span><strong>Automatización Fiscal</strong><span>Facturación electrónica y procesamiento de comprobantes</span></span>
       </button>
+      <button class="cat-tab tab-nexo" data-target="panel-nexo">
+        <span class="num">03</span>
+        <span><strong>Nexo</strong><span>Tu equipo, en un solo lugar</span></span>
+      </button>
     </div>
 
     <div class="cat-panel web active" id="panel-web">
@@ -473,6 +484,24 @@
             <li>DGII, TSS, Ministerio de Trabajo, SISARIL</li>
             <li>NALA, CAMI, IR-2</li>
             <li>Asientos Automáticos y Estimación Fiscal</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-panel nexo" id="panel-nexo">
+      <div class="price-grid" style="grid-template-columns:1fr">
+        <div class="price-card featured" style="max-width:520px">
+          <h3>Nexo · Tu equipo, en un solo lugar.</h3>
+          <p class="desc">Plataforma de gestión de tareas para empresas de servicios. Cada pendiente tiene dueño, fecha límite y seguimiento; cada persona recibe recordatorios por correo y WhatsApp; y la gerencia ve en vivo qué está vencido, quién lo tiene y el índice de cumplimiento por departamento.</p>
+          <ul>
+            <li>Nada se pierde: cada tarea tiene dueño, fecha y rastro.</li>
+            <li>Recordatorios automáticos por correo y WhatsApp.</li>
+            <li>Dashboard en vivo por departamento y por persona.</li>
+            <li>Tablero de avisos y chat interno para todo el equipo.</li>
+            <li>Plantillas que arman cartas y documentos en segundos.</li>
+            <li>Listo en días, adaptado a tu empresa. Funciona desde el celular o la computadora, sin instalar nada.</li>
           </ul>
           <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
         </div>
