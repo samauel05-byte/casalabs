@@ -70,7 +70,7 @@
   .menu-btn span{display:block;width:24px;height:2px;background:var(--indigo-deep);margin:5px 0;}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;overflow:hidden;background:var(--indigo-night);padding:96px 0 110px;isolation:isolate;}
+  .hero{position:relative;overflow:hidden;background:var(--indigo-night);background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;padding:96px 0 110px;isolation:isolate;}
   .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:0.55;z-index:-1;}
   .hero::before{width:480px;height:480px;background:var(--forest-bright);top:-160px;right:-120px;animation:drift1 22s ease-in-out infinite;}
   .hero::after{width:420px;height:420px;background:var(--gold-deep);bottom:-180px;left:-100px;opacity:0.35;animation:drift2 26s ease-in-out infinite;}
@@ -108,31 +108,49 @@
   .hero-metrics strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;color:#fff;}
   .hero-metrics span{font-size:0.82rem;color:#9FA7C4;}
 
-  /* Terminal / product mock */
-  .hero-mock{
-    background:#0E1430;border:1px solid rgba(255,255,255,0.12);
-    border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,0.35);
-    overflow:hidden;font-family:'JetBrains Mono',monospace;
+  /* ---------- HERO VISUAL (dashboard preview) ---------- */
+  .hero-visual{position:relative;}
+  .hv-card{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;box-shadow:0 32px 72px rgba(0,0,0,0.45);overflow:hidden;
   }
-  .mock-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#0A0F26;border-bottom:1px solid rgba(255,255,255,0.08);}
-  .mock-bar span{width:10px;height:10px;border-radius:50%;}
-  .mock-bar span:nth-child(1){background:#E5605A;}
-  .mock-bar span:nth-child(2){background:#E8B84B;}
-  .mock-bar span:nth-child(3){background:#57B96C;}
-  .mock-tabs{display:flex;gap:4px;padding:14px 16px 0;}
-  .mock-tab{
-    font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:600;color:#7C86B3;
-    padding:8px 12px;border-radius:6px 6px 0 0;cursor:default;
+  .hv-titlebar{display:flex;align-items:center;gap:7px;padding:13px 18px;background:rgba(0,0,0,0.22);border-bottom:1px solid rgba(255,255,255,0.07);}
+  .hv-title-dots{display:flex;gap:6px;}
+  .hv-title-dot{width:10px;height:10px;border-radius:50%;}
+  .hv-title-dot:nth-child(1){background:#E5605A;}
+  .hv-title-dot:nth-child(2){background:#E8B84B;}
+  .hv-title-dot:nth-child(3){background:#57B96C;}
+  .hv-titlebar-url{margin-left:8px;font-size:0.74rem;color:rgba(255,255,255,0.26);}
+  .hv-tabs-row{display:flex;gap:4px;padding:14px 18px 0;}
+  .hv-tab{font-size:0.77rem;font-weight:600;color:rgba(255,255,255,0.38);padding:7px 13px;border-radius:6px 6px 0 0;cursor:default;transition:color .2s,background .2s;}
+  .hv-tab.active{color:#fff;background:rgba(255,255,255,0.09);}
+  .hv-body{padding:22px 20px 26px;}
+  .hv-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;margin-bottom:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);}
+  .hv-icon{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .hv-info strong{display:block;font-size:0.82rem;color:rgba(255,255,255,0.88);font-weight:600;}
+  .hv-info span{font-size:0.73rem;color:rgba(255,255,255,0.42);}
+  .hv-badge{margin-left:auto;font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  .hv-green{background:rgba(87,185,108,0.18);color:#74D48A;}
+  .hv-blue{background:rgba(138,164,240,0.18);color:#8BA4F0;}
+  .hv-gold{background:rgba(232,196,104,0.18);color:#E8C468;}
+  .hv-divider{margin:16px 0 12px;border:none;border-top:1px solid rgba(255,255,255,0.08);}
+  .hv-label{font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
+  .hv-progress{height:5px;background:rgba(255,255,255,0.08);border-radius:999px;overflow:hidden;margin-bottom:6px;}
+  .hv-progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--forest-bright),#4DE07F);}
+  .hv-progress-text{font-size:0.75rem;color:rgba(255,255,255,0.45);}
+  .hv-float{
+    position:absolute;background:#fff;border-radius:10px;
+    padding:10px 14px;box-shadow:0 10px 28px rgba(0,0,0,0.18);
+    display:flex;align-items:center;gap:10px;
   }
-  .mock-tab.active{color:#fff;background:#171E45;}
-  .mock-body{padding:20px 18px 26px;min-height:190px;}
-  .mock-line{font-size:0.86rem;color:#8DE2A6;margin-bottom:8px;white-space:pre;}
-  .mock-line .muted{color:#7C86B3;}
-  .mock-line .gold{color:#E8C468;}
-  .mock-panel{display:none;}
-  .mock-panel.active{display:block;}
-  .cursor-blink{display:inline-block;width:7px;height:15px;background:#8DE2A6;margin-left:2px;animation:blink 1s step-end infinite;vertical-align:middle;}
-  @keyframes blink{50%{opacity:0;}}
+  .hv-float strong{display:block;font-size:0.86rem;color:var(--ink);font-weight:700;line-height:1.3;}
+  .hv-float span{font-size:0.72rem;color:var(--ink-soft);}
+  .hv-float-ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .hv-float-1{bottom:-18px;left:-16px;animation:floatA 4s ease-in-out infinite;}
+  .hv-float-2{top:36px;right:-16px;animation:floatB 5s ease-in-out infinite;}
+  @keyframes floatA{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  @keyframes floatB{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  @media(prefers-reduced-motion:reduce){.hv-float-1,.hv-float-2{animation:none;}}
 
   /* ---------- SECTION GENERIC ---------- */
   section{padding:88px 0;}
@@ -296,7 +314,8 @@
     .nav-cta{display:none;}
     .menu-btn{display:block;}
     .hero .wrap{grid-template-columns:1fr;}
-    .hero-mock{order:-1;margin-bottom:8px;}
+    .hero-visual{order:-1;margin-bottom:12px;}
+    .hv-float-1,.hv-float-2{display:none;}
     .why-grid{grid-template-columns:1fr;}
     .why-item{border-left:none;border-top:1px solid rgba(255,255,255,0.18);padding:30px 0 0;}
     .why-item:first-child{border-top:none;}
@@ -347,35 +366,60 @@
       </div>
     </div>
 
-    <div class="hero-mock">
-      <div class="mock-bar"><span></span><span></span><span></span></div>
-      <div class="mock-tabs">
-        <div class="mock-tab active" data-tab="web">sitio-web.casalabs</div>
-        <div class="mock-tab" data-tab="app">app.casalabs</div>
-        <div class="mock-tab" data-tab="fiscal">factura.casalabs</div>
+    <div class="hero-visual">
+      <div class="hv-card">
+        <div class="hv-titlebar">
+          <div class="hv-title-dots">
+            <span class="hv-title-dot"></span>
+            <span class="hv-title-dot"></span>
+            <span class="hv-title-dot"></span>
+          </div>
+          <span class="hv-titlebar-url">casalabs.com.do · panel</span>
+        </div>
+        <div class="hv-tabs-row">
+          <div class="hv-tab active" data-hv="digital">Digital</div>
+          <div class="hv-tab" data-hv="fiscal">Fiscal</div>
+          <div class="hv-tab" data-hv="nexo">Nexo</div>
+        </div>
+        <div class="hv-body">
+          <div class="hv-row">
+            <div class="hv-icon" style="background:rgba(47,140,77,0.2);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57B96C" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            </div>
+            <div class="hv-info"><strong>Landing Page</strong><span>Diseño a medida · 15 días</span></div>
+            <span class="hv-badge hv-green">Activo</span>
+          </div>
+          <div class="hv-row">
+            <div class="hv-icon" style="background:rgba(44,62,130,0.25);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BA4F0" stroke-width="2.2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+            </div>
+            <div class="hv-info"><strong>e-CF · DGII</strong><span>Firmado y aprobado</span></div>
+            <span class="hv-badge hv-blue">✓ 1.2s</span>
+          </div>
+          <div class="hv-row">
+            <div class="hv-icon" style="background:rgba(175,126,18,0.2);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8C468" stroke-width="2.2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hv-info"><strong>Nexo · Equipo</strong><span>5 usuarios activos</span></div>
+            <span class="hv-badge hv-gold">En vivo</span>
+          </div>
+          <hr class="hv-divider">
+          <div class="hv-label">Rendimiento este mes</div>
+          <div class="hv-progress"><div class="hv-progress-fill" style="width:78%"></div></div>
+          <div class="hv-progress-text">78% de tareas cumplidas a tiempo</div>
+        </div>
       </div>
-      <div class="mock-body">
-        <div class="mock-panel active" data-panel="web">
-          <div class="mock-line"><span class="muted">$</span> npx casalabs deploy --sitio</div>
-          <div class="mock-line">✓ dominio conectado</div>
-          <div class="mock-line">✓ diseño a medida publicado</div>
-          <div class="mock-line"><span class="gold">✓ optimizado para SEO y móvil</span></div>
-          <div class="mock-line"><span class="muted">listo en</span> 15–20 días hábiles<span class="cursor-blink"></span></div>
+      <div class="hv-float hv-float-1" aria-hidden="true">
+        <div class="hv-float-ico" style="background:#E7F8ED;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E5631" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="mock-panel" data-panel="app">
-          <div class="mock-line"><span class="muted">$</span> casalabs cotizar --app</div>
-          <div class="mock-line">✓ definimos el alcance contigo</div>
-          <div class="mock-line">✓ diseño de flujo de usuario</div>
-          <div class="mock-line"><span class="gold">✓ propuesta a la medida</span></div>
-          <div class="mock-line"><span class="muted">estado:</span> cotización personalizada<span class="cursor-blink"></span></div>
+        <div><strong>Sitio publicado</strong><span>Hace 2 minutos</span></div>
+      </div>
+      <div class="hv-float hv-float-2" aria-hidden="true">
+        <div class="hv-float-ico" style="background:#EEF1FB;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D2B5E" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="mock-panel" data-panel="fiscal">
-          <div class="mock-line"><span class="muted">$</span> casalabs emitir --ecf</div>
-          <div class="mock-line">✓ comprobante firmado digitalmente</div>
-          <div class="mock-line">✓ enviado a DGII</div>
-          <div class="mock-line"><span class="gold">✓ aprobado en 1.2s</span></div>
-          <div class="mock-line"><span class="muted">estado:</span> validado<span class="cursor-blink"></span></div>
-        </div>
+        <div><strong>e-CF aprobado</strong><span>DGII · 1.2 seg</span></div>
       </div>
     </div>
   </div>
@@ -761,20 +805,14 @@
     setTimeout(() => { if (prev.parentNode) prev.parentNode.removeChild(prev); }, 550);
   }, 2600);
 
-  // Hero mock tabs
-  document.querySelectorAll('.mock-tab').forEach(tab => {
-    tab.addEventListener('click', () => activateMockTab(tab.dataset.tab));
-  });
-  function activateMockTab(name){
-    document.querySelectorAll('.mock-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-    document.querySelectorAll('.mock-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === name));
-  }
-  const mockOrder = ['web','app','fiscal'];
-  let mockIdx = 0;
+  // Hero dashboard tabs (auto-rotate)
+  const hvTabs = document.querySelectorAll('.hv-tab');
+  let hvIdx = 0;
   setInterval(() => {
-    mockIdx = (mockIdx + 1) % mockOrder.length;
-    activateMockTab(mockOrder[mockIdx]);
-  }, 4200);
+    hvTabs[hvIdx].classList.remove('active');
+    hvIdx = (hvIdx + 1) % hvTabs.length;
+    hvTabs[hvIdx].classList.add('active');
+  }, 3800);
 
   // Service category tabs
   document.querySelectorAll('.cat-tab').forEach(tab => {
