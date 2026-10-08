@@ -250,6 +250,42 @@
 
   /* ---------- WHATSAPP FLOAT ---------- */
   .wa-float{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--forest);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,61,34,0.35);}
+
+  /* ---------- COOKIE BANNER ---------- */
+  #cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;width:min(680px,calc(100vw - 32px));background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.14),0 2px 8px rgba(0,0,0,0.08);padding:24px 28px;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+  #cookie-banner.hidden{display:none;}
+  .cookie-text{flex:1;min-width:200px;}
+  .cookie-text strong{display:block;font-size:1rem;color:var(--indigo-deep);margin-bottom:8px;font-family:'Fraunces',serif;}
+  .cookie-text p{margin:0;font-size:0.88rem;color:var(--ink-soft);line-height:1.6;}
+  .cookie-text a{color:var(--indigo);text-decoration:underline;}
+  .cookie-actions{display:flex;flex-direction:column;gap:10px;min-width:160px;}
+  .cookie-actions .btn-cookie-accept{background:var(--indigo-deep);color:#fff;border:none;border-radius:var(--radius-s);padding:11px 20px;font-size:0.9rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s;}
+  .cookie-actions .btn-cookie-accept:hover{background:var(--indigo);}
+  .cookie-actions .btn-cookie-pref{background:#F1F1F1;color:var(--ink);border:none;border-radius:var(--radius-s);padding:11px 20px;font-size:0.9rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .15s;}
+  .cookie-actions .btn-cookie-pref:hover{background:#E4E4E4;}
+  #cookie-prefs{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;}
+  #cookie-prefs.open{display:flex;}
+  .cookie-modal{background:#fff;border-radius:14px;padding:32px;max-width:460px;width:calc(100% - 40px);box-shadow:0 20px 60px rgba(0,0,0,0.18);}
+  .cookie-modal h3{font-family:'Fraunces',serif;color:var(--indigo-deep);margin:0 0 8px;font-size:1.2rem;}
+  .cookie-modal p{color:var(--ink-soft);font-size:0.9rem;margin:0 0 20px;line-height:1.6;}
+  .cookie-toggle-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);}
+  .cookie-toggle-row:first-of-type{border-top:1px solid var(--line);}
+  .cookie-toggle-row span{font-size:0.9rem;font-weight:500;color:var(--ink);}
+  .cookie-toggle-row small{font-size:0.8rem;color:var(--ink-soft);display:block;margin-top:2px;}
+  .cookie-switch{position:relative;width:42px;height:24px;flex-shrink:0;}
+  .cookie-switch input{opacity:0;width:0;height:0;}
+  .cookie-switch-track{position:absolute;inset:0;background:#ccc;border-radius:24px;cursor:pointer;transition:background .2s;}
+  .cookie-switch input:checked+.cookie-switch-track{background:var(--indigo);}
+  .cookie-switch-track::before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;}
+  .cookie-switch input:checked+.cookie-switch-track::before{transform:translateX(18px);}
+  .cookie-switch input:disabled+.cookie-switch-track{background:var(--forest);opacity:0.6;cursor:not-allowed;}
+  .cookie-modal-actions{display:flex;gap:12px;margin-top:24px;}
+  .cookie-modal-actions button{flex:1;padding:11px;border:none;border-radius:var(--radius-s);font-weight:600;font-size:0.9rem;cursor:pointer;transition:background .15s;}
+  .btn-save-prefs{background:var(--indigo-deep);color:#fff;}
+  .btn-save-prefs:hover{background:var(--indigo);}
+  .btn-accept-all{background:var(--forest);color:#fff;}
+  .btn-accept-all:hover{background:var(--forest-deep);}
+  @media(max-width:560px){#cookie-banner{flex-direction:column;gap:16px;}.cookie-actions{flex-direction:row;}.cookie-actions button{flex:1;}}
   .wa-float:hover{background:var(--forest-deep);}
 
   /* ---------- RESPONSIVE ---------- */
@@ -284,7 +320,7 @@
       <a href="#preguntas">Preguntas frecuentes</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a class="nav-cta" href="https://wa.me/18494088173" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="nav-cta" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -301,7 +337,7 @@
       </h1>
       <p class="lead">CaSa Labs junta en un solo equipo lo que casi siempre está separado: tu presencia digital y tu cumplimiento fiscal. Páginas web y marketing para negocios en cualquier parte del mundo; facturación electrónica para empresas en República Dominicana.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
         <a class="btn btn-outline-light" href="#servicios">Ver servicios y precios</a>
       </div>
       <div class="hero-metrics">
@@ -379,7 +415,7 @@
             <li>Optimizada para móvil</li>
             <li>Entrega en 7–10 días hábiles</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card featured">
@@ -392,7 +428,7 @@
             <li>Integración con WhatsApp</li>
             <li>Entrega en 15–20 días hábiles</li>
           </ul>
-          <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card">
@@ -405,7 +441,7 @@
             <li>Panel de gestión de productos</li>
             <li>Alcance final según catálogo</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card">
@@ -417,7 +453,7 @@
             <li>Cambios menores de contenido</li>
             <li>Monitoreo de seguridad</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card">
@@ -428,7 +464,7 @@
             <li>Registro y configuración DNS</li>
             <li>Renovación gestionada por nosotros</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card">
@@ -440,7 +476,7 @@
             <li>Configuración incluida</li>
             <li>Soporte ante fallos</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card">
@@ -452,7 +488,7 @@
             <li>Integración con tus sistemas actuales</li>
             <li>Alcance y precio definidos juntos</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
       </div>
     </div>
@@ -468,7 +504,7 @@
             <li>Firma digital automática</li>
             <li>Envío y validación ante la DGII</li>
           </ul>
-          <a class="btn btn-outline" href="https://sife.com.do" target="_blank" rel="noopener">Ir a SIFE</a>
+          <a class="btn btn-outline" href="https://sife.com.do" target="_blank" rel="noopener noreferrer">Ir a SIFE</a>
         </div>
 
         <div class="price-card">
@@ -479,7 +515,7 @@
             <li>Formatos 606, 607 e IR-17</li>
             <li>Entrega en Excel y TXT</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card">
@@ -490,7 +526,7 @@
             <li>Consolidado de ITBIS, retenciones y movimientos (CAMI)</li>
             <li>Un solo pago mensual</li>
           </ul>
-          <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
 
         <div class="price-card featured">
@@ -501,7 +537,7 @@
             <li>NALA, CAMI, IR-2</li>
             <li>Asientos Automáticos y Estimación Fiscal</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
       </div>
     </div>
@@ -519,7 +555,7 @@
             <li>Plantillas que arman cartas y documentos en segundos.</li>
             <li>Listo en días, adaptado a tu empresa. Funciona desde el celular o la computadora, sin instalar nada.</li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener">A cotizar</a>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
       </div>
     </div>
@@ -568,7 +604,7 @@
       <div class="faq-aside">
         <h2>Preguntas frecuentes</h2>
         <p>Lo que más nos preguntan antes de empezar a trabajar juntos. Si la tuya no está aquí, escríbenos.</p>
-        <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener">Hacer una pregunta</a>
+        <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">Hacer una pregunta</a>
       </div>
       <div class="faq-list">
 
@@ -618,7 +654,7 @@
       <h2>¿Listo para digitalizar tu negocio?</h2>
       <p>Cuéntanos qué necesitas y te ayudamos a encontrar la solución adecuada.</p>
     </div>
-    <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp</a>
   </div>
 </section>
 
@@ -645,15 +681,15 @@
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,0.6)"><path d="M17.47 14.38c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01s-.48.07-.73.34c-.25.27-.95.93-.95 2.27s.97 2.63 1.11 2.81c.14.18 1.92 2.93 4.65 4.11.65.28 1.16.45 1.55.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32zm-5.47 7.45h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.38A9.86 9.86 0 0 1 2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/></svg>
-            <a href="https://wa.me/18494088173" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,0.6)"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
-            <a href="https://www.instagram.com/casalabs.rd" target="_blank" rel="noopener">@casalabs.rd</a>
+            <a href="https://www.instagram.com/casalabs.rd" target="_blank" rel="noopener noreferrer">@casalabs.rd</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,0.6)"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.23 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.23 22 17.08 22 12.06z"/></svg>
-            <a href="https://www.facebook.com/share/19UvfxFpg2/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.facebook.com/share/19UvfxFpg2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
           <div class="footer-contact-item">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
@@ -669,7 +705,7 @@
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/18494088173" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a class="wa-float" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.82L2 22l5.4-1.36a9.9 9.9 0 004.64 1.18h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.06h-.01a8.16 8.16 0 01-4.16-1.14l-.3-.18-3.1.78.83-3.02-.19-.31a8.14 8.14 0 01-1.25-4.28c0-4.5 3.66-8.15 8.17-8.15 2.18 0 4.23.85 5.77 2.4a8.1 8.1 0 012.39 5.77c0 4.5-3.67 8.13-8.15 8.13zm4.47-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.68-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg>
 </a>
 
@@ -749,6 +785,80 @@
       document.getElementById(tab.dataset.target).classList.add('active');
     });
   });
+</script>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+  <div class="cookie-text">
+    <strong>Utilizamos cookies</strong>
+    <p>Este sitio web utiliza cookies esenciales para garantizar su correcto funcionamiento, y cookies de analítica y de marketing para comprender cómo interactúas con él. Estas últimas se fijarán solo después del consentimiento. <a href="/politica-cookies" id="cookie-policy-link">Política de cookies</a>.</p>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-accept" id="cookieAcceptAll">Aceptar cookies</button>
+    <button class="btn-cookie-pref" id="cookieOpenPrefs">Preferencias</button>
+  </div>
+</div>
+
+<!-- Cookie Preferences Modal -->
+<div id="cookie-prefs" role="dialog" aria-modal="true" aria-label="Preferencias de cookies">
+  <div class="cookie-modal">
+    <h3>Preferencias de cookies</h3>
+    <p>Puedes elegir qué tipos de cookies deseas aceptar. Las cookies esenciales siempre están activas.</p>
+    <div class="cookie-toggle-row">
+      <div><span>Esenciales</span><small>Necesarias para el funcionamiento del sitio</small></div>
+      <label class="cookie-switch"><input type="checkbox" checked disabled><span class="cookie-switch-track"></span></label>
+    </div>
+    <div class="cookie-toggle-row">
+      <div><span>Analítica</span><small>Nos ayudan a entender cómo usas el sitio</small></div>
+      <label class="cookie-switch"><input type="checkbox" id="analyticsToggle"><span class="cookie-switch-track"></span></label>
+    </div>
+    <div class="cookie-toggle-row">
+      <div><span>Marketing</span><small>Usadas para mostrarte anuncios relevantes</small></div>
+      <label class="cookie-switch"><input type="checkbox" id="marketingToggle"><span class="cookie-switch-track"></span></label>
+    </div>
+    <div class="cookie-modal-actions">
+      <button class="btn-save-prefs" id="cookieSavePrefs">Guardar preferencias</button>
+      <button class="btn-accept-all" id="cookieAcceptAllModal">Aceptar todo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var COOKIE_KEY = 'cl_cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    var prefsModal = document.getElementById('cookie-prefs');
+
+    function hideBanner() { banner.classList.add('hidden'); }
+    function openPrefs() { prefsModal.classList.add('open'); }
+    function closePrefs() { prefsModal.classList.remove('open'); }
+
+    function saveConsent(analytics, marketing) {
+      try {
+        localStorage.setItem(COOKIE_KEY, JSON.stringify({ v:1, analytics: analytics, marketing: marketing, ts: Date.now() }));
+      } catch(e) {}
+      hideBanner();
+      closePrefs();
+    }
+
+    try {
+      var stored = JSON.parse(localStorage.getItem(COOKIE_KEY) || 'null');
+      if (stored && stored.v === 1) { hideBanner(); return; }
+    } catch(e) {}
+
+    document.getElementById('cookieAcceptAll').addEventListener('click', function() { saveConsent(true, true); });
+    document.getElementById('cookieOpenPrefs').addEventListener('click', openPrefs);
+    document.getElementById('cookieAcceptAllModal').addEventListener('click', function() {
+      document.getElementById('analyticsToggle').checked = true;
+      document.getElementById('marketingToggle').checked = true;
+      saveConsent(true, true);
+    });
+    document.getElementById('cookieSavePrefs').addEventListener('click', function() {
+      saveConsent(document.getElementById('analyticsToggle').checked, document.getElementById('marketingToggle').checked);
+    });
+    prefsModal.addEventListener('click', function(e) { if (e.target === prefsModal) closePrefs(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrefs(); });
+  })();
 </script>
 
 </body>
