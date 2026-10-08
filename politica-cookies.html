@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Cookies | CaSa Labs</title>
+<meta name="description" content="Política de cookies de CaSa Labs. Conoce qué cookies utilizamos y cómo puedes controlarlas.">
+<link rel="icon" type="image/png" href="assets/favicon-logo.png">
+<link rel="apple-touch-icon" href="assets/favicon-logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#2C3E82;--indigo-deep:#1D2B5E;--indigo-night:#12193E;
+    --forest:#1E5631;--forest-bright:#2F8C4D;
+    --gold:#C79A2C;--gold-deep:#AF7E12;
+    --cream:#F6F4EE;--paper:#FFFFFF;
+    --ink:#14181F;--ink-soft:#535A6B;--line:#E4E1D6;
+    --radius-s:6px;--maxw:800px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.65;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.15;margin:0;letter-spacing:-0.01em;}
+  a{color:var(--indigo);text-decoration:underline;text-underline-offset:3px;}
+  a:hover{color:var(--forest);}
+  img{max-width:100%;display:block;}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1160px;margin:0 auto;}
+  .nav-logo img{height:64px;width:auto;}
+  .nav-back{display:inline-flex;align-items:center;gap:8px;font-size:0.92rem;font-weight:500;color:var(--ink-soft);text-decoration:none;border-bottom:none;transition:color .15s;}
+  .nav-back:hover{color:var(--indigo);}
+  .nav-back svg{flex-shrink:0;}
+
+  /* PAGE HERO */
+  .page-hero{background:var(--indigo-night);padding:64px 0 72px;}
+  .page-hero .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .breadcrumb{font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:20px;}
+  .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
+  .breadcrumb a:hover{color:#fff;}
+  .page-hero h1{color:#fff;font-size:clamp(1.9rem,3.5vw,2.8rem);}
+  .page-hero p{color:rgba(255,255,255,0.55);margin-top:14px;font-size:1rem;max-width:52ch;}
+
+  /* CONTENT */
+  .content{max-width:var(--maxw);margin:0 auto;padding:64px 28px 96px;}
+  .content h2{font-size:1.3rem;color:var(--indigo-deep);margin:48px 0 14px;}
+  .content h2:first-child{margin-top:0;}
+  .content p{color:var(--ink-soft);margin:0 0 16px;}
+  .content ul{padding-left:20px;margin:0 0 16px;}
+  .content li{color:var(--ink-soft);margin-bottom:8px;}
+  .content strong{color:var(--ink);}
+
+  /* Cookie table */
+  .cookie-table{width:100%;border-collapse:collapse;margin:20px 0;}
+  .cookie-table th{text-align:left;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);padding:10px 14px;background:var(--cream);border:1px solid var(--line);}
+  .cookie-table td{padding:12px 14px;border:1px solid var(--line);font-size:0.9rem;color:var(--ink-soft);vertical-align:top;}
+  .cookie-table tr:nth-child(even) td{background:var(--cream);}
+
+  /* Badge */
+  .badge{display:inline-block;font-size:0.72rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:4px;}
+  .badge-green{background:#E7F8ED;color:var(--forest);}
+  .badge-blue{background:#EEF1FB;color:var(--indigo-deep);}
+  .badge-gold{background:#FBF7EC;color:var(--gold-deep);}
+
+  /* CTA band */
+  .cta-band{background:var(--cream);border-radius:12px;padding:36px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:56px;}
+  .cta-band h3{font-size:1.15rem;color:var(--indigo-deep);margin-bottom:6px;}
+  .cta-band p{color:var(--ink-soft);font-size:0.93rem;margin:0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:var(--radius-s);font-weight:600;font-size:0.95rem;text-decoration:none;transition:background .15s,transform .15s;}
+  .btn-primary{background:var(--forest);color:#fff;}
+  .btn-primary:hover{background:var(--forest-bright);transform:translateY(-1px);}
+  .btn-outline{border:1.5px solid var(--indigo);color:var(--indigo-deep);}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* Footer */
+  footer{background:var(--indigo-night);color:#fff;padding:32px 0;text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.35);}
+
+  @media(max-width:640px){
+    .nav{padding:12px 20px;}
+    .page-hero .wrap,.content{padding-left:20px;padding-right:20px;}
+    .cookie-table{font-size:0.82rem;}
+    .cta-band{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="nav-logo"><img src="assets/img-hero-2.png" alt="CaSa Labs"></a>
+    <a href="/" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      Volver al inicio
+    </a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/">Inicio</a> / Política de Cookies</div>
+    <h1>Política de Cookies</h1>
+    <p>Última actualización: octubre 2026. Aquí explicamos qué cookies usamos, para qué sirven y cómo puedes controlarlas.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <h2>¿Qué son las cookies?</h2>
+  <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Nos permiten reconocerte en visitas posteriores, recordar tus preferencias y mejorar tu experiencia en el sitio.</p>
+
+  <h2>¿Qué cookies utilizamos?</h2>
+  <p>En CaSa Labs usamos tres tipos de cookies:</p>
+
+  <table class="cookie-table">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Nombre / clave</th>
+        <th>Finalidad</th>
+        <th>Duración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Esenciales</strong> <span class="badge badge-green">Siempre activas</span></td>
+        <td><code>cl_cookie_consent</code></td>
+        <td>Guarda tus preferencias de cookies para no volver a mostrarte el aviso en cada visita.</td>
+        <td>1 año</td>
+      </tr>
+      <tr>
+        <td><strong>Analítica</strong> <span class="badge badge-blue">Con consentimiento</span></td>
+        <td>Herramientas de analítica web</td>
+        <td>Nos ayudan a entender cómo los usuarios navegan el sitio para mejorar su contenido y estructura. Solo se activan si aceptas.</td>
+        <td>Hasta 2 años</td>
+      </tr>
+      <tr>
+        <td><strong>Marketing</strong> <span class="badge badge-gold">Con consentimiento</span></td>
+        <td>Cookies de terceros</td>
+        <td>Permiten mostrarte anuncios relevantes en otras plataformas. Solo se activan si aceptas.</td>
+        <td>Hasta 90 días</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Cookies esenciales</h2>
+  <p>Las cookies esenciales son necesarias para que el sitio funcione correctamente. Sin ellas, algunas funciones básicas —como recordar tu consentimiento— no estarían disponibles. Estas cookies no requieren tu autorización bajo el RGPD y normativas equivalentes.</p>
+
+  <h2>Cookies de analítica</h2>
+  <p>Estas cookies nos permiten contabilizar visitas y fuentes de tráfico para medir y mejorar el rendimiento del sitio. Toda la información que recogen es agregada y anónima. Solo se instalan si otorgas tu consentimiento a través del aviso de cookies.</p>
+
+  <h2>Cookies de marketing</h2>
+  <p>Las cookies de marketing son establecidas por nuestros socios publicitarios para construir un perfil de tus intereses y mostrarte anuncios relevantes en otros sitios. Solo se activan con tu consentimiento expreso.</p>
+
+  <h2>¿Cómo gestionar tus preferencias?</h2>
+  <p>Puedes cambiar tus preferencias en cualquier momento haciendo clic en el botón <strong>"Preferencias"</strong> del aviso de cookies que aparece en la parte inferior del sitio. También puedes gestionar las cookies directamente desde la configuración de tu navegador:</p>
+  <ul>
+    <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies.</li>
+    <li><strong>Firefox:</strong> Configuración → Privacidad y seguridad → Cookies y datos del sitio.</li>
+    <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies y datos de sitios web.</li>
+    <li><strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios → Cookies.</li>
+  </ul>
+  <p>Ten en cuenta que bloquear ciertas cookies puede afectar la funcionalidad del sitio.</p>
+
+  <h2>Transferencias internacionales</h2>
+  <p>Algunos de nuestros proveedores de servicios (analítica, infraestructura) pueden procesar datos fuera del Espacio Económico Europeo. En esos casos, nos aseguramos de que existan garantías adecuadas conforme al RGPD, como cláusulas contractuales estándar.</p>
+
+  <h2>Cambios en esta política</h2>
+  <p>Podemos actualizar esta política cuando cambiemos las herramientas que utilizamos o cuando la normativa lo requiera. La fecha de última actualización siempre aparece al inicio de esta página.</p>
+
+  <h2>Contacto</h2>
+  <p>Si tienes preguntas sobre cómo tratamos las cookies o sobre tus datos personales, puedes escribirnos a través de <a href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">WhatsApp</a> o por correo a través de nuestro <a href="/#contacto">formulario de contacto</a>.</p>
+
+  <div class="cta-band">
+    <div>
+      <h3>¿Tienes alguna pregunta?</h3>
+      <p>Estamos disponibles para resolver cualquier duda sobre privacidad o el uso de tus datos.</p>
+    </div>
+    <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© <span id="year"></span> CaSa Labs · Punta Cana, República Dominicana</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
