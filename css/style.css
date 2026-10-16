@@ -408,6 +408,16 @@ footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
 }
 .wa-float:hover{background:var(--forest-deep)}
 
+/* Utilities */
+.text-center{text-align:center}
+.mt-lg{margin-top:48px}
+.badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.badge-list span{
+  background:#F1F3FA;border:1px solid rgba(44,62,130,.18);
+  color:var(--indigo-deep);font-size:.8rem;font-weight:600;
+  padding:5px 12px;border-radius:999px;
+}
+
 /* Animations */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes shine{0%{left:-60%}40%,100%{left:130%}}
