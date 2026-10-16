@@ -55,57 +55,58 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  const robotScene = document.createElement('div');
-  robotScene.className = 'robot-scene';
-  robotScene.classList.toggle('robot-home', Boolean(document.querySelector('.hero')));
-  robotScene.setAttribute('aria-hidden', 'true');
-  robotScene.innerHTML = `
-    <div class="robot-work-panel"><span></span><span></span><span></span><i>606 · 607 · IR-17</i></div>
-    <svg class="sam-robot" viewBox="0 0 260 340" role="presentation">
-      <defs><linearGradient id="robot-body-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1455f5"/><stop offset="1" stop-color="#15d6e8"/></linearGradient></defs>
-      <ellipse class="robot-shadow" cx="132" cy="316" rx="68" ry="13"/>
-      <g class="robot-body-group">
-        <path class="robot-antenna" d="M130 62V39"/><circle class="robot-antenna-light" cx="130" cy="31" r="8"/>
-        <rect class="robot-head" x="75" y="62" width="110" height="82" rx="28"/><rect class="robot-face" x="88" y="78" width="84" height="47" rx="20"/>
-        <g class="robot-eyes"><circle cx="112" cy="101" r="7"/><circle cx="148" cy="101" r="7"/></g><path class="robot-smile" d="M117 116c8 6 18 6 26 0"/>
-        <rect class="robot-neck" x="116" y="140" width="28" height="20" rx="8"/><path class="robot-torso" d="M87 157h86c12 0 21 10 19 22l-11 75c-2 12-11 20-23 20h-56c-12 0-21-8-23-20l-11-75c-2-12 7-22 19-22Z"/>
-        <path class="robot-chest" d="M107 184h46l15 15-38 38-38-38Z"/><circle class="robot-core" cx="130" cy="211" r="12"/>
-        <g class="robot-arm robot-arm-left"><rect x="48" y="166" width="25" height="73" rx="12"/><circle cx="61" cy="244" r="14"/></g>
-        <g class="robot-arm robot-arm-right"><rect x="187" y="166" width="25" height="73" rx="12"/><circle cx="199" cy="244" r="14"/></g>
-        <g class="robot-leg robot-leg-left"><rect x="93" y="263" width="27" height="49" rx="12"/><rect x="76" y="300" width="45" height="18" rx="9"/></g>
-        <g class="robot-leg robot-leg-right"><rect x="141" y="263" width="27" height="49" rx="12"/><rect x="140" y="300" width="45" height="18" rx="9"/></g>
-      </g>
-    </svg>`;
-  document.body.appendChild(robotScene);
-  const robotReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!robotReducedMotion) {
-    let robotFrame = 0;
-    const moveRobot = (clientX, clientY) => {
-      const x = Math.max(-1, Math.min(1, (clientX / window.innerWidth - 0.5) * 2));
-      const y = Math.max(-1, Math.min(1, (clientY / window.innerHeight - 0.5) * 2));
-      cancelAnimationFrame(robotFrame);
-      robotFrame = requestAnimationFrame(() => {
-        robotScene.style.setProperty('--robot-x', `${x * 34}px`);
-        robotScene.style.setProperty('--robot-y', `${y * 22}px`);
-        robotScene.style.setProperty('--eye-x', `${x * 4}px`);
-        robotScene.style.setProperty('--eye-y', `${y * 3}px`);
-        robotScene.style.setProperty('--robot-turn', `${x * 4}deg`);
+  if (document.querySelector('.hero')) {
+    const robotScene = document.createElement('div');
+    robotScene.className = 'robot-scene robot-home';
+    robotScene.setAttribute('aria-hidden', 'true');
+    robotScene.innerHTML = `
+      <div class="robot-work-panel"><span></span><span></span><span></span><i>606 · 607 · IR-17</i></div>
+      <svg class="sam-robot" viewBox="0 0 260 340" role="presentation">
+        <defs><linearGradient id="robot-body-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1455f5"/><stop offset="1" stop-color="#15d6e8"/></linearGradient></defs>
+        <ellipse class="robot-shadow" cx="132" cy="316" rx="68" ry="13"/>
+        <g class="robot-body-group">
+          <path class="robot-antenna" d="M130 62V39"/><circle class="robot-antenna-light" cx="130" cy="31" r="8"/>
+          <rect class="robot-head" x="75" y="62" width="110" height="82" rx="28"/><rect class="robot-face" x="88" y="78" width="84" height="47" rx="20"/>
+          <g class="robot-eyes"><circle cx="112" cy="101" r="7"/><circle cx="148" cy="101" r="7"/></g><path class="robot-smile" d="M117 116c8 6 18 6 26 0"/>
+          <rect class="robot-neck" x="116" y="140" width="28" height="20" rx="8"/><path class="robot-torso" d="M87 157h86c12 0 21 10 19 22l-11 75c-2 12-11 20-23 20h-56c-12 0-21-8-23-20l-11-75c-2-12 7-22 19-22Z"/>
+          <path class="robot-chest" d="M107 184h46l15 15-38 38-38-38Z"/><circle class="robot-core" cx="130" cy="211" r="12"/>
+          <g class="robot-arm robot-arm-left"><rect x="48" y="166" width="25" height="73" rx="12"/><circle cx="61" cy="244" r="14"/></g>
+          <g class="robot-arm robot-arm-right"><rect x="187" y="166" width="25" height="73" rx="12"/><circle cx="199" cy="244" r="14"/></g>
+          <g class="robot-leg robot-leg-left"><rect x="93" y="263" width="27" height="49" rx="12"/><rect x="76" y="300" width="45" height="18" rx="9"/></g>
+          <g class="robot-leg robot-leg-right"><rect x="141" y="263" width="27" height="49" rx="12"/><rect x="140" y="300" width="45" height="18" rx="9"/></g>
+        </g>
+      </svg>`;
+    document.body.appendChild(robotScene);
+    const robotReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!robotReducedMotion) {
+      let robotFrame = 0;
+      const moveRobot = (clientX, clientY) => {
+        const x = Math.max(-1, Math.min(1, (clientX / window.innerWidth - 0.5) * 2));
+        const y = Math.max(-1, Math.min(1, (clientY / window.innerHeight - 0.5) * 2));
+        cancelAnimationFrame(robotFrame);
+        robotFrame = requestAnimationFrame(() => {
+          robotScene.style.setProperty('--robot-x', `${x * 34}px`);
+          robotScene.style.setProperty('--robot-y', `${y * 22}px`);
+          robotScene.style.setProperty('--eye-x', `${x * 4}px`);
+          robotScene.style.setProperty('--eye-y', `${y * 3}px`);
+          robotScene.style.setProperty('--robot-turn', `${x * 4}deg`);
+        });
+      };
+      window.addEventListener('pointermove', (event) => moveRobot(event.clientX, event.clientY), { passive: true });
+      window.addEventListener('pointerdown', (event) => {
+        moveRobot(event.clientX, event.clientY);
+        robotScene.classList.remove('robot-react');
+        void robotScene.offsetWidth;
+        robotScene.classList.add('robot-react');
+      }, { passive: true });
+      document.documentElement.addEventListener('mouseleave', () => {
+        robotScene.style.setProperty('--robot-x', '0px');
+        robotScene.style.setProperty('--robot-y', '0px');
+        robotScene.style.setProperty('--eye-x', '0px');
+        robotScene.style.setProperty('--eye-y', '0px');
+        robotScene.style.setProperty('--robot-turn', '0deg');
       });
-    };
-    window.addEventListener('pointermove', (event) => moveRobot(event.clientX, event.clientY), { passive: true });
-    window.addEventListener('pointerdown', (event) => {
-      moveRobot(event.clientX, event.clientY);
-      robotScene.classList.remove('robot-react');
-      void robotScene.offsetWidth;
-      robotScene.classList.add('robot-react');
-    }, { passive: true });
-    document.documentElement.addEventListener('mouseleave', () => {
-      robotScene.style.setProperty('--robot-x', '0px');
-      robotScene.style.setProperty('--robot-y', '0px');
-      robotScene.style.setProperty('--eye-x', '0px');
-      robotScene.style.setProperty('--eye-y', '0px');
-      robotScene.style.setProperty('--robot-turn', '0deg');
-    });
+    }
   }
 
   const progressBar = document.createElement('div');
