@@ -131,7 +131,8 @@
   .hv-title-dot:nth-child(3){background:#57B96C;}
   .hv-titlebar-url{margin-left:8px;font-size:0.74rem;color:rgba(255,255,255,0.26);}
   .hv-tabs-row{display:flex;gap:4px;padding:14px 18px 0;}
-  .hv-tab{font-size:0.77rem;font-weight:600;color:rgba(255,255,255,0.38);padding:7px 13px;border-radius:6px 6px 0 0;cursor:default;transition:color .2s,background .2s;}
+  .hv-tab{font-size:0.77rem;font-weight:600;color:rgba(255,255,255,0.38);padding:7px 13px;border-radius:6px 6px 0 0;cursor:pointer;transition:color .2s,background .2s;}
+  .hv-panel{display:none;}.hv-panel.active{display:block;}
   .hv-tab.active{color:#fff;background:rgba(255,255,255,0.09);}
   .hv-body{padding:22px 20px 26px;}
   .hv-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;margin-bottom:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);}
@@ -349,11 +350,11 @@
   <div class="nav">
     <a href="#inicio" class="nav-logo"><img src="assets/img-hero-2.png" alt="CaSa Labs"></a>
     <nav class="nav-links" id="navLinks">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#preguntas">Preguntas frecuentes</a>
-      <a href="#contacto">Contacto</a>
+      <a href="/" aria-current="page">Inicio</a>
+      <a href="/servicios">Servicios</a>
+      <a href="/nosotros">Nosotros</a>
+      <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
+      <a href="/contacto">Contacto</a>
     </nav>
     <a class="nav-cta" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
@@ -373,7 +374,7 @@
       <p class="lead">CaSa Labs junta en un solo equipo lo que casi siempre está separado: tu presencia digital y tu cumplimiento fiscal. Páginas web y marketing para negocios en cualquier parte del mundo; facturación electrónica para empresas en República Dominicana.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
-        <a class="btn btn-outline-light" href="#servicios">Ver servicios y precios</a>
+        <a class="btn btn-outline-light" href="/servicios">Ver servicios y precios</a>
       </div>
       <div class="hero-metrics">
         <div><strong>2</strong><span>áreas: digital &amp; fiscal</span></div>
@@ -398,26 +399,59 @@
           <div class="hv-tab" data-hv="nexo">Nexo</div>
         </div>
         <div class="hv-body">
-          <div class="hv-row">
-            <div class="hv-icon" style="background:rgba(47,140,77,0.2);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57B96C" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+          <!-- Digital panel -->
+          <div class="hv-panel active" id="hvp-digital">
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(47,140,77,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57B96C" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+              <div class="hv-info"><strong>Landing Page</strong><span>Diseño a medida · 15 días</span></div>
+              <span class="hv-badge hv-green">Publicado</span>
             </div>
-            <div class="hv-info"><strong>Landing Page</strong><span>Diseño a medida · 15 días</span></div>
-            <span class="hv-badge hv-green">Activo</span>
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(44,62,130,0.25);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BA4F0" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.8-3.8-9s1.3-6.5 3.8-9z"/></svg></div>
+              <div class="hv-info"><strong>Dominio</strong><span>tunegocio.com · DNS activo</span></div>
+              <span class="hv-badge hv-blue">Activo</span>
+            </div>
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(47,140,77,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57B96C" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+              <div class="hv-info"><strong>Correo profesional</strong><span>ventas@tunegocio.com</span></div>
+              <span class="hv-badge hv-green">En línea</span>
+            </div>
           </div>
-          <div class="hv-row">
-            <div class="hv-icon" style="background:rgba(44,62,130,0.25);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BA4F0" stroke-width="2.2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+          <!-- Fiscal panel -->
+          <div class="hv-panel" id="hvp-fiscal">
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(44,62,130,0.25);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BA4F0" stroke-width="2.2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <div class="hv-info"><strong>e-CF · DGII</strong><span>Firmado y aprobado</span></div>
+              <span class="hv-badge hv-blue">✓ 1.2s</span>
             </div>
-            <div class="hv-info"><strong>e-CF · DGII</strong><span>Firmado y aprobado</span></div>
-            <span class="hv-badge hv-blue">✓ 1.2s</span>
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(175,126,18,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8C468" stroke-width="2.2" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 16 4-5 3 2 4-6"/></svg></div>
+              <div class="hv-info"><strong>CAMI</strong><span>Análisis fiscal · IT-1 listo</span></div>
+              <span class="hv-badge hv-gold">Procesado</span>
+            </div>
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(47,140,77,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57B96C" stroke-width="2.2" aria-hidden="true"><path d="M7 2h7l4 4v16H7z"/><path d="M14 2v4h4"/></svg></div>
+              <div class="hv-info"><strong>NALA</strong><span>48 facturas · 606 generado</span></div>
+              <span class="hv-badge hv-green">Listo</span>
+            </div>
           </div>
-          <div class="hv-row">
-            <div class="hv-icon" style="background:rgba(175,126,18,0.2);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8C468" stroke-width="2.2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <!-- Nexo panel -->
+          <div class="hv-panel" id="hvp-nexo">
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(175,126,18,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8C468" stroke-width="2.2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+              <div class="hv-info"><strong>Nexo · Equipo</strong><span>5 usuarios activos</span></div>
+              <span class="hv-badge hv-gold">En vivo</span>
             </div>
-            <div class="hv-info"><strong>Nexo · Equipo</strong><span>5 usuarios activos</span></div>
-            <span class="hv-badge hv-gold">En vivo</span>
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(27,120,204,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5E8" stroke-width="2.2" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
+              <div class="hv-info"><strong>Niduvo</strong><span>Archivos en la nube · 12 GB</span></div>
+              <span class="hv-badge" style="background:rgba(27,120,204,0.18);color:#60A5E8;">Activo</span>
+            </div>
+            <div class="hv-row">
+              <div class="hv-icon" style="background:rgba(47,140,77,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57B96C" stroke-width="2.2" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+              <div class="hv-info"><strong>Tareas del mes</strong><span>18/23 completadas</span></div>
+              <span class="hv-badge hv-green">78%</span>
+            </div>
           </div>
           <hr class="hv-divider">
           <div class="hv-label">Rendimiento este mes</div>
@@ -750,10 +784,10 @@
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Navegación</h4>
-          <a href="#servicios">Servicios</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#preguntas">Preguntas frecuentes</a>
-          <a href="contacto.html">Contacto</a>
+          <a href="/servicios">Servicios</a>
+          <a href="/nosotros">Nosotros</a>
+          <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
+          <a href="/contacto">Contacto</a>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>
@@ -843,14 +877,19 @@
     setTimeout(() => { if (prev.parentNode) prev.parentNode.removeChild(prev); }, 550);
   }, 2600);
 
-  // Hero dashboard tabs (auto-rotate)
+  // Hero dashboard tabs (click + auto-rotate)
   const hvTabs = document.querySelectorAll('.hv-tab');
+  const hvPanelMap = {digital:'hvp-digital',fiscal:'hvp-fiscal',nexo:'hvp-nexo'};
   let hvIdx = 0;
-  setInterval(() => {
-    hvTabs[hvIdx].classList.remove('active');
-    hvIdx = (hvIdx + 1) % hvTabs.length;
-    hvTabs[hvIdx].classList.add('active');
-  }, 3800);
+  function hvSwitch(idx) {
+    hvTabs.forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.hv-panel').forEach(p => p.classList.remove('active'));
+    hvTabs[idx].classList.add('active');
+    const key = hvTabs[idx].dataset.hv;
+    document.getElementById(hvPanelMap[key]).classList.add('active');
+  }
+  hvTabs.forEach((tab, i) => tab.addEventListener('click', () => { hvIdx = i; hvSwitch(i); }));
+  setInterval(() => { hvIdx = (hvIdx + 1) % hvTabs.length; hvSwitch(hvIdx); }, 3800);
 
   // Service category tabs
   document.querySelectorAll('.cat-tab').forEach(tab => {
