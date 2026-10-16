@@ -352,6 +352,68 @@ header{
 .form-submit{width:100%;justify-content:center}
 .form-note{font-size:.78rem;text-align:center;margin-top:12px;color:var(--ink-soft)}
 
+/* Service category tabs */
+.cat-tabs{display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.cat-tab{
+  display:flex;align-items:center;gap:10px;padding:16px 20px;
+  border-radius:10px;border:1.5px solid var(--line);background:#fff;
+  cursor:pointer;flex:1;min-width:200px;
+  transition:border-color .15s ease,background .15s ease;
+  font-family:inherit;text-align:left;
+}
+.cat-tab .num{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--line);transition:color .15s}
+.cat-tab strong{display:block;font-size:1.02rem;color:var(--ink)}
+.cat-tab span{display:block;font-size:.85rem;color:var(--ink-soft);margin-top:2px}
+.cat-tab.active{border-color:var(--forest);background:#F2F8F3}
+.cat-tab.active .num{color:var(--forest)}
+.cat-tab.tab-fiscal.active{border-color:var(--indigo);background:#F1F3FA}
+.cat-tab.tab-fiscal.active .num{color:var(--indigo)}
+.cat-tab.tab-niduvo.active{border-color:#1B78CC;background:#EAF2FC}
+.cat-tab.tab-niduvo.active .num{color:#1B78CC}
+.cat-panel{display:none;padding-top:44px}
+.cat-panel.active{display:block}
+.cat-note{
+  font-size:.92rem;color:var(--ink-soft);margin:-24px 0 34px;
+  padding:12px 16px;background:var(--cream);border-radius:8px;
+  border-left:3px solid var(--gold);
+}
+
+/* Price cards */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.price-grid{grid-template-columns:1fr}}
+.price-card{
+  border:1px solid var(--line);border-radius:12px;padding:26px 24px;
+  display:flex;flex-direction:column;position:relative;background:#fff;
+}
+.price-card h3{font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:700;color:var(--ink);margin:0}
+.price-card .price{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--indigo-deep);margin-top:12px;line-height:1.2}
+.price-card .price small{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--ink-soft)}
+.price-card p.desc{color:var(--ink-soft);font-size:.92rem;margin-top:10px}
+.price-card ul{list-style:none;margin:16px 0 0;padding:0;flex-grow:1}
+.price-card li{
+  font-size:.88rem;color:var(--ink-soft);padding:6px 0;
+  padding-left:20px;position:relative;border-bottom:1px solid var(--line);
+}
+.price-card li:last-child{border-bottom:none}
+.price-card li::before{
+  content:"";position:absolute;left:0;top:13px;
+  width:8px;height:8px;border-radius:2px;background:var(--forest);
+}
+.cat-panel.fiscal .price-card li::before{background:var(--indigo)}
+.cat-panel.niduvo .price-card li::before{background:#1B78CC}
+.price-card .btn{margin-top:20px;justify-content:center}
+.price-card.featured{border-color:var(--forest)}
+.price-card.featured::before{
+  content:"M\00e1s elegido";position:absolute;top:-12px;left:24px;
+  background:var(--forest);color:#fff;font-size:.72rem;font-weight:700;
+  padding:4px 10px;border-radius:999px;letter-spacing:.02em;
+}
+.cat-panel.fiscal .price-card.featured{border-color:var(--indigo)}
+.cat-panel.fiscal .price-card.featured::before{background:var(--indigo);content:"Paquete completo"}
+.cat-panel.niduvo .price-card.featured{border-color:#1B78CC}
+.cat-panel.niduvo .price-card.featured::before{background:#1B78CC;content:"Almacenamiento"}
+
 /* CTA band */
 .cta-band-wrap{padding:0 24px 80px}
 .cta-band{
@@ -377,6 +439,30 @@ header{
 .cta-band .btn{position:relative;z-index:1;}
 .cta-band .btn-accent{background:var(--forest-bright);color:#08150D;border-color:var(--forest-bright);font-weight:700;}
 .cta-band .btn-accent:hover{background:#3ea25c;border-color:#3ea25c;transform:translateY(-2px);box-shadow:0 8px 28px rgba(47,140,77,.4);}
+
+/* Why / contact section */
+.why-section{background:var(--cream);padding:80px 0}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:760px){.why-grid{grid-template-columns:1fr}}
+.why-item{
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:28px;
+}
+.why-item h3{font-size:1rem;font-family:'Inter',sans-serif;font-weight:700;color:var(--indigo-deep);margin-bottom:8px}
+.why-item p{font-size:.92rem;color:var(--ink-soft);margin:0}
+
+/* About grid */
+.about-grid{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.about-logo{
+  background:var(--cream);border-radius:14px;padding:36px;
+  display:flex;align-items:center;justify-content:center;
+  min-width:200px;max-width:260px;
+}
+.about-logo img{width:180px;height:auto}
+@media(max-width:760px){
+  .about-grid{grid-template-columns:1fr}
+  .about-logo{max-width:200px;margin:0 auto}
+}
 
 /* Section navy */
 .section-navy{background:var(--indigo-deep);color:#fff}
