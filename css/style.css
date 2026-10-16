@@ -95,7 +95,7 @@ section{padding:80px 0}
 .btn-outline-navy{background:transparent;border:2px solid var(--indigo);color:var(--indigo)}
 .btn-outline-navy:hover{background:var(--indigo);color:#fff;transform:translateY(-2px)}
 
-/* NAV — matches index.html exactly */
+/* NAV */
 header{
   position:sticky;top:0;z-index:50;
   background:rgba(255,255,255,.92);
@@ -133,7 +133,7 @@ header{
   .menu-btn{display:block}
 }
 
-/* PAGE HERO — dark, matches index.html hero aesthetic */
+/* PAGE HERO */
 .page-hero{
   background:var(--indigo-night);
   background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
@@ -405,7 +405,7 @@ header{
 .price-card .btn{margin-top:20px;justify-content:center}
 .price-card.featured{border-color:var(--forest)}
 .price-card.featured::before{
-  content:"Más elegido";position:absolute;top:-12px;left:24px;
+  content:"M\00e1s elegido";position:absolute;top:-12px;left:24px;
   background:var(--forest);color:#fff;font-size:.72rem;font-weight:700;
   padding:4px 10px;border-radius:999px;letter-spacing:.02em;
 }
@@ -440,7 +440,7 @@ header{
 .cta-band .btn-accent{background:var(--forest-bright);color:#08150D;border-color:var(--forest-bright);font-weight:700;}
 .cta-band .btn-accent:hover{background:#3ea25c;border-color:#3ea25c;transform:translateY(-2px);box-shadow:0 8px 28px rgba(47,140,77,.4);}
 
-/* Why / contact section (light variant used on sub-pages) */
+/* Why / contact section */
 .why-section{background:var(--cream);padding:80px 0}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media(max-width:760px){.why-grid{grid-template-columns:1fr}}
@@ -451,9 +451,13 @@ header{
 .why-item h3{font-size:1rem;font-family:'Inter',sans-serif;font-weight:700;color:var(--indigo-deep);margin-bottom:8px}
 .why-item p{font-size:.92rem;color:var(--ink-soft);margin:0}
 
-/* About grid (nosotros) */
-.about-grid{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;max-width:var(--maxw);margin:0 auto}
-.about-logo{background:var(--cream);border-radius:14px;padding:36px;display:flex;align-items:center;justify-content:center;min-width:200px;max-width:260px}
+/* About grid */
+.about-grid{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.about-logo{
+  background:var(--cream);border-radius:14px;padding:36px;
+  display:flex;align-items:center;justify-content:center;
+  min-width:200px;max-width:260px;
+}
 .about-logo img{width:180px;height:auto}
 @media(max-width:760px){
   .about-grid{grid-template-columns:1fr}
@@ -465,7 +469,7 @@ header{
 .section-navy h2,.section-navy h3{color:#fff}
 .section-navy p{color:#C6CBE0}
 
-/* Footer — matches index.html */
+/* Footer */
 footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
 .footer-top{
   display:flex;justify-content:space-between;align-items:flex-start;
