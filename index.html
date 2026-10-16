@@ -183,6 +183,8 @@
   .cat-tab.tab-fiscal.active .num{color:var(--indigo);}
   .cat-tab.tab-nexo.active{border-color:var(--gold-deep);background:#FBF7EC;}
   .cat-tab.tab-nexo.active .num{color:var(--gold-deep);}
+  .cat-tab.tab-niduvo.active{border-color:#1B78CC;background:#EAF2FC;}
+  .cat-tab.tab-niduvo.active .num{color:#1B78CC;}
 
   .cat-panel{display:none;padding-top:44px;}
   .cat-panel.active{display:block;}
@@ -212,6 +214,11 @@
   .cat-panel.nexo .price-card.featured::before{background:var(--gold-deep);content:"Plataforma";}
   .cat-panel.nexo .price-card .btn-outline{border-color:var(--gold-deep);color:var(--gold-deep);}
   .cat-panel.nexo .price-card .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+  .cat-panel.niduvo .price-card li::before{background:#1B78CC;}
+  .cat-panel.niduvo .price-card.featured{border-color:#1B78CC;}
+  .cat-panel.niduvo .price-card.featured::before{background:#1B78CC;content:"Almacenamiento";}
+  .cat-panel.niduvo .price-card .btn-outline{border-color:#1B78CC;color:#1B78CC;}
+  .cat-panel.niduvo .price-card .btn-outline:hover{border-color:#1568AA;color:#1568AA;}
 
   /* ---------- WHY ---------- */
   .why{background:var(--indigo-deep);color:#fff;}
@@ -437,8 +444,8 @@
 <section id="servicios">
   <div class="wrap">
     <div class="section-head">
-      <h2>Dos áreas, un mismo equipo</h2>
-      <p>Organizamos nuestros servicios en dos frentes: tu presencia digital (web, dominio, correo y mantenimiento) y tu automatización fiscal. Todos los precios están en dólares (USD). El alcance final siempre se cotiza según tu negocio.</p>
+      <h2>Todo lo que necesita tu negocio</h2>
+      <p>Organizamos nuestros servicios en cuatro frentes: presencia digital, automatización fiscal, gestión de equipos y almacenamiento en la nube. Todos los precios están en dólares (USD). El alcance final siempre se cotiza según tu negocio.</p>
     </div>
 
     <div class="cat-tabs">
@@ -453,6 +460,10 @@
       <button class="cat-tab tab-nexo" data-target="panel-nexo">
         <span class="num">03</span>
         <span><strong>Nexo</strong><span>Tu equipo, en un solo lugar</span></span>
+      </button>
+      <button class="cat-tab tab-niduvo" data-target="panel-niduvo">
+        <span class="num">04</span>
+        <span><strong>Niduvo</strong><span>Tu nube, tus archivos, desde cualquier dispositivo</span></span>
       </button>
     </div>
 
@@ -607,6 +618,24 @@
             <li>Tablero de avisos y chat interno para todo el equipo.</li>
             <li>Plantillas que arman cartas y documentos en segundos.</li>
             <li>Listo en días, adaptado a tu empresa. Funciona desde el celular o la computadora, sin instalar nada.</li>
+          </ul>
+          <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-panel niduvo" id="panel-niduvo">
+      <div class="price-grid" style="grid-template-columns:1fr">
+        <div class="price-card featured" style="max-width:520px">
+          <h3>Niduvo · Tu nube, tus archivos.</h3>
+          <p class="desc">Plataforma de almacenamiento en la nube para empresas y equipos. Guarda, organiza y comparte archivos desde cualquier dispositivo —celular, computadora o tablet— sin depender de discos duros ni enviarte cosas por WhatsApp.</p>
+          <ul>
+            <li>Almacenamiento seguro en la nube.</li>
+            <li>Acceso desde cualquier dispositivo, sin instalar nada.</li>
+            <li>Organización por carpetas y proyectos.</li>
+            <li>Comparte archivos con permisos de vista o edición.</li>
+            <li>Historial de versiones para recuperar cambios anteriores.</li>
+            <li>Ideal para equipos de trabajo y documentos de empresa.</li>
           </ul>
           <a class="btn btn-outline" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer">A cotizar</a>
         </div>
