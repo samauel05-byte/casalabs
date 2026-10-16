@@ -176,89 +176,6 @@ header{
 .card h3{margin-bottom:10px}
 .card p{font-size:.92rem}
 
-/* Service category tabs */
-.cat-tabs{display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
-.cat-tab{
-  display:flex;align-items:center;gap:10px;padding:16px 20px;border-radius:10px;
-  border:1.5px solid var(--line);background:var(--paper);cursor:pointer;flex:1;min-width:240px;
-  transition:border-color .15s ease,background .15s ease;
-  font-family:inherit;text-align:left;
-}
-.cat-tab .num{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--line);transition:color .15s;}
-.cat-tab strong{display:block;font-size:1.02rem;color:var(--ink);}
-.cat-tab span{display:block;font-size:.85rem;color:var(--ink-soft);margin-top:2px;}
-.cat-tab.active{border-color:var(--forest);background:#F2F8F3;}
-.cat-tab.active .num{color:var(--forest);}
-.cat-tab.tab-fiscal.active{border-color:var(--indigo);background:#F1F3FA;}
-.cat-tab.tab-fiscal.active .num{color:var(--indigo);}
-.cat-tab.tab-niduvo.active{border-color:#1B78CC;background:#EAF2FC;}
-.cat-tab.tab-niduvo.active .num{color:#1B78CC;}
-.cat-panel{display:none;padding-top:44px;}
-.cat-panel.active{display:block;}
-.cat-note{
-  font-size:.92rem;color:var(--ink-soft);
-  margin:0 0 32px;padding:12px 16px;
-  background:var(--cream);border-radius:8px;border-left:3px solid var(--gold);
-}
-
-/* Price cards */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.price-card{
-  border:1px solid var(--line);border-radius:12px;padding:26px 24px;
-  display:flex;flex-direction:column;position:relative;
-}
-.price-card h3{font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:700;color:var(--ink);margin:0;}
-.price-card .price{
-  font-family:'Fraunces',serif;font-size:1.7rem;color:var(--indigo-deep);
-  margin-top:12px;line-height:1.2;
-}
-.price-card .price small{
-  font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--ink-soft);
-}
-.price-card p.desc{color:var(--ink-soft);font-size:.92rem;margin-top:10px;}
-.price-card ul{list-style:none;margin:16px 0 0;padding:0;flex-grow:1;}
-.price-card li{
-  font-size:.88rem;color:var(--ink-soft);
-  padding:6px 0;padding-left:20px;position:relative;
-  border-bottom:1px solid var(--line);
-}
-.price-card li:last-child{border-bottom:none;}
-.price-card li::before{
-  content:"";position:absolute;left:0;top:13px;
-  width:8px;height:8px;border-radius:2px;background:var(--forest);
-}
-.cat-panel.fiscal .price-card li::before{background:var(--indigo);}
-.cat-panel.niduvo .price-card li::before{background:#1B78CC;}
-.price-card .btn{margin-top:20px;justify-content:center;}
-.price-card.featured{border-color:var(--forest);}
-.price-card.featured::before{
-  content:"Más elegido";position:absolute;top:-12px;left:24px;
-  background:var(--forest);color:#fff;font-size:.72rem;font-weight:700;
-  padding:4px 10px;border-radius:999px;letter-spacing:.02em;
-}
-.cat-panel.fiscal .price-card.featured{border-color:var(--indigo);}
-.cat-panel.fiscal .price-card.featured::before{background:var(--indigo);content:"Paquete completo";}
-.cat-panel.niduvo .price-card.featured{border-color:#1B78CC;}
-.cat-panel.niduvo .price-card.featured::before{background:#1B78CC;content:"Almacenamiento";}
-
-/* About grid */
-.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
-.about-mark{
-  display:flex;align-items:center;justify-content:center;
-  background:var(--cream);border-radius:14px;padding:36px;
-}
-.about-mark img{max-width:220px;}
-
-/* Why section */
-.why-section{background:var(--indigo-deep);padding:88px 0;}
-.why-section .section-head h2,.why-section h2{color:#fff;}
-.why-section .section-head p{color:#C6CBE0;}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.18);}
-.why-item{padding:34px 30px 0;border-left:1px solid rgba(255,255,255,.18);}
-.why-item:first-child{border-left:none;padding-left:0;}
-.why-item h3{color:#fff;font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:600;}
-.why-item p{color:#C6CBE0;margin-top:10px;font-size:.98rem;}
-
 /* Scroll reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in-view{opacity:1;transform:translateY(0)}
@@ -310,6 +227,26 @@ header{
 .privacy-callout .privacy-icon{color:var(--indigo);flex-shrink:0;margin-top:2px}
 .privacy-callout h3{font-size:1rem;margin-bottom:4px}
 .privacy-callout p{font-size:.9rem}
+
+/* CAMI examples */
+.cami-subhead{margin-top:56px}
+.cami-examples{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:680px){.cami-examples{grid-template-columns:1fr}}
+.cami-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* Browser mock */
+.browser-mock{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.browser-bar{
+  background:var(--cream);padding:10px 14px;display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid var(--line);
+}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-red{background:#FF6058}.t-yellow{background:#FEBC2E}.t-green{background:#27C840}
+.browser-url{margin-left:8px;font-size:.78rem;color:var(--ink-soft)}
+.browser-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.bm-block{background:var(--cream);border-radius:6px;height:40px}
+.bm-hero{height:80px}
+.bm-row.short{width:60%}
 
 /* Plans */
 .plan-card{
@@ -501,16 +438,6 @@ footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
 /* Animations */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes shine{0%{left:-60%}40%,100%{left:130%}}
-
-@media(max-width:880px){
-  .cat-tabs{flex-direction:column;}
-  .price-grid{grid-template-columns:1fr;}
-  .about-grid{grid-template-columns:1fr;}
-  .about-mark{order:-1;}
-  .why-grid{grid-template-columns:1fr;}
-  .why-item{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding:30px 0 0;}
-  .why-item:first-child{border-top:none;}
-}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
