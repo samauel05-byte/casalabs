@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contacto | CaSa Labs</title>
-<meta name="description" content="Contáctanos por WhatsApp, Facebook, Instagram o LinkedIn. Cuéntanos qué necesita tu negocio.">
+<meta name="description" content="Contáctanos por WhatsApp, Instagram, Facebook o correo. Cuéntanos qué necesita tu negocio y te orientamos al instante.">
 <meta name="theme-color" content="#2E3190">
 <link rel="canonical" href="https://casalabs.com.do/contacto">
 <meta property="og:type" content="website"><meta property="og:locale" content="es_DO">
@@ -14,11 +14,53 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/png" href="assets/favicon-logo.png">
 <link rel="apple-touch-icon" href="assets/favicon-logo.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/style.css">
+<style>
+.contact-channels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+.contact-channel{
+  border:1.5px solid var(--line);border-radius:12px;padding:26px 22px;
+  transition:border-color .15s ease,box-shadow .15s ease;background:var(--paper);
+}
+.contact-channel:hover{border-color:var(--indigo);box-shadow:0 8px 28px -12px rgba(28,43,94,.2);}
+.contact-channel .ch-icon{
+  width:48px;height:48px;border-radius:10px;background:#F2F8F3;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  color:var(--forest);
+}
+.contact-channel.wa .ch-icon{background:#E8F5EC;color:var(--forest);}
+.contact-channel.ig .ch-icon{background:#FDF0F7;color:#C1396B;}
+.contact-channel.fb .ch-icon{background:#EEF2FD;color:var(--indigo);}
+.contact-channel.li .ch-icon{background:#EAF2FA;color:#0A66C2;}
+.contact-channel.em .ch-icon{background:#FBF7EC;color:var(--gold-deep);}
+.contact-channel h3{font-size:1rem;font-family:'Inter',sans-serif;font-weight:700;margin-bottom:4px;}
+.contact-channel p{font-size:.88rem;color:var(--ink-soft);margin:0 0 14px;}
+.contact-channel a.ch-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.9rem;font-weight:600;color:var(--indigo);
+  border-bottom:1.5px solid rgba(44,62,130,.2);padding-bottom:1px;
+  transition:border-color .15s;
+}
+.contact-channel a.ch-link:hover{border-color:var(--indigo);}
+.wa-cta-box{
+  background:linear-gradient(135deg,var(--forest-deep) 0%,var(--forest) 100%);
+  border-radius:16px;padding:36px;display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;margin-bottom:48px;
+}
+.wa-cta-box .wa-cta-text h2{color:#fff;font-size:1.6rem;margin:0 0 6px;}
+.wa-cta-box .wa-cta-text p{color:rgba(255,255,255,.75);margin:0;font-size:.98rem;}
+.wa-cta-box .btn-wa{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;color:var(--forest-deep);padding:14px 26px;border-radius:8px;
+  font-weight:700;font-size:.98rem;white-space:nowrap;
+  transition:box-shadow .15s ease,transform .15s ease;
+}
+.wa-cta-box .btn-wa:hover{box-shadow:0 8px 24px rgba(0,0,0,.2);transform:translateY(-2px);}
+@media(max-width:860px){.contact-channels{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.contact-channels{grid-template-columns:1fr;}.wa-cta-box{flex-direction:column;}.wa-cta-box .btn-wa{width:100%;justify-content:center;}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -50,93 +92,132 @@
 </section>
 
 <section>
-  <div class="container contact-grid">
-    <div>
-      <span class="eyebrow">Información de contacto</span>
-      <h2>Estamos para ayudarte</h2>
-      <p style="margin:12px 0 20px">Escríbenos por WhatsApp o síguenos en nuestras redes sociales.</p>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Estábamos esperando tu mensaje</span>
+      <h2>Encúntranos donde estés</h2>
+      <p>Elige el canal que prefieras. Respondemos rápido, especialmente por WhatsApp.</p>
+    </div>
 
-      <div class="contact-info-item">
-        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1z"/></svg></div>
-        <div>
-          <h4 style="color:var(--indigo-deep);margin-bottom:2px">Teléfono / WhatsApp</h4>
-          <a href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer" style="color:var(--indigo);font-weight:600">+1 (849) 408-8173</a>
-        </div>
+    <!-- WhatsApp como opción principal -->
+    <div class="wa-cta-box">
+      <div class="wa-cta-text">
+        <h2>Escríbenos por WhatsApp</h2>
+        <p>La forma más rápida de orientarte sobre qué servicio necesitas.</p>
       </div>
-      <div class="contact-info-item">
-        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M9 6l1.5-2h3L15 6"/></svg></div>
-        <div>
-          <h4 style="color:var(--indigo-deep);margin-bottom:2px">Instagram</h4>
-          <a href="https://www.instagram.com/casalabs.rd?stkn=eHdmbTVsNW9sN2g0" target="_blank" rel="noopener noreferrer" style="color:var(--indigo);font-weight:600">@casalabs.rd</a>
-        </div>
-      </div>
-      <div class="contact-info-item">
-        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.8A8 8 0 1 1 21 12z"/></svg></div>
-        <div>
-          <h4 style="color:var(--indigo-deep);margin-bottom:2px">Facebook</h4>
-          <a href="https://www.facebook.com/share/19UvfxFpg2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" style="color:var(--indigo);font-weight:600">CaSa Labs</a>
-        </div>
-      </div>
-      <div class="contact-info-item">
-        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></div>
-        <div>
-          <h4 style="color:var(--indigo-deep);margin-bottom:2px">LinkedIn</h4>
-          <a href="https://www.linkedin.com/in/samroa" target="_blank" rel="noopener noreferrer" style="color:var(--indigo);font-weight:600">Ver perfil</a>
-        </div>
-      </div>
-      <div class="contact-info-item">
-        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
-        <div>
-          <h4 style="color:var(--indigo-deep);margin-bottom:2px">Correo</h4>
-          <a href="mailto:info@casalabs.com.do" style="color:var(--indigo);font-weight:600">info@casalabs.com.do</a>
-        </div>
-      </div>
+      <a href="https://wa.me/18494088173" class="btn-wa" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.5-1.7A11.8 11.8 0 0 0 24 11.8a11.7 11.7 0 0 0-3.5-8.3ZM12.1 21a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4A9.8 9.8 0 1 1 12.1 21Zm5.4-7.3c-.3-.1-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1.7-.8-2.8-1.5-4-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.6l-.9-2c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.6.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.4-.3-.7-.4Z"/></svg>
+        +1 (849) 408-8173
+      </a>
+    </div>
 
-      <div class="badge-list">
-        <span>Facturador Electrónico</span>
-        <span>CAMI</span>
-        <span>NALA</span>
-        <span>Servidor de Dominio</span>
-        <span>Servidor de Correo</span>
-        <span>Páginas Web</span>
+    <!-- Canales de contacto -->
+    <div class="contact-channels">
+      <div class="contact-channel ig">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </div>
+        <h3>Instagram</h3>
+        <p>Síguenos y escríbenos directo.</p>
+        <a href="https://www.instagram.com/casalabs.rd" target="_blank" rel="noopener noreferrer" class="ch-link">@casalabs.rd →</a>
+      </div>
+      <div class="contact-channel fb">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </div>
+        <h3>Facebook</h3>
+        <p>Mensajes y comentarios en Facebook.</p>
+        <a href="https://www.facebook.com/share/19UvfxFpg2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="ch-link">CaSa Labs →</a>
+      </div>
+      <div class="contact-channel li">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M22 21v-7a5 5 0 0 0-5-5 5 5 0 0 0-5 5v7h4v-7a1 1 0 0 1 1-1 1 1 0 0 1 1 1v7z"/></svg>
+        </div>
+        <h3>LinkedIn</h3>
+        <p>Contacto profesional en LinkedIn.</p>
+        <a href="https://www.linkedin.com/in/samroa" target="_blank" rel="noopener noreferrer" class="ch-link">Ver perfil →</a>
+      </div>
+      <div class="contact-channel em">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        </div>
+        <h3>Correo electrónico</h3>
+        <p>Para consultas que requieran detalle.</p>
+        <a href="mailto:info@casalabs.com.do" class="ch-link">info@casalabs.com.do →</a>
+      </div>
+      <div class="contact-channel" style="background:var(--cream);border-color:var(--line);">
+        <div class="ch-icon" style="background:#F1F3FA;color:var(--indigo)">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Horario de atención</h3>
+        <p>Lunes a viernes, 9:00am – 6:00pm.<br>Sábados, 9:00am – 1:00pm.</p>
+        <span style="font-size:.88rem;color:var(--forest);font-weight:600;">República Dominicana</span>
       </div>
     </div>
 
-    <div class="form-card">
-      <h3 style="margin-bottom:6px">Envíanos un mensaje</h3>
-      <p style="margin-bottom:24px">Completa el formulario y te contactamos por WhatsApp.</p>
-      <form id="contact-form" novalidate>
-        <div class="form-row">
-          <div class="field">
-            <label for="nombre">Nombre completo *</label>
-            <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="80" required>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">Formulario de contacto</span>
+        <h2>Envíanos un mensaje</h2>
+        <p style="margin:12px 0 20px;">Completa el formulario y te respondemos por WhatsApp al momento.</p>
+        <div class="badge-list">
+          <span>Facturador Electrónico</span>
+          <span>CAMI</span>
+          <span>NALA</span>
+          <span>Servidor de Dominio</span>
+          <span>Servidor de Correo</span>
+          <span>Páginas Web</span>
+          <span>Niduvo</span>
+        </div>
+      </div>
+      <div class="form-card">
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="80" required placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono / WhatsApp *</label>
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" maxlength="24" required placeholder="(849) 000-0000">
+            </div>
           </div>
           <div class="field">
-            <label for="telefono">Teléfono / WhatsApp *</label>
-            <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" maxlength="24" required>
+            <label for="servicio">Servicio de interés *</label>
+            <select id="servicio" name="servicio" required>
+              <option value="">Selecciona un servicio</option>
+              <option>Facturador Electrónico</option>
+              <option>CAMI — Control y Análisis de Movimientos e Impuestos</option>
+              <option>NALA</option>
+              <option>Servidor de Dominio</option>
+              <option>Servidor de Correo</option>
+              <option>Creación y Funcionalidad de Páginas Web</option>
+              <option>Niduvo</option>
+              <option>Otro</option>
+            </select>
           </div>
-        </div>
-        <div class="field">
-          <label for="servicio">Servicio de interés *</label>
-          <select id="servicio" name="servicio" required>
-            <option value="">Selecciona un servicio</option>
-            <option>Facturador Electrónico</option>
-            <option>CAMI — Control y Análisis de Movimientos e Impuestos</option>
-            <option>NALA</option>
-            <option>Servidor de Dominio</option>
-            <option>Servidor de Correo</option>
-            <option>Creación y Funcionalidad de Páginas Web</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" maxlength="600" placeholder="Cuéntanos brevemente qué necesitas..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-accent form-submit">Enviar por WhatsApp</button>
-        <p class="form-note">Al continuar se abrirá WhatsApp con tu mensaje listo para enviar.</p>
-      </form>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" maxlength="600" placeholder="Cuéntanos brevemente qué necesitas..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent form-submit">Enviar por WhatsApp</button>
+          <p class="form-note">Al continuar se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+        </form>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="cta-band-wrap">
+  <div class="cta-band">
+    <h2>¿List@ para dar el siguiente paso?</h2>
+    <p>Más de un negocio en República Dominicana ya automatizó su operación con CaSa Labs.</p>
+    <a href="https://wa.me/18494088173" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp</a>
   </div>
 </section>
 
