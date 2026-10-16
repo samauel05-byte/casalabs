@@ -48,11 +48,11 @@
   </div>
 </section>
 
-<section style="background:var(--cream);">
+<section>
   <div class="container">
     <div class="about-grid">
-      <div style="display:flex;align-items:center;justify-content:center;min-width:200px;max-width:260px;background:var(--cream);">
-        <img src="assets/img-hero-1.png" alt="CaSa Labs" style="width:220px;height:auto;mix-blend-mode:multiply;">
+      <div style="display:flex;align-items:center;justify-content:center;min-width:200px;max-width:260px;">
+        <canvas id="logo-canvas" style="width:220px;height:auto;"></canvas>
       </div>
       <div>
         <span class="eyebrow">Nuestra historia</span>
@@ -133,5 +133,27 @@
 <a href="https://wa.me/18494088173" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar por WhatsApp"></a>
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
+<script>
+(function(){
+  var canvas = document.getElementById('logo-canvas');
+  if(!canvas) return;
+  var img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function(){
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    canvas.style.height = 'auto';
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    var d = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    for(var i = 0; i < d.data.length; i += 4){
+      var r = d.data[i], g = d.data[i+1], b = d.data[i+2];
+      if(r > 230 && g > 230 && b > 230) d.data[i+3] = 0;
+    }
+    ctx.putImageData(d, 0, 0);
+  };
+  img.src = 'assets/img-hero-1.png';
+})();
+</script>
 </body>
 </html>
