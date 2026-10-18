@@ -4,7 +4,7 @@
   var history = [];
   var isOpen  = false;
 
-  /* -- CSS -- */
+  /* ── CSS ── */
   var styleEl = document.createElement('style');
   styleEl.textContent = [
     '#yl-btn{position:fixed;bottom:22px;left:22px;z-index:9000;width:56px;height:56px;',
@@ -18,6 +18,7 @@
     'border-radius:50%;background:#2F8C4D;border:2.5px solid #fff;',
     'animation:yl-pulse 2.2s ease-in-out infinite;}',
     '@keyframes yl-pulse{0%,100%{opacity:1;}50%{opacity:.35;}}',
+
     '#yl-panel{position:fixed;bottom:90px;left:22px;z-index:9001;',
     'width:340px;background:#fff;border-radius:16px;',
     'box-shadow:0 20px 60px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.07);',
@@ -26,6 +27,7 @@
     'transition:transform .22s cubic-bezier(.4,0,.2,1),opacity .2s ease;',
     'pointer-events:none;}',
     '#yl-panel.yl-open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}',
+
     '#yl-head{background:linear-gradient(135deg,#1D2B5E 0%,#12193E 100%);',
     'padding:13px 14px;display:flex;align-items:center;gap:11px;}',
     '.yl-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.14);',
@@ -41,11 +43,13 @@
     'cursor:pointer;padding:4px;border-radius:6px;',
     'transition:color .15s;display:flex;align-items:center;}',
     '#yl-close:hover{color:#fff;}',
+
     '#yl-msgs{flex:1;overflow-y:auto;padding:14px;',
     'display:flex;flex-direction:column;gap:10px;',
     'min-height:240px;max-height:320px;}',
     '#yl-msgs::-webkit-scrollbar{width:4px;}',
     '#yl-msgs::-webkit-scrollbar-thumb{background:#E4E1D6;border-radius:4px;}',
+
     '.yl-m{display:flex;gap:8px;max-width:90%;}',
     '.yl-m.yl-u{align-self:flex-end;flex-direction:row-reverse;}',
     '.yl-m.yl-a{align-self:flex-start;}',
@@ -58,12 +62,14 @@
     'font-size:.87rem;line-height:1.55;color:#14181F;word-break:break-word;}',
     '.yl-a .yl-b{background:#F6F4EE;border-bottom-left-radius:3px;}',
     '.yl-u .yl-b{background:#1D2B5E;color:#fff;border-bottom-right-radius:3px;}',
+
     '.yl-dots{display:flex;align-items:center;gap:4px;padding:8px 12px;}',
     '.yl-d{width:7px;height:7px;border-radius:50%;background:#9FA7C4;',
     'animation:yl-bop .9s ease-in-out infinite;}',
     '.yl-d:nth-child(2){animation-delay:.18s;}',
     '.yl-d:nth-child(3){animation-delay:.36s;}',
     '@keyframes yl-bop{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-6px);}}',
+
     '#yl-form{border-top:1px solid #E4E1D6;padding:10px 12px;',
     'display:flex;gap:8px;align-items:flex-end;background:#fff;}',
     '#yl-inp{flex:1;border:1.5px solid #E4E1D6;border-radius:10px;',
@@ -78,18 +84,26 @@
     '#yl-snd:hover{background:#2C3E82;}',
     '#yl-snd:disabled{background:#C8CCE0;cursor:not-allowed;}',
     '.yl-pw{text-align:center;font-size:.67rem;color:#B0B8D0;padding:3px 0 8px;background:#fff;}',
-    '@media(max-width:400px){#yl-panel{width:calc(100vw - 32px);left:16px;}}'
+
+    '@media(max-width:400px){',
+    '#yl-panel{width:calc(100vw - 32px);left:16px;}',
+    '}'
   ].join('');
   document.head.appendChild(styleEl);
 
-  /* -- HTML -- */
+  /* ── HTML ── */
   var root = document.createElement('div');
   root.innerHTML =
-    '<button id="yl-btn" aria-label="Hablar con Yerleny">Y<span class="yl-badge"></span></button>' +
+    '<button id="yl-btn" aria-label="Hablar con Yerleny">' +
+      'Y<span class="yl-badge"></span>' +
+    '</button>' +
     '<div id="yl-panel" role="dialog" aria-label="Chat con Yerleny">' +
       '<div id="yl-head">' +
         '<div class="yl-av">Y</div>' +
-        '<div class="yl-hi"><strong>Yerleny</strong><span>En línea · CaSa Labs</span></div>' +
+        '<div class="yl-hi">' +
+          '<strong>Yerleny</strong>' +
+          '<span>En línea · CaSa Labs</span>' +
+        '</div>' +
         '<button id="yl-close" aria-label="Cerrar">' +
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">' +
           '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
@@ -107,6 +121,7 @@
     '</div>';
   document.body.appendChild(root);
 
+  /* ── refs ── */
   var btn   = document.getElementById('yl-btn');
   var panel = document.getElementById('yl-panel');
   var close = document.getElementById('yl-close');
@@ -114,6 +129,7 @@
   var inp   = document.getElementById('yl-inp');
   var snd   = document.getElementById('yl-snd');
 
+  /* ── helpers ── */
   function addMsg(role, text) {
     var bot = role === 'bot';
     var el  = document.createElement('div');
@@ -143,8 +159,10 @@
     if (t) t.remove();
   }
 
+  /* ── welcome ── */
   addMsg('bot', '¡Hola! Soy Yerleny, la asistente virtual de CaSa Labs 👋\n¿En qué puedo ayudarte hoy?');
 
+  /* ── toggle ── */
   function openPanel()  { isOpen = true;  panel.classList.add('yl-open');    inp.focus(); }
   function closePanel() { isOpen = false; panel.classList.remove('yl-open'); }
 
@@ -152,9 +170,11 @@
   close.addEventListener('click', closePanel);
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && isOpen) closePanel(); });
 
+  /* ── send ── */
   function send() {
     var text = inp.value.trim();
     if (!text || snd.disabled) return;
+
     inp.value = '';
     inp.style.height = '';
     snd.disabled = true;
