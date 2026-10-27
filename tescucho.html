@@ -91,7 +91,7 @@
     flex-shrink: 0; margin-top: 1px;
   }
 
-  #paypal-button-container {
+  #paypal-button-container-P-0HR5093136867662KNLQB75I {
     min-height: 48px;
   }
 
@@ -181,7 +181,7 @@
     </ul>
 
     <!-- PayPal subscription button -->
-    <div id="paypal-button-container"></div>
+    <div id="paypal-button-container-P-0HR5093136867662KNLQB75I"></div>
 
     <div class="checkout-note">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="#8896b3" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -206,31 +206,19 @@
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
 
-<!--
-  ═══════════════════════════════════════════════════════
-  CONFIGURACIÓN PAYPAL — llenar con tus datos reales
-  ═══════════════════════════════════════════════════════
-  1. Ve a https://developer.paypal.com
-  2. Crea una App en "Live" (no Sandbox)
-  3. Copia el "Client ID" y reemplaza PAYPAL_CLIENT_ID_AQUI
-  4. Ve a tu cuenta PayPal Business →
-     Herramientas → Pagos recurrentes → Crear plan
-     Precio: 4.50 USD · ciclo: mensual
-     Copia el "Plan ID" y reemplaza PAYPAL_PLAN_ID_AQUI
-  ═══════════════════════════════════════════════════════
--->
-<script src="https://www.paypal.com/sdk/js?client-id=BAASZukL-h9LMelxlLqrj6K0DWIO39JyKJgUq19pHUrYmpCP2fLxkb3W4u3RZC8I_rW7zdKtuGwLW1d084&vault=true&intent=subscription&currency=USD" data-sdk-integration-source="button-factory"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAAShR73v7xxbK2BHidICZu8XH4z9pGqUyDKh6m0utk_m8f8IkbswYVlKMAZ2rcpqZ2PsCJcrFh-ED1PwA&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 <script>
   paypal.Buttons({
     style: {
       shape:  'pill',
       color:  'blue',
-      layout: 'vertical',
+      layout: 'horizontal',
       label:  'subscribe'
     },
     createSubscription: function(data, actions) {
       return actions.subscription.create({
-        plan_id: 'PAYPAL_PLAN_ID_AQUI'
+        plan_id: 'P-0HR5093136867662KNLQB75I'
       });
     },
     onApprove: function(data) {
@@ -243,7 +231,7 @@
       console.error('PayPal error:', err);
       alert('Ocurrió un error con PayPal. Intenta de nuevo o contáctanos por WhatsApp.');
     }
-  }).render('#paypal-button-container');
+  }).render('#paypal-button-container-P-0HR5093136867662KNLQB75I');
 </script>
 
 </body>
