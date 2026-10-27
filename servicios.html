@@ -570,12 +570,21 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Pre-carga el SDK de suscripciones en background para que el botón Direct
+    // esté listo cuando el usuario abra la pestaña Fiscal, sin espera visible.
+    loadSubSDK(function() {
+      if (document.getElementById('panel-fiscal').classList.contains('active')) {
+        renderDirectBtn();
+      }
+    });
+
     document.querySelectorAll('.cat-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
-        if (tab.dataset.target === 'panel-fiscal') loadSubSDK(renderDirectBtn);
+        if (tab.dataset.target === 'panel-fiscal') {
+          onSubSDKReady(renderDirectBtn);
+        }
       });
     });
-    if (document.getElementById('panel-fiscal').classList.contains('active')) loadSubSDK(renderDirectBtn);
   });
 })();
 </script>
