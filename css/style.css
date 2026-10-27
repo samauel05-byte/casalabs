@@ -414,6 +414,9 @@ header{
 }
 .cat-panel.fiscal .price-card.featured{border-color:var(--indigo)}
 .cat-panel.fiscal .price-card.featured::before{background:var(--indigo);content:"Paquete completo"}
+.direct-detail{margin:14px 0;display:flex;flex-direction:column;gap:8px;padding:14px 16px;background:var(--section-bg,#f7f8fc);border-radius:8px;border-left:3px solid var(--indigo)}
+.direct-detail p{font-size:.86rem;color:var(--ink-soft);line-height:1.55;margin:0}
+.direct-detail p strong{color:var(--ink);font-weight:600}
 .cat-panel.niduvo .price-card.featured{border-color:#1B78CC}
 .cat-panel.niduvo .price-card.featured::before{background:#1B78CC;content:"Almacenamiento"}
 
