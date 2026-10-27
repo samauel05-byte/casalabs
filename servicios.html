@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Servicios | CaSa Labs</title>
-<meta name="description" content="Servicios de CaSa Labs: páginas web, facturación electrónica, CAMI, NALA, Niduvo y más — tecnología práctica para tu negocio en República Dominicana.">
+<meta name="description" content="Servicios de CaSa Labs: páginas web, facturación electrónica, CAMI, Niduvo, TescuchO y más — tecnología práctica para tu negocio en República Dominicana.">
 <meta name="theme-color" content="#2E3190">
 <link rel="canonical" href="https://casalabs.com.do/servicios">
 <meta property="og:type" content="website"><meta property="og:locale" content="es_DO">
-<meta property="og:title" content="Servicios | CaSa Labs"><meta property="og:description" content="CAMI, facturación electrónica, NALA, dominios, correo profesional y páginas web para tu negocio.">
+<meta property="og:title" content="Servicios | CaSa Labs"><meta property="og:description" content="CAMI, facturación electrónica, Niduvo, dominios, correo profesional y páginas web para tu negocio.">
 <meta property="og:url" content="https://casalabs.com.do/servicios"><meta property="og:image" content="https://casalabs.com.do/assets/og-sam.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://casalabs.com.do/assets/og-sam.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,41 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/style.css">
 <style>
+  /* Fiscal panel featured badges */
   .price-card.direct-card.featured::before { content: "Suite completa"; background: var(--indigo-deep, #1D2B5E); }
+  .cat-panel.fiscal .price-card.direct-gestionado::before { content: "CaSa Labs lo gestiona todo"; background: var(--forest, #2F7A5B); }
+
+  /* Plan selection */
+  .web-plan { transition: box-shadow .2s, border-color .2s; }
+  .web-plan.selected { border-color: var(--forest, #2F7A5B) !important; box-shadow: 0 0 0 3px rgba(47,122,91,.15); }
+
+  /* Checkout section */
+  #web-checkout { margin-top: 36px; }
+  #web-checkout.cko-visible { animation: ckoIn .28s ease both; }
+  @keyframes ckoIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+  .cko-inner { max-width: 520px; margin: 0 auto; }
+  .cko-summary { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    padding:14px 18px; background:var(--cream,#fdfbf8); border:1px solid var(--line,#e8e5df); border-radius:10px; margin-bottom:16px; }
+  .cko-summary-name { font-weight:600; color:var(--ink,#1a1a2e); }
+  .cko-summary-price { font-family:'Fraunces',serif; font-weight:700; font-size:1.2rem; color:var(--indigo,#2E3190); }
+  .addon-row { display:flex; align-items:flex-start; gap:10px; padding:14px 16px;
+    border:1px solid var(--line,#e8e5df); border-radius:10px; margin-bottom:16px; cursor:pointer; transition:border-color .2s; }
+  .addon-row:hover { border-color:var(--indigo,#2E3190); }
+  .addon-row input[type=checkbox] { margin-top:3px; flex-shrink:0; width:16px; height:16px; accent-color:var(--forest,#2F7A5B); cursor:pointer; }
+  .addon-row label { cursor:pointer; }
+  .addon-row strong { display:block; font-size:.88rem; font-weight:600; margin-bottom:2px; }
+  .addon-row small { font-size:.76rem; color:var(--ink-soft); line-height:1.5; }
+  .cko-secure { display:flex; align-items:center; gap:6px; font-size:.72rem; color:var(--ink-soft); justify-content:center; margin-top:12px; }
+  .cko-back { background:none; border:none; color:var(--ink-soft); font-size:.82rem; cursor:pointer;
+    margin-top:8px; display:block; width:100%; text-align:center; padding:8px; text-decoration:underline; }
+  .cko-back:hover { color:var(--ink); }
+  .cko-success { display:none; }
+  .cko-success.show { display:block; }
+  .cko-success-icon { width:64px; height:64px; background:#e8f7ef; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:28px; }
+  .cko-order-id { background:var(--cream,#fdfbf8); border-radius:8px; padding:10px 16px;
+    font-size:.78rem; color:var(--indigo-deep,#1D2B5E); word-break:break-all; margin-bottom:24px; border:1px solid var(--line,#e8e5df); }
+  .sub-group-title { font-size:1.05rem; font-weight:600; color:var(--ink); margin:40px 0 16px; }
 </style>
 </head>
 <body>
@@ -90,11 +124,15 @@
       </button>
     </div>
 
-    <!-- Panel Digital -->
+    <!-- ───── Panel Digital ───── -->
     <div class="cat-panel active" id="panel-digital">
-      <p class="cat-note">Precios en dólares estadounidenses (US$). El plan de Servidor de Dominio se factura en pesos dominicanos (RD$).</p>
-      <div class="price-grid">
-        <div class="price-card">
+      <p class="cat-note">Precios en dólares estadounidenses (US$). Pago único — tu sitio te pertenece para siempre.</p>
+
+      <!-- Planes de página web -->
+      <p class="sub-group-title">Páginas web · elige tu plan y paga con PayPal</p>
+      <div class="price-grid" id="web-plans-grid">
+
+        <div class="price-card web-plan" data-amount="250.00" data-name="Plan Básico">
           <h3>Básico</h3>
           <p class="desc">Ideal para emprendedores</p>
           <div class="price">US$ 250 <small>/ pago único</small></div>
@@ -105,9 +143,10 @@
             <li>Formulario de contacto</li>
             <li>Integración con WhatsApp</li>
           </ul>
-          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20B%C3%A1sico%20(US%24250%2C%20pago%20%C3%BAnico)%20para%20mi%20p%C3%A1gina%20web" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+          <button class="btn btn-outline plan-btn">Elegir plan</button>
         </div>
-        <div class="price-card featured">
+
+        <div class="price-card featured web-plan" data-amount="499.00" data-name="Plan Empresarial">
           <h3>Empresarial</h3>
           <p class="desc">Para negocios en crecimiento</p>
           <div class="price">US$ 499 <small>/ pago único</small></div>
@@ -119,9 +158,10 @@
             <li>SEO básico</li>
             <li>Hasta 1 correo empresarial</li>
           </ul>
-          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20Empresarial%20(US%24499%2C%20pago%20%C3%BAnico)%20para%20mi%20p%C3%A1gina%20web" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+          <button class="btn btn-accent plan-btn">Elegir plan</button>
         </div>
-        <div class="price-card">
+
+        <div class="price-card web-plan" data-amount="800.00" data-name="Tienda Online">
           <h3>Tienda Online</h3>
           <p class="desc">Vende tus productos en línea</p>
           <div class="price">US$ 800 <small>/ pago único</small></div>
@@ -133,12 +173,69 @@
             <li>Diseño profesional</li>
             <li>Adaptada a todos los dispositivos</li>
           </ul>
-          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20Tienda%20Online%20(US%24800%2C%20pago%20%C3%BAnico)%20para%20mi%20p%C3%A1gina%20web" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+          <button class="btn btn-outline plan-btn">Elegir plan</button>
         </div>
+
+      </div><!-- /web-plans-grid -->
+
+      <!-- Checkout (se muestra al elegir un plan) -->
+      <div id="web-checkout" style="display:none;" aria-live="polite">
+        <div class="cko-inner">
+
+          <!-- Formulario de pago -->
+          <div id="cko-form" class="price-card">
+            <h3 style="font-family:'Fraunces',serif;font-weight:700;margin-bottom:20px;">Confirmar y pagar</h3>
+
+            <div class="cko-summary">
+              <span class="cko-summary-name" id="cko-plan-name">—</span>
+              <span class="cko-summary-price" id="cko-plan-price">US$ 0</span>
+            </div>
+
+            <div class="addon-row">
+              <input type="checkbox" id="chk-maintenance">
+              <label for="chk-maintenance">
+                <strong>+ Mantenimiento trimestral: US$&nbsp;80 cada 3 meses</strong>
+                <small>Actualizaciones, respaldos, monitoreo y soporte continuo. Se coordina tras el pago.</small>
+              </label>
+            </div>
+
+            <div id="paypal-web-btn"></div>
+
+            <div class="cko-secure">
+              <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              Pago seguro procesado por PayPal
+            </div>
+
+            <button class="cko-back" onclick="cancelWebPlan()">← Cambiar plan</button>
+          </div>
+
+          <!-- Pantalla de éxito -->
+          <div class="cko-success" id="cko-success">
+            <div class="price-card" style="text-align:center;padding:40px 32px;">
+              <div class="cko-success-icon">✅</div>
+              <h3 style="font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;text-align:center;">¡Pago recibido!</h3>
+              <p class="desc" style="text-align:center;margin:12px 0 16px;">Tu pedido fue procesado con éxito. Te contactaremos para coordinar los próximos pasos.</p>
+              <div class="cko-order-id" id="cko-order-id-display"></div>
+              <div id="cko-maintenance-msg" style="display:none;" class="cat-note" style="margin-bottom:20px;">
+                <strong>Mantenimiento trimestral solicitado</strong><br>
+                Te contactaremos para configurar tu plan de mantenimiento trimestral de US$80.
+              </div>
+              <a href="https://wa.me/18494088173?text=Hola%2C%20acabo%20de%20pagar%20mi%20plan%20web%20en%20CaSa%20Labs%20y%20quiero%20coordinar%20los%20pr%C3%B3ximos%20pasos" class="btn btn-accent" target="_blank" rel="noopener noreferrer" style="justify-content:center;">Coordinar por WhatsApp →</a>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /web-checkout -->
+
+      <!-- Servicios adicionales -->
+      <p class="sub-group-title">Servicios adicionales</p>
+      <div class="price-grid">
         <div class="price-card">
           <h3>Mantenimiento</h3>
           <p class="desc">Mantén tu web siempre al día</p>
-          <div class="price">US$ 80 <small>/ mes</small></div>
+          <div class="price">US$ 80 <small>/ cada 3 meses</small></div>
           <ul>
             <li>Actualizaciones periódicas</li>
             <li>Respaldo de seguridad</li>
@@ -146,7 +243,7 @@
             <li>Soporte técnico</li>
             <li>Correcciones y mejoras</li>
           </ul>
-          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20de%20Mantenimiento%20(US%2480%2Fmes)%20para%20mi%20p%C3%A1gina%20web" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20de%20Mantenimiento%20(US%2480%20cada%203%20meses)%20para%20mi%20p%C3%A1gina%20web" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
         <div class="price-card">
           <h3>Servidor de Dominio</h3>
@@ -159,7 +256,7 @@
             <li>Soporte técnico</li>
             <li>Disponibilidad garantizada</li>
           </ul>
-          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20de%20Servidor%20de%20Dominio%20(RD%24900%2Fmes)%20para%20mi%20negocio" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20de%20Servidor%20de%20Dominio%20(RD%24900%2Fmes)%20para%20mi%20negocio" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
         <div class="price-card">
           <h3>Servidor de Correo</h3>
@@ -175,12 +272,29 @@
           <a href="https://mailhub.com.do/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver planes →</a>
         </div>
       </div>
-    </div>
+    </div><!-- /panel-digital -->
 
-    <!-- Panel Fiscal -->
+    <!-- ───── Panel Fiscal ───── -->
     <div class="cat-panel fiscal" id="panel-fiscal">
       <p class="cat-note">Los archivos se procesan localmente en el navegador, ayudando a mantener la privacidad de la información fiscal.</p>
       <div class="price-grid">
+
+        <div class="price-card featured direct-gestionado">
+          <h3>Direct Gestionado</h3>
+          <p class="desc">Solo nos das los datos de tu empresa — CaSa Labs configura todo</p>
+          <div class="price">US$ 150 <small>/ mes</small></div>
+          <ul>
+            <li>Auto-login a DGII, TSS, Ministerio de Trabajo</li>
+            <li>CardNET, Azul, IDOPPRIL, ONAPI y más portales</li>
+            <li>Módulos: CAMI, NALA, Nómina, IR-2</li>
+            <li>Sin instalación — CaSa Labs se encarga de todo</li>
+            <li>Historial de entradas y alertas de vencimiento</li>
+            <li>Aislamiento multiempresa</li>
+            <li>Soporte y actualizaciones incluidas</li>
+          </ul>
+          <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20el%20plan%20Direct%20Gestionado%20(US%24150%2Fmes)%2C%20CaSa%20Labs%20configura%20todo" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Suscribirme →</a>
+        </div>
+
         <div class="price-card">
           <h3>Facturador Electrónico</h3>
           <p class="desc">Emisión de comprobantes fiscales electrónicos</p>
@@ -194,6 +308,7 @@
           </ul>
           <a href="https://sife.com.do/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ir a SIFE →</a>
         </div>
+
         <div class="price-card direct-card featured">
           <h3>Direct</h3>
           <p class="desc">Bóveda de accesos a portales dominicanos con auto-login</p>
@@ -208,23 +323,11 @@
           </ul>
           <a href="https://app.casalabs.com.do" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Acceder a Direct</a>
         </div>
-        <div class="price-card">
-          <h3>NALA</h3>
-          <p class="desc">Convierte fotos y PDF de facturas en 606/607 listos para la DGII</p>
-          <div class="price">A cotizar</div>
-          <ul>
-            <li>Carga de fotos, PDF y ZIP de facturas</li>
-            <li>Extracción con IA (OCR + GPT-4o Vision)</li>
-            <li>Validación y auditoría fiscal automática</li>
-            <li>Formatos DGII 606, 607 e IR-17</li>
-            <li>Exportación en Excel y TXT listos para enviar</li>
-          </ul>
-          <a href="https://app.casalabs.com.do" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Acceder a NALA</a>
-        </div>
-      </div>
-    </div>
 
-    <!-- Panel Niduvo -->
+      </div>
+    </div><!-- /panel-fiscal -->
+
+    <!-- ───── Panel Niduvo ───── -->
     <div class="cat-panel niduvo" id="panel-niduvo">
       <div class="price-grid">
         <div class="price-card featured">
@@ -242,9 +345,9 @@
           <a href="https://wa.me/18494088173?text=Hola%2C%20quiero%20conocer%20el%20plan%20Niduvo%20para%20almacenamiento%20en%20la%20nube" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Consultar</a>
         </div>
       </div>
-    </div>
+    </div><!-- /panel-niduvo -->
 
-    <!-- Panel TescuchO -->
+    <!-- ───── Panel TescuchO ───── -->
     <div class="cat-panel tescucho" id="panel-tescucho">
       <p class="cat-note">Tus audios y textos se procesan localmente en tu computadora, sin enviarlos a servicios externos. Solo necesitas internet la primera vez para descargar el modelo.</p>
       <div class="price-grid">
@@ -263,7 +366,7 @@
           <a href="/tescucho" class="btn btn-accent">Suscribirme →</a>
         </div>
       </div>
-    </div>
+    </div><!-- /panel-tescucho -->
 
   </div>
 </section>
@@ -282,16 +385,95 @@
 <a href="https://wa.me/18494088173" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar por WhatsApp"></a>
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
+
+<!-- Tab switching -->
 <script>
-  document.querySelectorAll('.cat-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cat-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.cat-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.cat-panel').forEach(function(p) { p.classList.remove('active'); });
       tab.classList.add('active');
       document.getElementById(tab.dataset.target).classList.add('active');
     });
   });
 </script>
+
+<!-- PayPal SDK — one-time payments (intent=capture default) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY&currency=USD" data-sdk-integration-source="button-factory"></script>
+
+<!-- Web plan checkout -->
+<script>
+(function () {
+  var webPlan = null;
+
+  document.querySelectorAll('.plan-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var card = this.closest('.price-card');
+      var amount = card.dataset.amount;
+      var name   = card.dataset.name;
+      webPlan = { amount: amount, name: name };
+
+      // Visual selection
+      document.querySelectorAll('.web-plan').forEach(function(c) { c.classList.remove('selected'); });
+      card.classList.add('selected');
+
+      // Populate summary
+      document.getElementById('cko-plan-name').textContent  = name;
+      document.getElementById('cko-plan-price').textContent = 'US$ ' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 0 });
+
+      // Reset & show checkout
+      document.getElementById('cko-form').style.display    = '';
+      document.getElementById('cko-success').classList.remove('show');
+      document.getElementById('paypal-web-btn').innerHTML  = '';
+
+      var cko = document.getElementById('web-checkout');
+      cko.style.display = '';
+      cko.classList.add('cko-visible');
+      setTimeout(function() { cko.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+
+      // Render PayPal button
+      if (typeof paypal !== 'undefined') {
+        paypal.Buttons({
+          style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'pay' },
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              intent: 'CAPTURE',
+              purchase_units: [{
+                description: webPlan.name + ' · Página Web · CaSa Labs',
+                amount: { currency_code: 'USD', value: webPlan.amount }
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              document.getElementById('cko-form').style.display = 'none';
+              var wantsMaint = document.getElementById('chk-maintenance').checked;
+              if (wantsMaint) {
+                document.getElementById('cko-maintenance-msg').style.display = '';
+              }
+              document.getElementById('cko-order-id-display').textContent = 'ID de orden: ' + (details.id || data.orderID);
+              document.getElementById('cko-success').classList.add('show');
+              document.getElementById('cko-success').scrollIntoView({ behavior: 'smooth' });
+            });
+          },
+          onError: function(err) {
+            console.error('PayPal error:', err);
+            alert('Ocurrió un error al procesar el pago. Intenta de nuevo o contáctanos por WhatsApp.');
+          }
+        }).render('#paypal-web-btn');
+      }
+    });
+  });
+
+  window.cancelWebPlan = function() {
+    document.getElementById('web-checkout').style.display = 'none';
+    document.getElementById('web-checkout').classList.remove('cko-visible');
+    document.querySelectorAll('.web-plan').forEach(function(c) { c.classList.remove('selected'); });
+    webPlan = null;
+  };
+})();
+</script>
+
 <script src="js/yerleny.js"></script>
 </body>
 </html>
