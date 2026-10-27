@@ -414,9 +414,23 @@ header{
 }
 .cat-panel.fiscal .price-card.featured{border-color:var(--indigo)}
 .cat-panel.fiscal .price-card.featured::before{background:var(--indigo);content:"Paquete completo"}
-.direct-detail{margin:14px 0;display:flex;flex-direction:column;gap:8px;padding:14px 16px;background:var(--section-bg,#f7f8fc);border-radius:8px;border-left:3px solid var(--indigo)}
-.direct-detail p{font-size:.86rem;color:var(--ink-soft);line-height:1.55;margin:0}
-.direct-detail p strong{color:var(--ink);font-weight:600}
+.direct-detail{margin:14px 0;border:1px solid rgba(44,62,130,0.18);border-radius:8px;overflow:hidden}
+.direct-detail summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 13px;font-size:.82rem;font-weight:600;color:var(--indigo);
+  background:rgba(44,62,130,0.05);
+  user-select:none;-webkit-user-select:none;
+}
+.direct-detail summary::-webkit-details-marker{display:none}
+.direct-detail summary::after{
+  content:"＋";font-size:.9rem;font-weight:700;color:var(--indigo);flex-shrink:0;margin-left:8px;
+  transition:transform .2s;
+}
+.direct-detail[open] summary::after{content:"－"}
+.dd-body{padding:12px 14px;display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(44,62,130,0.12)}
+.dd-body p{font-size:.84rem;color:var(--ink-soft);line-height:1.55;margin:0}
+.dd-body p strong{color:var(--ink);font-weight:600}
 .cat-panel.niduvo .price-card.featured{border-color:#1B78CC}
 .cat-panel.niduvo .price-card.featured::before{background:#1B78CC;content:"Almacenamiento"}
 
