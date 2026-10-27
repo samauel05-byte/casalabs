@@ -23,10 +23,32 @@
   /* Override featured label for this standalone page */
   .price-card.featured::before { content: "TescuchO Mensual"; }
 
-  /* PayPal button container */
-  #paypal-button-container-P-0HR5093136867662KNLQB75I {
-    min-height: 48px;
+  /* PayPal button containers */
+  #paypal-button-container-P-1AG61239YH377373NNLQCLFA,
+  #paypal-card-btn {
+    position: relative;
     margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line, #e8e5df);
+  }
+  #paypal-card-btn { border-top: none; padding-top: 8px; }
+  #paypal-button-container-P-1AG61239YH377373NNLQCLFA > div,
+  #paypal-card-btn > div { max-width: 400px; margin: 0 auto; }
+  #paypal-button-container-P-1AG61239YH377373NNLQCLFA:empty { min-height: 50px; }
+  #paypal-button-container-P-1AG61239YH377373NNLQCLFA:empty::after {
+    content: '';
+    display: block;
+    height: 44px;
+    border-radius: 22px;
+    background: linear-gradient(90deg, #eceae8 25%, #dedad6 50%, #eceae8 75%);
+    background-size: 200% 100%;
+    animation: pp-shimmer 1.5s ease-in-out infinite;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  @keyframes pp-shimmer {
+    from { background-position:  200% 0; }
+    to   { background-position: -200% 0; }
   }
 
   /* Checkout note under PayPal button */
@@ -117,8 +139,9 @@
             <li>Procesado localmente — solo necesitas internet la primera vez</li>
           </ul>
 
-          <!-- PayPal subscription button -->
+          <!-- PayPal subscription buttons -->
           <div id="paypal-button-container-P-1AG61239YH377373NNLQCLFA"></div>
+          <div id="paypal-card-btn" style="margin-top:8px;"></div>
 
           <div class="checkout-note">
             <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -160,31 +183,44 @@
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
 
-<script src="https://www.paypal.com/sdk/js?client-id=BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY&vault=true&intent=subscription&enable-funding=card&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
+  var PLAN_ID = 'P-1AG61239YH377373NNLQCLFA';
+
+  function onPayPalApprove(data) {
+    document.getElementById('checkout-panel').style.display = 'none';
+    var s = document.getElementById('success-panel');
+    s.classList.add('show');
+    document.getElementById('sub-id').textContent = 'ID de suscripción: ' + data.subscriptionID;
+  }
+
+  function onPayPalError(err) {
+    console.error('PayPal error:', err);
+    alert('Ocurrió un error con PayPal. Intenta de nuevo o contáctanos por WhatsApp.');
+  }
+
+  // Botón principal PayPal
   paypal.Buttons({
-    style: {
-      shape:  'pill',
-      color:  'blue',
-      layout: 'horizontal',
-      label:  'subscribe'
-    },
+    style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
     createSubscription: function(data, actions) {
-      return actions.subscription.create({
-        plan_id: 'P-1AG61239YH377373NNLQCLFA'
-      });
+      return actions.subscription.create({ plan_id: PLAN_ID });
     },
-    onApprove: function(data) {
-      document.getElementById('checkout-panel').style.display = 'none';
-      var s = document.getElementById('success-panel');
-      s.classList.add('show');
-      document.getElementById('sub-id').textContent = 'ID de suscripción: ' + data.subscriptionID;
-    },
-    onError: function(err) {
-      console.error('PayPal error:', err);
-      alert('Ocurrió un error con PayPal. Intenta de nuevo o contáctanos por WhatsApp.');
-    }
+    onApprove: onPayPalApprove,
+    onError:   onPayPalError
   }).render('#paypal-button-container-P-1AG61239YH377373NNLQCLFA');
+
+  // Botón de tarjeta de crédito/débito
+  if (paypal.isFundingEligible(paypal.FUNDING.CARD)) {
+    paypal.Buttons({
+      fundingSource: paypal.FUNDING.CARD,
+      style: { shape: 'pill', layout: 'vertical' },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({ plan_id: PLAN_ID });
+      },
+      onApprove: onPayPalApprove,
+      onError:   onPayPalError
+    }).render('#paypal-card-btn');
+  }
 </script>
 
 </body>
