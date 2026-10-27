@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TescuchO — Transcripción de audio a Word | CaSa Labs</title>
+<meta name="description" content="TescuchO convierte tus audios y notas de voz en documentos Word. Procesamiento local, sin límite de transcripciones, por solo US$4.50/mes.">
+<meta name="theme-color" content="#2E3190">
+<link rel="canonical" href="https://casalabs.com.do/tescucho">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_DO">
+<meta property="og:title" content="TescuchO — Transcripción de audio a Word">
+<meta property="og:description" content="Arrastra tus notas de voz y recíbelas en Word. Procesamiento local, sin enviar tus datos a internet. US$4.50/mes sin límite.">
+<meta property="og:url" content="https://casalabs.com.do/tescucho">
+<meta property="og:image" content="https://casalabs.com.do/assets/og-sam.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon-logo.png">
+<link rel="apple-touch-icon" href="assets/favicon-logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .tescucho-hero {
+    background: linear-gradient(160deg, #0D1535 0%, #1A2660 55%, #080C1A 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    color: #fff;
+  }
+  .tescucho-hero .eyebrow {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #C79A2C; margin-bottom: 14px;
+    display: block;
+  }
+  .tescucho-hero h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+    margin-bottom: 16px; color: #fff;
+  }
+  .tescucho-hero h1 em { font-style: normal; color: #C79A2C; }
+  .tescucho-hero p {
+    font-size: 1.05rem; color: rgba(168,180,220,0.85);
+    max-width: 520px; margin: 0 auto 0;
+    line-height: 1.7;
+  }
+
+  .checkout-wrap {
+    max-width: 480px;
+    margin: -1px auto 0;
+    padding: 48px 24px 80px;
+  }
+
+  .price-display {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e4e8f4;
+    border-radius: 18px;
+    padding: 32px 28px 28px;
+    box-shadow: 0 8px 48px rgba(44,62,130,0.08);
+    margin-bottom: 28px;
+  }
+  .price-display .pd-name {
+    font-weight: 700; font-size: 1rem;
+    color: #1a1a2e; margin-bottom: 4px;
+  }
+  .price-display .pd-price {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem; font-weight: 700;
+    color: #2C3E82; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-display .pd-cycle {
+    font-size: 0.8rem; color: #8896b3;
+    margin-bottom: 24px;
+  }
+  .pd-features {
+    list-style: none; padding: 0; margin: 0 0 24px;
+    text-align: left;
+    border-top: 1px solid #eef0f8;
+    padding-top: 20px;
+  }
+  .pd-features li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.88rem; color: #3a4060;
+    padding: 5px 0;
+  }
+  .pd-features li::before {
+    content: '✓';
+    color: #2C3E82; font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  #paypal-button-container {
+    min-height: 48px;
+  }
+
+  .checkout-note {
+    display: flex; align-items: center; gap: 8px;
+    justify-content: center;
+    font-size: 0.75rem; color: #8896b3;
+    margin-top: 16px;
+  }
+  .checkout-note svg { flex-shrink: 0; }
+
+  /* Success screen */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .success-screen.show { display: block; }
+  .success-icon {
+    width: 64px; height: 64px;
+    background: #e8f7ef;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+  }
+  .success-screen h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem; color: #1a1a2e;
+    margin-bottom: 10px;
+  }
+  .success-screen p {
+    color: #5a6480; line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .success-id {
+    background: #f4f6fc;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; color: #2C3E82;
+    word-break: break-all;
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="main-nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">CaSa Labs</a>
+    <button class="nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/servicios">Servicios</a></li>
+      <li><a href="/nosotros">Nosotros</a></li>
+      <li><a href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm">WhatsApp</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="tescucho-hero">
+  <div class="container">
+    <span class="eyebrow">TescuchO · CaSa Labs</span>
+    <h1>Audios que no tienes<br>tiempo de escuchar,<br><em>convertidos en Word</em></h1>
+    <p>Arrastra tus notas de voz, grábate en vivo o vigila una carpeta. Todo se procesa en tu computadora — sin enviar tus datos a internet.</p>
+  </div>
+</section>
+
+<div class="checkout-wrap">
+
+  <div class="price-display" id="checkout-panel">
+    <div class="pd-name">TescuchO Mensual</div>
+    <div class="pd-price">$4.50</div>
+    <div class="pd-cycle">USD · se renueva automáticamente cada mes</div>
+
+    <ul class="pd-features">
+      <li>Transcripción ilimitada sin límite de minutos</li>
+      <li>Sube MP3, WAV, M4A y más formatos</li>
+      <li>Grabación en vivo desde el navegador</li>
+      <li>Vigila una carpeta — procesa nuevos audios automáticamente</li>
+      <li>Busca en tu historial de transcripciones</li>
+      <li>Entrega en documento Word (.docx)</li>
+      <li>Procesado localmente — solo necesitas internet la primera vez</li>
+    </ul>
+
+    <!-- PayPal subscription button -->
+    <div id="paypal-button-container"></div>
+
+    <div class="checkout-note">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="#8896b3" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      Pago seguro procesado por PayPal · Cancela cuando quieras
+    </div>
+  </div>
+
+  <!-- Pantalla de éxito -->
+  <div class="success-screen" id="success-panel">
+    <div class="success-icon">✅</div>
+    <h2>¡Ya eres suscriptor!</h2>
+    <p>Tu suscripción a TescuchO Mensual está activa. Recibirás un correo de PayPal con la confirmación.</p>
+    <div class="success-id" id="sub-id"></div>
+    <p>¿Dudas? Escríbenos por WhatsApp y te ayudamos a instalar TescuchO.</p>
+    <a href="https://wa.me/18494088173?text=Hola%2C%20me%20suscribi%20a%20TescuchO%20y%20necesito%20ayuda%20para%20instalarlo" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Ir a WhatsApp →</a>
+  </div>
+
+</div>
+
+<footer id="footer-placeholder"></footer>
+<a href="https://wa.me/18494088173" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar por WhatsApp"></a>
+<script src="js/main.js"></script>
+<script src="js/footer.js"></script>
+
+<!--
+  ═══════════════════════════════════════════════════════
+  CONFIGURACIÓN PAYPAL — llenar con tus datos reales
+  ═══════════════════════════════════════════════════════
+  1. Ve a https://developer.paypal.com
+  2. Crea una App en "Live" (no Sandbox)
+  3. Copia el "Client ID" y reemplaza PAYPAL_CLIENT_ID_AQUI
+  4. Ve a tu cuenta PayPal Business →
+     Herramientas → Pagos recurrentes → Crear plan
+     Precio: 4.50 USD · ciclo: mensual
+     Copia el "Plan ID" y reemplaza PAYPAL_PLAN_ID_AQUI
+  ═══════════════════════════════════════════════════════
+-->
+<script src="https://www.paypal.com/sdk/js?client-id=PAYPAL_CLIENT_ID_AQUI&vault=true&intent=subscription&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+    style: {
+      shape:  'pill',
+      color:  'blue',
+      layout: 'vertical',
+      label:  'subscribe'
+    },
+    createSubscription: function(data, actions) {
+      return actions.subscription.create({
+        plan_id: 'PAYPAL_PLAN_ID_AQUI'
+      });
+    },
+    onApprove: function(data) {
+      document.getElementById('checkout-panel').style.display = 'none';
+      var s = document.getElementById('success-panel');
+      s.classList.add('show');
+      document.getElementById('sub-id').textContent = 'ID de suscripción: ' + data.subscriptionID;
+    },
+    onError: function(err) {
+      console.error('PayPal error:', err);
+      alert('Ocurrió un error con PayPal. Intenta de nuevo o contáctanos por WhatsApp.');
+    }
+  }).render('#paypal-button-container');
+</script>
+
+</body>
+</html>
