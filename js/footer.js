@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
   <div class="footer-bottom">
     <span>© <span id="year"></span> CaSa Labs. Todos los derechos reservados.</span>
-    <span>Punta Cana, República Dominicana</span>
+    <span>Calle Doña Leonor #218, Edif. Ibercub Local 2 · Bávaro, Punta Cana, RD</span>
   </div>`;
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
