@@ -237,9 +237,14 @@
   .stats-row{display:flex;gap:0;margin-top:36px;flex-wrap:wrap;}
   .stat-item{padding:0 28px;border-left:2px solid var(--line);}
   .stat-item:first-child{padding-left:0;border-left:none;}
-  .stat-item strong{display:block;font-family:'Fraunces',serif;font-size:3rem;font-weight:700;color:var(--indigo-deep);line-height:1;letter-spacing:-0.02em;}
+  .stat-item strong{display:block;font-family:'Fraunces',serif;font-size:4rem;font-weight:700;color:var(--indigo-deep);line-height:1;letter-spacing:-0.02em;}
   .stat-item span{font-size:0.78rem;font-weight:600;color:var(--ink-soft);margin-top:6px;display:block;text-transform:uppercase;letter-spacing:0.05em;}
-  @media(max-width:560px){.stat-item{padding:0 18px;} .stat-item strong{font-size:2.2rem;}}
+  @media(max-width:560px){.stat-item{padding:0 18px;} .stat-item strong{font-size:2.8rem;}}
+  .tech-strip{display:flex;align-items:center;gap:28px;margin-top:32px;flex-wrap:wrap;}
+  .tech-strip-label{font-size:.68rem;font-weight:700;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;margin-right:4px;}
+  .tech-strip img{height:22px;width:auto;opacity:.45;filter:grayscale(1);transition:opacity .2s,filter .2s;}
+  .tech-strip img:hover{opacity:.8;filter:grayscale(0);}
+  @media(max-width:560px){.tech-strip{gap:18px;} .tech-strip img{height:18px;}}
 
   /* FAQ */
   .faq{background:var(--paper);padding:88px 0;}
@@ -564,6 +569,16 @@
           <div class="stat-item"><strong><span data-count="17" data-suffix="+">17+</span></strong><span>páginas web creadas</span></div>
           <div class="stat-item"><strong><span data-count="4">4</span></strong><span>empresas automatizadas</span></div>
           <div class="stat-item"><strong><span data-count="100" data-suffix="%">100%</span></strong><span>a la medida</span></div>
+        </div>
+        <div class="tech-strip">
+          <span class="tech-strip-label">Tecnologías</span>
+          <img src="assets/logo-vercel.svg" alt="Vercel">
+          <img src="assets/logo-supabase.svg" alt="Supabase">
+          <img src="assets/logo-python.svg" alt="Python">
+          <img src="assets/logo-github.svg" alt="GitHub">
+          <img src="assets/logo-wordpress.svg" alt="WordPress">
+          <img src="assets/logo-digitalocean.svg" alt="DigitalOcean">
+          <img src="assets/logo-namecheap.svg" alt="Namecheap">
         </div>
       </div>
     </div>
