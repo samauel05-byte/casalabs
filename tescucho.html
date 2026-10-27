@@ -23,17 +23,14 @@
   /* Override featured label for this standalone page */
   .price-card.featured::before { content: "TescuchO Mensual"; }
 
-  /* PayPal button containers */
-  #paypal-button-container-P-1AG61239YH377373NNLQCLFA,
-  #paypal-card-btn {
+  /* PayPal button container */
+  #paypal-button-container-P-1AG61239YH377373NNLQCLFA {
     position: relative;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid var(--line, #e8e5df);
   }
-  #paypal-card-btn { border-top: none; padding-top: 8px; }
-  #paypal-button-container-P-1AG61239YH377373NNLQCLFA > div,
-  #paypal-card-btn > div { max-width: 400px; margin: 0 auto; }
+  #paypal-button-container-P-1AG61239YH377373NNLQCLFA > div { max-width: 400px; margin: 0 auto; }
   #paypal-button-container-P-1AG61239YH377373NNLQCLFA:empty { min-height: 50px; }
   #paypal-button-container-P-1AG61239YH377373NNLQCLFA:empty::after {
     content: '';
@@ -139,9 +136,8 @@
             <li>Procesado localmente — solo necesitas internet la primera vez</li>
           </ul>
 
-          <!-- PayPal subscription buttons -->
+          <!-- PayPal subscription button (vertical: muestra PayPal + tarjeta automáticamente) -->
           <div id="paypal-button-container-P-1AG61239YH377373NNLQCLFA"></div>
-          <div id="paypal-card-btn" style="margin-top:8px;"></div>
 
           <div class="checkout-note">
             <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -209,18 +205,6 @@
     onError:   onPayPalError
   }).render('#paypal-button-container-P-1AG61239YH377373NNLQCLFA');
 
-  // Botón de tarjeta de crédito/débito
-  if (paypal.isFundingEligible(paypal.FUNDING.CARD)) {
-    paypal.Buttons({
-      fundingSource: paypal.FUNDING.CARD,
-      style: { shape: 'pill', layout: 'vertical' },
-      createSubscription: function(data, actions) {
-        return actions.subscription.create({ plan_id: PLAN_ID });
-      },
-      onApprove: onPayPalApprove,
-      onError:   onPayPalError
-    }).render('#paypal-card-btn');
-  }
 </script>
 
 </body>
