@@ -31,7 +31,7 @@ module.exports = async function handler(req, res) {
         'X-Title': 'CaSa Labs'
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-3.2-3b-instruct:free',
+        model: 'meta-llama/llama-3.1-8b-instruct:free',
         messages: [{ role: 'system', content: SYSTEM }].concat(messages),
         max_tokens: 400,
         temperature: 0.72
