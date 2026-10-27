@@ -47,7 +47,8 @@
   /* ── PayPal button containers ─────────────────────────────── */
   #paypal-direct-btn,
   #paypal-web-btn,
-  #paypal-maint-btn {
+  #paypal-maint-btn,
+  #paypal-tescucho-btn {
     position: relative;
     margin-top: 20px;
     padding-top: 20px;
@@ -56,7 +57,8 @@
   /* Center & cap width so buttons don't stretch edge-to-edge on desktop */
   #paypal-direct-btn > div,
   #paypal-web-btn > div,
-  #paypal-maint-btn > div {
+  #paypal-maint-btn > div,
+  #paypal-tescucho-btn > div {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
@@ -64,10 +66,12 @@
   /* Shimmer skeleton while the iframe hasn't loaded yet */
   #paypal-direct-btn:empty,
   #paypal-web-btn:empty,
-  #paypal-maint-btn:empty { min-height: 50px; }
+  #paypal-maint-btn:empty,
+  #paypal-tescucho-btn:empty { min-height: 50px; }
   #paypal-direct-btn:empty::after,
   #paypal-web-btn:empty::after,
-  #paypal-maint-btn:empty::after {
+  #paypal-maint-btn:empty::after,
+  #paypal-tescucho-btn:empty::after {
     content: '';
     display: block;
     height: 44px;
@@ -394,7 +398,7 @@
             <li>Modo servidor: transcribe desde el navegador en otros dispositivos</li>
             <li>Privacidad total — solo necesitas internet la primera vez</li>
           </ul>
-          <a href="/tescucho" class="btn btn-accent">Suscribirme →</a>
+          <div id="paypal-tescucho-btn"></div>
         </div>
       </div>
     </div><!-- /panel-tescucho -->
@@ -510,8 +514,9 @@
 <!-- Direct plan PayPal subscription — SDK loaded dynamically to avoid conflict with one-time SDK -->
 <script>
 (function () {
-  var DIRECT_PLAN_ID = 'P-9A8869594F1326029NLQC5RY';
-  var MAINT_PLAN_ID  = 'P-29626358SG0498353NLQC7NA';
+  var DIRECT_PLAN_ID    = 'P-9A8869594F1326029NLQC5RY';
+  var MAINT_PLAN_ID     = 'P-29626358SG0498353NLQC7NA';
+  var TESCUCHO_PLAN_ID  = 'P-1AG61239YH377373NNLQCLFA';
   var CLIENT_ID      = 'BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY';
   var sdkLoaded = false;
   var pendingCallbacks = [];
@@ -533,6 +538,21 @@
       },
       onError: function(err) { console.error('PayPal Direct error:', err); alert('Error al procesar. Contáctanos por WhatsApp.'); }
     }).render('#paypal-direct-btn');
+  }
+
+  function renderTescuchoBtn() {
+    if (!window.paypalSub) return;
+    window.paypalSub.Buttons({
+      style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({ plan_id: TESCUCHO_PLAN_ID });
+      },
+      onApprove: function(data) {
+        document.getElementById('paypal-tescucho-btn').innerHTML =
+          '<div class="cat-note" style="text-align:center;margin:0;"><strong>✅ ¡Suscripción activa!</strong><br><small>ID: ' + data.subscriptionID + '</small></div>';
+      },
+      onError: function(err) { console.error('PayPal TescuchO error:', err); alert('Error al procesar. Contáctanos por WhatsApp.'); }
+    }).render('#paypal-tescucho-btn');
   }
 
   window.renderMaintBtn = function() {
@@ -557,7 +577,7 @@
   function loadSubSDK(onloaded) {
     if (sdkLoaded) { onloaded && onloaded(); return; }
     var s = document.createElement('script');
-    s.src = 'https://www.paypal.com/sdk/js?client-id=' + CLIENT_ID + '&vault=true&intent=subscription&currency=USD';
+    s.src = 'https://www.paypal.com/sdk/js?client-id=' + CLIENT_ID + '&vault=true&intent=subscription&enable-funding=card&currency=USD';
     s.setAttribute('data-sdk-integration-source', 'button-factory');
     s.dataset.namespace = 'paypalSub';
     s.onload = function() {
@@ -582,6 +602,9 @@
       tab.addEventListener('click', function() {
         if (tab.dataset.target === 'panel-fiscal') {
           onSubSDKReady(renderDirectBtn);
+        }
+        if (tab.dataset.target === 'panel-tescucho') {
+          onSubSDKReady(renderTescuchoBtn);
         }
       });
     });
