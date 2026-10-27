@@ -170,6 +170,44 @@
   close.addEventListener('click', closePanel);
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && isOpen) closePanel(); });
 
+  /* ── local knowledge base fallback ── */
+  var KB = [
+    { k: ['web','página','pagina','sitio','landing','tienda','online','ecommerce','precio','costo','cuanto','cuánto'],
+      a: 'Tenemos tres planes de páginas web:\n• Básico (5 secciones): US$250\n• Empresarial (10 secciones + blog): US$499\n• Tienda Online (e-commerce): US$800\nTodos son pago único, a la medida. ¿Te interesa alguno? Podemos empezar hoy por WhatsApp 👉 +1 (849) 408-8173' },
+    { k: ['cami','606','607','contable','tributario','it-1','ir-2','cardnet','azul'],
+      a: 'CAMI es nuestra plataforma contable y tributaria. Procesa los formatos 606 y 607, CardNET, Azul y balances. Facilita el IT-1 mensual y el cierre anual del IR-2.\nCosto: US$150/mes. ¿Quieres más info? Escríbenos por WhatsApp al +1 (849) 408-8173 🙌' },
+    { k: ['nala','factura','foto','pdf','ocr','extrae','extract','617','ir-17'],
+      a: 'NALA convierte fotos y PDFs de facturas en archivos 606, 607 e IR-17 listos para la DGII, usando inteligencia artificial.\nCosto: US$0.30 por factura procesada. ¡Sin contratos ni mensualidades! Escríbenos para probarlo: +1 (849) 408-8173' },
+    { k: ['direct','tss','bóveda','boveda','contraseña','contraseñas','portal','dgii login','acceso'],
+      a: 'Direct es una bóveda de credenciales con auto-login a DGII, TSS, Ministerio de Trabajo, CardNET, Azul, IDOPPRIL, ONAPI y más. Tus contraseñas se cifran con AES-256 directamente en tu navegador, nunca viajan en texto plano. Escríbenos para saber más: +1 (849) 408-8173' },
+    { k: ['tescucho','audio','transcri','voz','word','grabaci'],
+      a: 'TescuchO transcribe audios y notas de voz a Word, procesado directamente en tu computadora (sin subir tus archivos a ningún servidor). Perfecto para médicos, abogados y profesionales. Visita casalabs.com.do/tescucho para ver los precios 🎧' },
+    { k: ['niduvo','nube','almacen','cloud','archivos','storage'],
+      a: 'Niduvo es nuestra solución de almacenamiento en la nube empresarial: acceso desde cualquier dispositivo, seguro y pensado para equipos de trabajo. ¿Quieres cotizar para tu empresa? Escríbenos al +1 (849) 408-8173' },
+    { k: ['dominio','correo','email','profesional','hosting'],
+      a: 'Ofrecemos registro de dominios y configuración completa de correo profesional (tunombre@tuempresa.com). Nos encargamos de todo: DNS, certificados y configuración. Escríbenos para cotizar: +1 (849) 408-8173' },
+    { k: ['facturador','ecf','e-cf','comprobante','fiscal','electrónico'],
+      a: 'Configuramos tu facturador electrónico (e-CF) para cumplir con la DGII. Nos encargamos de la instalación, el certificado digital y la puesta en marcha. ¿Cuándo quieres empezar? 📲 +1 (849) 408-8173' },
+    { k: ['precio','costo','cuanto','cuánto','cobran','vale'],
+      a: 'Nuestros servicios van desde US$0.30/factura (NALA) hasta US$800 (tienda online). Cada proyecto es a la medida. Visita casalabs.com.do/servicios para ver todos los precios, o escríbenos al +1 (849) 408-8173 para una cotización personalizada.' },
+    { k: ['whatsapp','contacto','llamar','escribir','hablar','comunicar'],
+      a: 'Puedes escribirnos directamente por WhatsApp al +1 (849) 408-8173. También por correo a info@casalabs.com.do. Respondemos en menos de 72 horas 📩' },
+    { k: ['hola','buenos','buenas','saludos','hi','hey'],
+      a: '¡Hola! 👋 Soy Yerleny, la asistente de CaSa Labs. Puedo ayudarte con información sobre nuestros servicios: páginas web, facturación electrónica (CAMI, NALA, Direct), TescuchO y más. ¿En qué te puedo ayudar?' },
+    { k: ['gracias','thank','genial','perfecto','excelente'],
+      a: '¡Con gusto! 😊 Si tienes más preguntas o quieres contratar algún servicio, estamos disponibles por WhatsApp al +1 (849) 408-8173. ¡Éxito en tu negocio!' }
+  ];
+
+  function localReply(text) {
+    var t = text.toLowerCase();
+    for (var i = 0; i < KB.length; i++) {
+      for (var j = 0; j < KB[i].k.length; j++) {
+        if (t.indexOf(KB[i].k[j]) !== -1) return KB[i].a;
+      }
+    }
+    return 'Gracias por tu mensaje. Para darte la mejor respuesta, escríbenos directamente por WhatsApp al +1 (849) 408-8173 o a info@casalabs.com.do. ¡Te atendemos encantados! 🙌';
+  }
+
   /* ── send ── */
   function send() {
     var text = inp.value.trim();
@@ -192,14 +230,16 @@
       var reply = (data.choices && data.choices[0] && data.choices[0].message &&
                    data.choices[0].message.content)
         ? data.choices[0].message.content.trim()
-        : 'Lo siento, no pude procesar tu mensaje. Por favor escríbenos por WhatsApp al +1 (849) 408-8173.';
+        : localReply(history[history.length - 1].content);
       hideTyping();
       history.push({ role: 'assistant', content: reply });
       addMsg('bot', reply);
     })
     .catch(function() {
       hideTyping();
-      addMsg('bot', 'Ocurrió un error de conexión. Puedes escribirnos directamente por WhatsApp al +1 (849) 408-8173.');
+      var reply = localReply(history[history.length - 1].content);
+      history.push({ role: 'assistant', content: reply });
+      addMsg('bot', reply);
     })
     .finally(function() {
       snd.disabled = false;

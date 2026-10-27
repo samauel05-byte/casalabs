@@ -204,13 +204,15 @@
   .why{background:var(--indigo-deep);color:#fff;}
   .why .section-head h2{color:#fff;}
   .why .section-head p{color:#C6CBE0;}
-  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.18);}
-  .why-item{padding:34px 30px 34px;border-left:1px solid rgba(255,255,255,0.18);transition:background .2s;}
-  .why-item:first-child{border-left:none;padding-left:0;}
-  .why-item:hover{background:rgba(255,255,255,0.04);}
-  .why-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-  .why-item h3{color:#fff;font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:600;}
-  .why-item p{color:#C6CBE0;margin-top:10px;font-size:0.98rem;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .why-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:8px;transition:background .2s,transform .2s;}
+  .why-item:hover{background:rgba(255,255,255,0.11);transform:translateY(-3px);}
+  .why-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+  .why-item h3{color:#fff;font-size:1.05rem;font-family:'Inter',sans-serif;font-weight:700;margin:0;}
+  .why-item p{color:#C6CBE0;font-size:.92rem;line-height:1.6;flex:1;}
+  .why-badge{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,0.12);color:#DCE1F5;border-radius:20px;padding:4px 11px;align-self:flex-start;letter-spacing:.01em;}
+  @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.why-grid{grid-template-columns:1fr;}}
 
   /* TESTIMONIALS */
   .testimonials{padding:80px 0;background:var(--paper);}
@@ -232,9 +234,12 @@
   .about-inner h2{font-size:clamp(1.7rem,2.6vw,2.3rem);margin-bottom:18px;}
   .about-inner p{color:var(--ink-soft);font-size:1.02rem;margin-top:14px;}
   .about-inner strong{color:var(--indigo-deep);}
-  .stats-row{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;}
-  .stat-item strong{display:block;font-family:'Fraunces',serif;font-size:2rem;color:var(--indigo-deep);line-height:1;}
-  .stat-item span{font-size:0.82rem;color:var(--ink-soft);margin-top:4px;display:block;}
+  .stats-row{display:flex;gap:0;margin-top:36px;flex-wrap:wrap;}
+  .stat-item{padding:0 28px;border-left:2px solid var(--line);}
+  .stat-item:first-child{padding-left:0;border-left:none;}
+  .stat-item strong{display:block;font-family:'Fraunces',serif;font-size:3rem;font-weight:700;color:var(--indigo-deep);line-height:1;letter-spacing:-0.02em;}
+  .stat-item span{font-size:0.78rem;font-weight:600;color:var(--ink-soft);margin-top:6px;display:block;text-transform:uppercase;letter-spacing:0.05em;}
+  @media(max-width:560px){.stat-item{padding:0 18px;} .stat-item strong{font-size:2.2rem;}}
 
   /* FAQ */
   .faq{background:var(--paper);padding:88px 0;}
@@ -268,20 +273,20 @@
   .cta-trust-item svg{opacity:0.6;}
 
   /* FOOTER */
-  footer{background:var(--paper);color:var(--ink);padding:56px 0 0;border-top:1px solid var(--line);}
-  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line);}
+  footer{background:var(--indigo-night);color:#fff;padding:56px 0 0;}
+  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
   .footer-brand{max-width:260px;}
-  .footer-brand img{height:34px;margin-bottom:14px;}
-  .footer-brand p{color:var(--ink-soft);font-size:0.9rem;line-height:1.6;margin:0;}
+  .footer-brand img{height:34px;margin-bottom:14px;filter:brightness(0) invert(1);}
+  .footer-brand p{color:#9BA8C8;font-size:0.9rem;line-height:1.6;margin:0;}
   .footer-cols{display:flex;gap:56px;flex-wrap:wrap;}
-  .footer-col h4{font-size:0.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 16px;}
-  .footer-col a{display:block;font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;transition:color .15s;}
-  .footer-col a:hover{color:var(--indigo);}
+  .footer-col h4{font-size:0.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9BA8C8;margin:0 0 16px;}
+  .footer-col a{display:block;font-size:0.92rem;color:#C6CBE0;margin-bottom:10px;transition:color .15s;}
+  .footer-col a:hover{color:#fff;}
   .footer-contact-item{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-  .footer-contact-item svg{flex-shrink:0;color:var(--ink-soft);}
-  .footer-contact-item a{font-size:0.9rem;color:var(--ink-soft);margin:0;transition:color .15s;}
-  .footer-contact-item a:hover{color:var(--indigo);}
-  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px 0;font-size:0.8rem;color:var(--ink-soft);border-top:1px solid var(--line);margin-top:0;}
+  .footer-contact-item svg{flex-shrink:0;color:#9BA8C8;}
+  .footer-contact-item a{font-size:0.9rem;color:#C6CBE0;margin:0;transition:color .15s;}
+  .footer-contact-item a:hover{color:#fff;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px 0;font-size:0.8rem;color:#9BA8C8;border-top:1px solid rgba(255,255,255,.1);margin-top:0;}
 
   /* WHATSAPP FLOAT */
   .wa-float{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--forest);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,61,34,0.35);transition:background .15s,transform .15s;}
@@ -614,7 +619,7 @@
 <section class="testimonials">
   <div class="wrap">
     <div class="section-head center sr up">
-      <span class="eyebrow">Testimonios</span>
+      <span class="eyebrow">Reseñas</span>
       <h2>Lo que dicen nuestros clientes</h2>
       <p>Empresas reales en República Dominicana que ya digitalizaron su presencia y automatizaron sus procesos con CaSa Labs.</p>
     </div>
@@ -874,7 +879,7 @@
       entries.forEach(function(e){
         if (e.isIntersecting){ runCounter(e.target); io2.unobserve(e.target); }
       });
-    }, {threshold: 0.5});
+    }, {threshold: 0.1});
     counters.forEach(function(el){ io2.observe(el); });
   })();
 </script>
