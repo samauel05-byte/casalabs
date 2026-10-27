@@ -296,8 +296,9 @@
   .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px 0;font-size:0.8rem;color:#9BA8C8;border-top:1px solid rgba(255,255,255,.1);margin-top:0;}
 
   /* WHATSAPP FLOAT */
-  .wa-float{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--forest);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,61,34,0.35);transition:background .15s,transform .15s;}
-  .wa-float:hover{background:var(--forest-deep);transform:translateY(-2px);}
+  .wa-float{position:fixed;bottom:22px;right:22px;z-index:60;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(37,211,102,0.45);transition:background .15s,transform .15s,box-shadow .15s;}
+  .wa-float svg{width:28px;height:28px;flex-shrink:0;}
+  .wa-float:hover{background:#1fbd5a;transform:translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,0.55);}
 
   /* COOKIE BANNER */
   #cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;width:min(680px,calc(100vw - 32px));background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.14),0 2px 8px rgba(0,0,0,0.08);padding:24px 28px;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;}

@@ -513,11 +513,12 @@ footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
 /* WhatsApp float */
 .wa-float{
   position:fixed;bottom:22px;right:22px;z-index:60;
-  background:var(--forest);color:#fff;width:56px;height:56px;
+  background:#25D366;width:58px;height:58px;
   border-radius:50%;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 18px rgba(20,61,34,.35);transition:background .15s;
+  box-shadow:0 6px 22px rgba(37,211,102,.45);transition:background .15s,transform .15s,box-shadow .15s;
 }
-.wa-float:hover{background:var(--forest-deep)}
+.wa-float svg{width:28px;height:28px;flex-shrink:0;}
+.wa-float:hover{background:#1fbd5a;transform:translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,.55);}
 
 /* Utilities */
 .text-center{text-align:center}
