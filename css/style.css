@@ -567,6 +567,13 @@ footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
 /* contact.channel.lo */
 .contact-channel.lo .ch-icon{background:var(--cream);color:var(--indigo);border:1.5px solid var(--line);}
 
+/* Tech logo strip */
+.tech-strip{display:flex;align-items:center;gap:28px;margin-top:32px;flex-wrap:wrap;}
+.tech-strip-label{font-size:.68rem;font-weight:700;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;margin-right:4px;}
+.tech-strip img{height:22px;width:auto;opacity:.45;filter:grayscale(1);transition:opacity .2s,filter .2s;}
+.tech-strip img:hover{opacity:.8;filter:grayscale(0);}
+@media(max-width:560px){.tech-strip{gap:18px;} .tech-strip img{height:18px;}}
+
 /* Animations */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes shine{0%{left:-60%}40%,100%{left:130%}}
