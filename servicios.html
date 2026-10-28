@@ -26,8 +26,9 @@
   .price-card.web-single .web-desc { color: var(--ink-soft,#6b6b6b) !important; font-style:normal !important; }
   .price-card.web-single .web-features li { color: var(--ink,#1a1a2e) !important; }
   .price-card.web-single .web-features li::before { background: var(--forest,#2F7A5B) !important; }
-  .price-card.web-single .price { margin-top:10px; margin-bottom:16px; }
-  .price-card.web-single ul { border-bottom: 1px solid var(--line,#e8e5df); padding-bottom:16px; margin-bottom:0; }
+  .price-card.web-single .price { margin-top:0; margin-bottom:0; }
+  .price-card.web-single ul { border-bottom: 1px solid var(--line,#e8e5df); padding-bottom:14px; margin-bottom:0; }
+  .price-card.web-single .addon-row { border:none; border-radius:0; padding:12px 0 0; margin-bottom:0; background:none; }
 
   /* Plan selection */
   .web-plan { transition: box-shadow .2s, border-color .2s; }
@@ -230,8 +231,8 @@
       </div>
 
       <!-- Servicios adicionales -->
-      <p class="sub-group-title">Servicios adicionales</p>
-      <div class="price-grid">
+      <p class="sub-group-title" style="text-align:center;max-width:720px;margin:40px auto 16px;">Servicios adicionales</p>
+      <div class="price-grid" style="grid-template-columns:repeat(2,1fr);max-width:720px;margin:0 auto">
         <div class="price-card">
           <h3>Servidor de Dominio</h3>
           <p class="desc">Tu dominio siempre activo</p>
