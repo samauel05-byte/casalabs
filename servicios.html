@@ -559,8 +559,7 @@
         return actions.subscription.create({ plan_id: TESCUCHO_PLAN_ID });
       },
       onApprove: function(data) {
-        document.getElementById('paypal-tescucho-btn').innerHTML =
-          '<div class="cat-note" style="text-align:center;margin:0;"><strong>✅ ¡Suscripción activa!</strong><br><small>ID: ' + data.subscriptionID + '</small></div>';
+        window.location.href = '/gracias-tescucho?sub=' + encodeURIComponent(data.subscriptionID);
       },
       onError: function(err) { console.error('PayPal TescuchO error:', err); alert('Error al procesar. Contáctanos por WhatsApp.'); }
     }).render('#paypal-tescucho-btn');
