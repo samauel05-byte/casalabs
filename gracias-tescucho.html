@@ -42,7 +42,7 @@
 
 <header>
   <div class="nav">
-    <a href="/" class="nav-logo"><img src="assets/img-hero-2.png" alt="CaSa Labs"></a>
+    <a href="/" class="nav-logo"><img src="assets/logo-casalabs.png" alt="CaSa Labs"></a>
     <nav class="nav-links" id="navLinks">
       <a href="/">Inicio</a>
       <a href="/servicios">Servicios</a>
@@ -62,7 +62,7 @@
     <div class="gracias-card">
       <div class="gracias-icon">✅</div>
       <h1>¡Suscripción activa!</h1>
-      <p class="gracias-sub">Tu licencia de <strong>TescuchO</strong> ha sido activada.<br>La descarga comenzará automáticamente.</p>
+      <p class="gracias-sub">Tu licencia de <strong>TescuchO</strong> ha sido activada.<br>Estamos comprobando la disponibilidad de la descarga.</p>
 
       <div class="gracias-sub-id" id="sub-id-box"></div>
 
@@ -70,7 +70,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Descargar TescuchO
       </a>
-      <p class="gracias-hint">Si la descarga no inicia, haz clic en el botón de arriba.</p>
+      <p class="gracias-hint">Comprobando el instalador…</p>
 
       <div class="gracias-steps">
         <h3>Pasos de instalación</h3>
@@ -110,11 +110,29 @@
     box.textContent = 'ID de suscripción: ' + subId;
   }
 
-  // Auto-trigger download after 1.5 s
-  setTimeout(function() {
-    var a = document.getElementById('download-btn');
-    if (a) { a.click(); }
-  }, 1500);
+  // Offer the installer only after checking that it exists.
+  var download = document.getElementById('download-btn');
+  var hint = document.querySelector('.gracias-hint');
+  var subtitle = document.querySelector('.gracias-sub');
+  var installerUrl = download.getAttribute('href');
+  download.removeAttribute('href');
+  download.setAttribute('aria-disabled', 'true');
+  fetch(installerUrl, { method: 'HEAD' })
+    .then(function(response) {
+      if (!response.ok) throw new Error('Installer unavailable');
+      download.href = installerUrl;
+      download.removeAttribute('aria-disabled');
+      subtitle.textContent = 'Descarga TescuchO y sigue los pasos de instalación.';
+      hint.textContent = 'Haz clic en el botón de arriba para descargar el instalador.';
+    })
+    .catch(function() {
+      download.href = 'https://wa.me/18494088173?text=Hola%2C%20necesito%20el%20instalador%20de%20TescuchO';
+      download.removeAttribute('download');
+      download.removeAttribute('aria-disabled');
+      download.textContent = 'Solicitar instalador por WhatsApp';
+      subtitle.textContent = 'El instalador todavía no está disponible para descarga directa.';
+      hint.textContent = 'Contacta con soporte para obtener el instalador y ayuda con la instalación.';
+    });
 </script>
 <script src="js/footer.js"></script>
 </body>

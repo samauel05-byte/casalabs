@@ -32,7 +32,8 @@
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1160px;margin:0 auto;}
-  .nav-logo img{height:64px;width:auto;}
+  .nav-logo{display:block;flex-shrink:0;}
+.nav-logo img{display:block;width:180px;height:76px;max-width:100%;object-fit:cover;object-position:center;filter:none;}
   .nav-back{display:inline-flex;align-items:center;gap:8px;font-size:0.92rem;font-weight:500;color:var(--ink-soft);text-decoration:none;border-bottom:none;transition:color .15s;}
   .nav-back:hover{color:var(--indigo);}
   .nav-back svg{flex-shrink:0;}
@@ -92,7 +93,7 @@
 
 <header>
   <div class="nav">
-    <a href="/" class="nav-logo"><img src="assets/img-hero-2.png" alt="CaSa Labs"></a>
+    <a href="/" class="nav-logo"><img src="assets/logo-casalabs.png" alt="CaSa Labs"></a>
     <a href="/" class="nav-back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
       Volver al inicio

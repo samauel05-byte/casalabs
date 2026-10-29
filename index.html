@@ -82,7 +82,8 @@
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--maxw);margin:0 auto;}
-  .nav-logo img{height:76px;width:auto;}
+  .nav-logo{display:block;flex-shrink:0;}
+.nav-logo img{display:block;width:180px;height:76px;max-width:100%;object-fit:cover;object-position:center;filter:none;}
   .nav-links{display:flex;gap:32px;align-items:center;}
   .nav-links a{font-size:0.95rem;font-weight:500;color:var(--ink-soft);padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
   .nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--indigo);border-color:var(--gold);}
@@ -207,15 +208,18 @@
 
   /* WHY */
   .why{background:var(--indigo-deep);color:#fff;}
+  .why .section-head{max-width:680px;margin-bottom:36px;}
+  .why .eyebrow{color:#DCE1F5;background:rgba(139,164,240,.12);border-color:rgba(139,164,240,.25);}
+  .why .section-head h2{line-height:1.2;text-wrap:balance;}
   .why .section-head h2{color:#fff;}
   .why .section-head p{color:#C6CBE0;}
-  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-  .why-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:8px;transition:background .2s,transform .2s;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;}
+  .why-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:background .2s,transform .2s;}
   .why-item:hover{background:rgba(255,255,255,0.11);transform:translateY(-3px);}
   .why-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
   .why-item h3{color:#fff;font-size:1.05rem;font-family:'DM Sans',sans-serif;font-weight:700;margin:0;}
   .why-item p{color:#C6CBE0;font-size:.92rem;line-height:1.6;flex:1;}
-  .why-badge{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,0.12);color:#DCE1F5;border-radius:20px;padding:4px 11px;align-self:flex-start;letter-spacing:.01em;}
+  .why-badge{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:600;background:rgba(139,164,240,0.1);border:1px solid rgba(139,164,240,.18);color:#DCE1F5;border-radius:8px;padding:5px 10px;align-self:flex-start;letter-spacing:.01em;}
   @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:560px){.why-grid{grid-template-columns:1fr;}}
 
@@ -238,7 +242,7 @@
   .about::after{content:"";position:absolute;bottom:-120px;left:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(47,140,77,0.05) 0%,transparent 65%);pointer-events:none;}
   .about-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;position:relative;}
   .about-mark{display:flex;align-items:center;justify-content:center;background:transparent;border-radius:0;padding:24px;}
-  .about-mark img{max-width:220px;mix-blend-mode:multiply;}
+  .about-mark img{display:block;width:100%;height:auto;filter:none;}
   .about-inner h2{font-size:clamp(1.7rem,2.6vw,2.3rem);margin-bottom:18px;}
   .about-inner p{color:var(--ink-soft);font-size:1.02rem;margin-top:14px;}
   .about-inner strong{color:var(--indigo-deep);}
@@ -279,6 +283,9 @@
   .cta-band h2{color:#fff;position:relative;z-index:1;font-size:clamp(1.7rem,2.6vw,2.3rem);}
   .cta-band p{color:#B9C0DA;max-width:560px;margin:14px auto 32px;position:relative;z-index:1;}
   .cta-band .btn-wa{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;background:var(--forest-bright);color:#08150D;padding:15px 30px;border-radius:var(--radius-s);font-weight:700;font-size:1rem;transition:background .15s,transform .15s,box-shadow .15s;}
+  .cta-band .btn-wa{max-width:100%;justify-content:center;text-align:center;line-height:1.4;}
+  .cta-band .btn-wa svg{flex:0 0 22px;}
+  .cta-band .btn-wa span{min-width:0;}
   .cta-band .btn-wa:hover{background:#3ea25c;transform:translateY(-2px);box-shadow:0 10px 32px rgba(47,140,77,0.45);}
   .cta-trust{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap;position:relative;z-index:1;}
   .cta-trust-item{display:flex;align-items:center;gap:7px;font-size:0.82rem;color:rgba(255,255,255,0.55);}
@@ -288,7 +295,7 @@
   footer{background:var(--indigo-night);color:#fff;padding:56px 0 0;}
   .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
   .footer-brand{max-width:260px;}
-  .footer-brand img{height:34px;margin-bottom:14px;filter:brightness(0) invert(1);}
+  .footer-brand .footer-logo{display:block;width:220px;height:76px;max-width:100%;object-fit:cover;object-position:center;filter:none;background:#fff;border-radius:10px;margin-bottom:18px;}
   .footer-brand p{color:#9BA8C8;font-size:0.9rem;line-height:1.6;margin:0;}
   .footer-cols{display:flex;gap:56px;flex-wrap:wrap;}
   .footer-col h4{font-size:0.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9BA8C8;margin:0 0 16px;}
@@ -385,9 +392,6 @@
     .hero .wrap{grid-template-columns:1fr;}
     .hero-visual{order:-1;margin-bottom:12px;}
     .hv-float-1,.hv-float-2{display:none;}
-    .why-grid{grid-template-columns:1fr;}
-    .why-item{border-left:none;border-top:1px solid rgba(255,255,255,0.18);padding:30px 0 30px;}
-    .why-item:first-child{border-top:none;}
     .about-inner{grid-template-columns:1fr;}
     .about-mark{order:-1;}
     .faq-inner{grid-template-columns:1fr;gap:40px;}
@@ -397,6 +401,22 @@
     .t-grid{grid-template-columns:1fr;}
   }
   @media(max-width:560px){
+    .cta-band{padding:36px 20px;}
+    .cta-band .btn-wa{width:100%;padding:14px 16px;font-size:.95rem;border-radius:12px;}
+    .why{padding:56px 0;}
+    .why .wrap{padding-inline:20px;}
+    .why .section-head{margin-bottom:28px;}
+    .why .section-head h2 br{display:none;}
+    .why .section-head p{font-size:.95rem;line-height:1.65;margin-top:12px;}
+    .why .eyebrow{font-size:.68rem;margin-bottom:14px;}
+    .why .section-head h2{font-size:clamp(1.65rem,7vw,2.1rem);line-height:1.2;}
+    .why-grid{grid-template-columns:minmax(0,1fr);gap:14px;}
+    .why-item{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:20px;border-radius:16px;align-items:center;}
+    .why-icon{width:40px;height:40px;margin:0;border-radius:11px;}
+    .why-item h3{font-size:1rem;line-height:1.35;}
+    .why-item p{grid-column:1 / -1;font-size:.92rem;line-height:1.65;}
+    .why-badge{grid-column:1 / -1;justify-self:start;margin-top:0;max-width:100%;}
+    .why-item:hover{transform:none;}
     #cookie-banner{flex-direction:column;gap:16px;}
     .cookie-actions{flex-direction:row;}
     .cookie-actions button{flex:1;}
@@ -415,7 +435,7 @@
 
 <header>
   <div class="nav">
-    <a href="#inicio" class="nav-logo"><img src="assets/img-hero-2.png" alt="CaSa Labs"></a>
+    <a href="#inicio" class="nav-logo"><img src="assets/logo-casalabs.png" alt="CaSa Labs"></a>
     <nav class="nav-links" id="navLinks">
       <a href="/" aria-current="page">Inicio</a>
       <a href="/servicios">Servicios</a>
@@ -691,7 +711,7 @@
   <div class="wrap">
     <div class="about-inner">
       <div class="about-mark sr scale">
-        <img src="assets/logo-casa-labs.jpg" alt="CaSa Labs logo">
+        <img src="assets/logo-casalabs.png" alt="CaSa Labs logo">
       </div>
       <div class="sr right">
         <span class="eyebrow">Quiénes somos</span>
@@ -854,7 +874,7 @@
     <p>Más de 17 empresas en República Dominicana ya tienen su presencia digital o automatización fiscal con CaSa Labs. Tú puedes ser el siguiente.</p>
     <a href="https://wa.me/18494088173" class="btn-wa" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.5-1.7A11.8 11.8 0 0 0 24 11.8a11.7 11.7 0 0 0-3.5-8.3ZM12.1 21a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4A9.8 9.8 0 1 1 12.1 21Zm5.4-7.3c-.3-.1-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1.7-.8-2.8-1.5-4-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.6l-.9-2c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.6.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.4-.3-.7-.4Z"/></svg>
-      Escríbenos por WhatsApp — es gratis
+      <span>Escríbenos por WhatsApp</span>
     </a>
     <div class="cta-trust">
       <span class="cta-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sin contrato de permanencia</span>
@@ -868,7 +888,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/logo-casa-labs.jpg" alt="CaSa Labs">
+        <img class="footer-logo" src="assets/logo-casalabs.png" alt="CaSa Labs — Desarrollo web y tecnología" width="1672" height="941">
         <p>Desarrollo web, marketing digital y automatización fiscal para negocios en República Dominicana.</p>
       </div>
       <div class="footer-cols">

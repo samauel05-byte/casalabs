@@ -16,9 +16,13 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages } = req.body;
+  const { messages } = req.body || {};
   if (!Array.isArray(messages)) {
     return res.status(400).json({ error: 'messages must be an array' });
+  }
+
+  if (!process.env.OPENROUTER_API_KEY) {
+    return res.status(503).json({ error: 'Chat service is not configured' });
   }
 
   try {
@@ -38,7 +42,7 @@ module.exports = async function handler(req, res) {
       })
     });
     const data = await upstream.json();
-    res.status(200).json(data);
+    res.status(upstream.ok ? 200 : 502).json(data);
   } catch (_) {
     res.status(500).json({ error: 'Upstream error' });
   }
