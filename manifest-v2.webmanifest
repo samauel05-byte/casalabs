@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "CaSa Labs",
+  "short_name": "CaSa Labs",
+  "description": "Desarrollo web y tecnología para negocios.",
+  "lang": "es-DO",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2E3190",
+  "icons": [
+    {
+      "src": "/assets/casalabs-mobile-icon-v2.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
