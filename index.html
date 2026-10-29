@@ -128,7 +128,7 @@
   .hero-metrics{display:flex;gap:0;margin-top:44px;flex-wrap:nowrap;align-items:stretch;}
   .hero-metrics > div{padding:0 22px;border-left:1px solid rgba(255,255,255,0.15);}
   .hero-metrics > div:first-child{padding-left:0;border-left:none;}
-  .hero-metrics strong{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:2.1rem;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.02em;}
+  .hero-metrics strong{font-variant-numeric:tabular-nums;display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:2.1rem;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.02em;}
   .hero-metrics > div > span{font-size:0.73rem;color:rgba(159,167,196,0.85);letter-spacing:0.06em;text-transform:uppercase;display:block;margin-top:7px;}
   @media(max-width:480px){
     .hero-metrics > div{padding:0 14px;}
@@ -477,7 +477,7 @@
           <span>empresas automatizadas</span>
         </div>
         <div>
-          <strong>&lt; 72h</strong>
+          <strong><span data-count="72" data-prefix="&lt; " data-suffix="h">&lt; 72h</span></strong>
           <span>respuesta por WhatsApp</span>
         </div>
       </div>
@@ -1035,19 +1035,21 @@
   // Animated counters
   (function(){
     var counters = document.querySelectorAll('[data-count]');
-    if (!counters.length) return;
+    if (!counters.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
     function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
     function runCounter(el){
       var target = parseFloat(el.dataset.count);
       var suffix = el.dataset.suffix || '';
+      var prefix = el.dataset.prefix || '';
+      el.textContent = prefix + '0' + suffix;
       var dur = 1400;
       var start = performance.now();
       function frame(now){
         var t = Math.min((now - start) / dur, 1);
         var val = easeOut(t) * target;
-        el.textContent = Math.floor(val) + suffix;
+        el.textContent = prefix + Math.floor(val) + suffix;
         if (t < 1) requestAnimationFrame(frame);
-        else el.textContent = target + suffix;
+        else el.textContent = prefix + target + suffix;
       }
       requestAnimationFrame(frame);
     }
@@ -1055,7 +1057,7 @@
       entries.forEach(function(e){
         if (e.isIntersecting){ runCounter(e.target); io2.unobserve(e.target); }
       });
-    }, {threshold: 0.1});
+    }, {threshold: 0.5});
     counters.forEach(function(el){ io2.observe(el); });
   })();
 </script>
