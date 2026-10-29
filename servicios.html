@@ -643,7 +643,11 @@
   const usersText = document.querySelector('[data-direct-users]');
   if (!input || !price || !interval || !usersText) return;
   function updateDirectTotal() {
-    const users = Number(input.value);
+    let users = Number(input.value);
+    if (Number.isFinite(users) && users > 10) {
+      users = 10;
+      input.value = '10';
+    }
     const annual = document.querySelector('input[name="direct-billing"]:checked')?.value === 'annual';
     const valid = Number.isSafeInteger(users) && users >= 1 && users <= 10;
     input.setAttribute('aria-invalid', String(!valid));
