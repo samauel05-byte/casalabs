@@ -37,3 +37,9 @@
 .nexo-price{display:flex;align-items:baseline;gap:5px;margin:20px 0!important;color:#0D1840!important;}
 .nexo-price strong{font-size:2rem;font-weight:700;line-height:1.2;}
 .nexo-price span{font-size:1rem;color:#535A6B;}
+
+.cat-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));}
+.cat-tabs .cat-tab{min-width:0;}
+.cat-tab.tab-nexo.active{border-color:#A87B2A;background:#FBF7EE;}
+.cat-tab.tab-nexo.active .num{color:#A87B2A;}
+.nexo-plan-grid{grid-template-columns:minmax(0,1fr);max-width:720px;margin:0 auto;}
