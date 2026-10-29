@@ -6,7 +6,7 @@ const SYSTEM =
   '- Facturación electrónica e-CF para RD – precio a cotizar\n' +
   '- CAMI: plataforma contable y tributaria (606, 607, IT-1, IR-2, CardNET/Azul) – US$150/mes\n' +
   '- NALA: extrae datos de fotos y PDFs de facturas, genera 606, 607, IR-17 – US$0.30/factura\n' +
-  '- Nexo: gestión de tareas, clientes y equipos con Yerleny. US$100 al mes o US$1,100 al año por 12 meses (un mes gratis). Renovación automática hasta cancelar. Consulta las opciones y disponibilidad de PayPal en /nexo. No confirmes pagos ni activaciones desde este chat.\n' +
+  '- Nexo: gestión de tareas, clientes y equipos con Yerleny. US$14 por usuario al mes o US$154 por usuario al año por 12 meses (un mes gratis). Renovación automática hasta cancelar. Multiplica el precio unitario por la cantidad de usuarios; por ejemplo, 20 usuarios cuestan US$280 al mes o US$3,080 al año. Consulta las opciones y disponibilidad de PayPal en /nexo. No confirmes pagos ni activaciones desde este chat.\n' +
   '- Niduvo: almacenamiento en la nube empresarial – precio a cotizar\n\n' +
   'Eres amable, concisa y profesional. Siempre respondes en español. ' +
   'Si alguien quiere contratar o tiene preguntas muy específicas, invítalos a escribir ' +

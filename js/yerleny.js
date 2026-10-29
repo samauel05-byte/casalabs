@@ -178,7 +178,7 @@
   /* ── local knowledge base fallback ── */
   var KB = [
     { k: ['nexo'],
-      a: 'Nexo organiza tareas, clientes y el trabajo de tu equipo, con Yerleny como asistente de IA. Cuesta US$100 al mes o US$1,100 al año por 12 meses: pagas 11 y recibes 12, con un mes gratis. La suscripción se renueva hasta cancelarla. Revisa las opciones y disponibilidad de pago con PayPal en casalabs.com.do/nexo. Este chat no confirma pagos ni activa suscripciones.' },
+      a: 'Nexo organiza tareas, clientes y el trabajo de tu equipo, con Yerleny como asistente de IA. Cuesta US$14 por usuario al mes o US$154 por usuario al año por 12 meses: pagas 11 y recibes 12, con un mes gratis. La suscripción se renueva hasta cancelarla. Revisa las opciones y disponibilidad de pago con PayPal en casalabs.com.do/nexo. Este chat no confirma pagos ni activa suscripciones.' },
     { k: ['web','página','pagina','sitio','landing','tienda','online','ecommerce','precio','costo','cuanto','cuánto'],
       a: 'Tenemos tres planes de páginas web:\n• Básico (5 secciones): US$250\n• Empresarial (10 secciones + blog): US$499\n• Tienda Online (e-commerce): US$800\nTodos son pago único, a la medida. ¿Te interesa alguno? Podemos empezar hoy por WhatsApp 👉 +1 (849) 408-8173' },
     { k: ['cami','606','607','contable','tributario','it-1','ir-2','cardnet','azul'],

@@ -1,54 +1,65 @@
-# Suscripciones de Nexo
+# Nexo: suscripción por usuario
 
-- Mensual: USD 100, un cobro cada mes.
-- Anual: USD 1,100, un cobro cada año por 12 meses de servicio. Incluye un mes gratis frente a doce pagos mensuales (ahorro de USD 100).
-- Ambos planes se renuevan hasta que el cliente los cancele desde PayPal. El descuento ya está incluido en el importe anual; no es una prueba gratis ni retrasa el primer cobro.
+El precio se calcula según la cantidad de personas que utilizarán Nexo:
 
-## Crear los planes en la cuenta de PayPal
+- Mensual: USD 14 por usuario, cada mes.
+- Anual: USD 154 por usuario, cada año por 12 meses de acceso. Se pagan 11 meses y se recibe uno gratis.
+- Ejemplo de 20 usuarios: USD 280 mensuales o USD 3,080 anuales. El ahorro anual es USD 280 frente a doce mensualidades.
+- Ambos planes se renuevan hasta que el cliente los cancele desde PayPal. El mes gratis ya está descontado del importe anual; no es una prueba gratuita ni retrasa el primer cobro.
 
-Se necesita una aplicación REST de la cuenta PayPal Business que recibirá los pagos. Configurar de forma segura en el entorno de ejecución:
+`js/nexo-pricing.js` contiene el precio unitario y la validación compartidos por la calculadora, la configuración pública y el script administrativo. El selector solo acepta cantidades enteras positivas y descarta importes fuera de la precisión segura. El total mostrado se recalcula al cambiar usuarios o frecuencia.
+
+## Crear los planes reales en PayPal
+
+Configurar de forma segura una aplicación REST Live de la cuenta PayPal Business que recibirá los pagos:
 
 - `PAYPAL_API_CLIENT_ID`: identificador público de esa aplicación.
-- `PAYPAL_API_CLIENT_SECRET`: secreto de la aplicación. No guardarlo en Git, HTML ni mensajes de chat.
+- `PAYPAL_API_CLIENT_SECRET`: secreto. Nunca guardarlo en Git, HTML ni chat.
 
-Comprobar los importes sin llamar a PayPal:
+Revisar los importes sin red ni credenciales:
 
 ```sh
 node scripts/create-nexo-paypal-plans.cjs --dry-run
 ```
 
-Con las credenciales configuradas, ejecutar desde `/workspace/casalabs` con Node 24 y la configuración heredada de proxy y certificados:
+Con las credenciales configuradas, ejecutar desde `/workspace/casalabs` con Node 24, conservando proxy y certificados:
 
 ```sh
 NODE_USE_ENV_PROXY=1 node scripts/create-nexo-paypal-plans.cjs --save
 ```
 
-El script crea o reutiliza el producto de Nexo y los dos planes activos con las condiciones indicadas. Verifica importes, divisa, periodicidad y renovación ilimitada. No modifica precios de planes existentes ni crea suscripciones o cargos a clientes. Solo imprime los identificadores públicos obtenidos; nunca imprime el secreto ni el token OAuth.
+El script crea o reutiliza el producto específico por usuario y dos planes activos con `quantity_supported: true`. Comprueba el importe unitario, USD, frecuencia, renovación ilimitada y soporte de cantidades. No modifica los antiguos planes de tarifa fija, no crea suscripciones y no carga pagos a clientes.
 
-Para pruebas aisladas se puede ejecutar con `--sandbox` y credenciales de sandbox. Sus IDs no deben usarse en producción. La red de sandbox necesita permitir `api-m.sandbox.paypal.com`.
+Los nuevos planes son distintos de los de USD 100/1,100: no se reutilizan aquellos IDs. Las claves de idempotencia y el producto se separan para evitar confundir tarifas. El archivo público utiliza `pricingModel: per_user_v1`.
 
-## Activar la web publicada en Vercel
+La opción `--save` guarda únicamente los IDs públicos en `config/nexo-paypal-plans.json`. Confirmar ese archivo y subirlo a `main` permite desplegar los planes sin incluir el secreto. El script rechaza guardar planes de sandbox o sobrescribir una configuración de otra aplicación comercial.
 
-La opción `--save` guarda únicamente los tres identificadores públicos en `config/nexo-paypal-plans.json`. Tras crear los planes, confirmar ese archivo y subirlo a `main` permite desplegar los planes sin guardar el secreto en la web. El script rechaza guardar planes de sandbox o sobrescribir una configuración de otra aplicación comercial.
+Para pruebas aisladas se puede usar `--sandbox` y credenciales de sandbox. No usar sus IDs en producción. La red necesita permitir `api-m.sandbox.paypal.com` para esa opción.
 
-Como alternativa, los siguientes valores de Vercel Production tienen prioridad sobre el archivo:
+## Configuración alternativa en Vercel
 
-- `PAYPAL_API_CLIENT_ID`: la aplicación pública del mismo comerciante propietario de los planes.
-- `PAYPAL_NEXO_MONTHLY_PLAN_ID`: ID `P-…` del plan mensual, devuelto por el script.
-- `PAYPAL_NEXO_ANNUAL_PLAN_ID`: ID `P-…` del plan anual, devuelto por el script.
+Estos valores de Production tienen prioridad sobre el archivo público:
 
-Volver a desplegar después de configurar. El secreto no es necesario en Vercel ni en el archivo público para mostrar estos botones: solo lo utiliza el script administrativo al crear planes. `/api/nexo-plans` devuelve únicamente configuración pública y no permite crear planes. Sin un ID válido, la web muestra ese plan como no disponible y no inicia una operación con otro producto o precio.
+- `PAYPAL_API_CLIENT_ID`: aplicación del comerciante propietario de los planes.
+- `PAYPAL_NEXO_PER_USER_MONTHLY_PLAN_ID`: ID `P-…` del plan de USD 14 por usuario/mes.
+- `PAYPAL_NEXO_PER_USER_ANNUAL_PLAN_ID`: ID `P-…` del plan de USD 154 por usuario/año.
 
-Las páginas de Servicios y Nexo permiten elegir la frecuencia. El SDK de PayPal se carga únicamente al continuar con un plan disponible. Cada autorización usa el ID exacto del plan elegido.
+Volver a desplegar después de configurar. Las antiguas variables `PAYPAL_NEXO_MONTHLY_PLAN_ID` y `PAYPAL_NEXO_ANNUAL_PLAN_ID` se ignoran para evitar cobrar la tarifa anterior. El secreto no se necesita en Vercel para mostrar los botones; solo se usa al crear los planes.
 
-La autorización recibida en el navegador no verifica un cobro ni activa automáticamente una cuenta de Nexo. Antes de automatizar altas se necesita una integración del servicio con verificación de suscripciones y webhooks autenticados de PayPal. En este sitio la activación se confirma con CaSa Labs.
+## Cómo se cobra
 
-## Estado de verificación
+Servicios y Nexo permiten elegir cantidad de usuarios y frecuencia. PayPal solo carga al continuar con una selección válida y un plan configurado. La solicitud de suscripción envía el ID del plan y `quantity` con el número entero de usuarios. PayPal multiplica el precio unitario del plan por esa cantidad: por ejemplo, USD 14 × 20 = USD 280 cada mes. No basta con actualizar el texto del total.
 
-Se pueden probar las opciones y callbacks con un SDK simulado, sin pagos. La creación real de los planes requiere credenciales autorizadas. No describir planes o cobros reales como verificados hasta ejecutar la creación y comprobarlos en PayPal.
+La frecuencia y la cantidad se bloquean mientras se autoriza en PayPal. Sin un plan válido por usuario, no se inicia un pago con otro producto o importe. Las páginas siguen mostrando la calculadora y el contacto para contratar.
 
-Pruebas locales reproducibles sin credenciales ni red:
+La autorización del navegador no verifica un cobro ni activa automáticamente una cuenta. La activación se confirma con CaSa Labs: comprobar en PayPal el plan, estado, importe y cantidad de usuarios antes de habilitar plazas. Automatizar las altas y cambios de usuarios requiere verificación de suscripciones y webhooks autenticados en el servicio Nexo. Este selector contrata nuevas suscripciones; no modifica las que ya existan.
+
+## Verificación
 
 ```sh
 node --test --test-isolation=none tests/nexo-payments.test.cjs
 ```
+
+Las pruebas de planes utilizan PayPal simulado; no hacen cargos. La creación real continúa requiriendo credenciales autorizadas. No describir planes o cobros reales como verificados hasta ejecutarlos y comprobarlos en la cuenta.
+
+Referencia técnica: especificación oficial de PayPal, `plan_request_POST.quantity_supported` y `subscription_request_post.quantity`, en https://github.com/paypal/paypal-rest-api-specifications/blob/main/openapi/billing_subscriptions_v1.json.

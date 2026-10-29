@@ -24,8 +24,12 @@
     });
     return sdkPromise;
   }
+  const pricing = window.NexoPricing;
+  if (!pricing) return;
   widgets.forEach(widget => {
     const fieldset = widget.querySelector('fieldset');
+    const usersInput = widget.querySelector('[data-nexo-users]');
+    const usersError = widget.querySelector('[data-nexo-users-error]');
     const pay = widget.querySelector('[data-nexo-pay]');
     const target = widget.querySelector('[data-nexo-paypal]');
     const status = widget.querySelector('[data-nexo-status]');
@@ -35,7 +39,12 @@
     let buttons;
     let generation = 0;
     let approved = false;
-    const selection = () => widget.querySelector('input:checked').value;
+    const selection = () => widget.querySelector('input[type="radio"]:checked').value;
+    function planFor(period) {
+      const plan = config?.plans?.[period];
+      const expected = period === 'annual' ? pricing.annualUnit : pricing.monthlyUnit;
+      return config?.pricingModel === pricing.model && config.currency === 'USD' && plan?.quantitySupported === true && Number(plan.unitAmount) === expected && plan.planId ? plan : null;
+    }
     function update() {
       generation++;
       if (buttons) {
@@ -45,32 +54,44 @@
       target.replaceChildren();
       target.hidden = false;
       pay.hidden = false;
-      const annual = selection() === 'annual';
+      const quote = pricing.quote(usersInput.value, selection());
+      usersInput.setAttribute('aria-invalid', String(!quote));
+      usersError.textContent = quote ? '' : 'Ingresa una cantidad válida de usuarios: un número entero, mínimo 1.';
+      widget.querySelector('[data-nexo-monthly-total]').textContent = quote ? 'Total: ' + pricing.dollars(quote.monthly) + ' / mes' : 'Total: —';
+      widget.querySelector('[data-nexo-annual-total]').textContent = quote ? 'Total: ' + pricing.dollars(quote.annual) + ' / año' : 'Total: —';
+      widget.querySelector('[data-nexo-savings]').textContent = quote ? 'Pagas 11 meses y recibes 12. Ahorras ' + pricing.dollars(quote.savings) + ' al año.' : 'Un mes gratis por usuario con el plan anual.';
       const price = widget.closest('.price-card')?.querySelector('.price');
       if (price) {
         const interval = document.createElement('small');
-        interval.textContent = annual ? '/ año' : '/ mes';
-        price.replaceChildren(document.createTextNode(annual ? 'US$ 1,100 ' : 'US$ 100 '), interval);
+        interval.textContent = quote ? (quote.period === 'annual' ? '/ año' : '/ mes') : '';
+        price.replaceChildren(document.createTextNode(quote ? pricing.dollars(quote.total) + ' ' : '—'), interval);
       }
-      summary.textContent = annual
-        ? 'US$ 1,100 cada año por 12 meses de servicio: un mes gratis. Renovación automática hasta que canceles.'
-        : 'US$ 100 cada mes. Renovación automática hasta que canceles.';
-      const plan = config?.plans?.[selection()];
-      pay.disabled = !plan?.planId;
-      status.textContent = configurationFailed ? 'No se pudieron cargar las opciones de pago. Recarga la página o contacta con CaSa Labs.' : !config ? 'Cargando opciones de pago…' : plan?.planId
-        ? 'Elige tu frecuencia y continúa para autorizar la suscripción en PayPal.'
+      if (quote) {
+        const unit = quote.period === 'annual' ? pricing.annualUnit : pricing.monthlyUnit;
+        summary.textContent = quote.users + (quote.users === 1 ? ' usuario' : ' usuarios') + ' × ' + pricing.dollars(unit) + ': total ' + pricing.dollars(quote.total) + (quote.period === 'annual' ? ' cada año por 12 meses, con un mes gratis por usuario.' : ' cada mes.') + ' Renovación automática hasta que canceles.';
+        const contact = widget.closest('.price-card')?.querySelector('a[href^="https://wa.me/"]');
+        if (contact) {
+          const url = new URL(contact.href);
+          url.searchParams.set('text', 'Hola, me interesa Nexo para ' + quote.users + ' usuarios: ' + pricing.dollars(quote.total) + (quote.period === 'annual' ? ' al año.' : ' al mes.'));
+          contact.href = url.href;
+        }
+      } else summary.textContent = 'Indica cuántas personas usarán Nexo para calcular el total de tu equipo.';
+      const plan = planFor(selection());
+      pay.disabled = !quote || !plan;
+      status.textContent = !quote ? 'Revisa la cantidad de usuarios para continuar.' : configurationFailed ? 'No se pudieron cargar las opciones de pago. Recarga la página o contacta con CaSa Labs.' : !config ? 'Cargando opciones de pago…' : plan
+        ? 'El total se calcula según tus usuarios. Continúa para autorizar la suscripción en PayPal.'
         : 'El pago en línea de este plan no está disponible por el momento. Contáctanos para contratar Nexo.';
     }
+    usersInput.addEventListener('input', update);
     fieldset.addEventListener('change', update);
-    configuration.then(value => { config = value; update(); }).catch(() => {
-      configurationFailed = true;
-      update();
-    });
+    update();
+    configuration.then(value => { config = value; update(); }).catch(() => { configurationFailed = true; update(); });
     pay.addEventListener('click', async () => {
       const current = ++generation;
       const period = selection();
-      const planId = config?.plans?.[period]?.planId;
-      if (!planId || approved) return;
+      const quote = pricing.quote(usersInput.value, period);
+      const planId = planFor(period)?.planId;
+      if (!planId || !quote || approved) return;
       pay.disabled = true;
       status.textContent = 'Conectando con PayPal…';
       try {
@@ -79,22 +100,22 @@
         const instance = paypal.Buttons({
           style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
           onClick: () => { fieldset.disabled = true; },
-          createSubscription: (_data, actions) => actions.subscription.create({ plan_id: planId }),
+          createSubscription: (_data, actions) => actions.subscription.create({ plan_id: planId, quantity: String(quote.users) }),
           onApprove: data => {
             approved = true;
             fieldset.disabled = true;
             pay.hidden = true;
             target.hidden = true;
-            status.textContent = 'Autorización de suscripción ' + (period === 'annual' ? 'anual' : 'mensual') + ' recibida en PayPal. Referencia: ' + String(data.subscriptionID || 'consulta tu cuenta de PayPal') + '. Conserva la confirmación; la activación del servicio se confirma con CaSa Labs.';
+            status.textContent = 'Autorización de suscripción ' + (period === 'annual' ? 'anual' : 'mensual') + ' para ' + quote.users + (quote.users === 1 ? ' usuario' : ' usuarios') + ' recibida en PayPal. Referencia: ' + String(data.subscriptionID || 'consulta tu cuenta de PayPal') + '. Conserva la confirmación; la activación del servicio se confirma con CaSa Labs.';
           },
-          onCancel: () => { fieldset.disabled = false; status.textContent = 'No se completó la autorización. Puedes volver a intentarlo o cambiar de plan.'; },
+          onCancel: () => { fieldset.disabled = false; status.textContent = 'No se completó la autorización. Puedes volver a intentarlo o cambiar tu selección.'; },
           onError: () => { fieldset.disabled = false; status.textContent = 'No se pudo completar la operación. Revisa tu cuenta de PayPal antes de reintentar o contacta con CaSa Labs.'; }
         });
         buttons = instance;
         await instance.render(target);
         if (generation !== current) { await instance.close(); return; }
         pay.hidden = true;
-        status.textContent = 'Autoriza en PayPal el plan ' + (period === 'annual' ? 'anual de US$ 1,100.' : 'mensual de US$ 100.');
+        status.textContent = 'Autoriza en PayPal ' + pricing.dollars(quote.total) + (period === 'annual' ? ' al año' : ' al mes') + ' para ' + quote.users + (quote.users === 1 ? ' usuario.' : ' usuarios.');
       } catch (_) {
         if (generation !== current) return;
         pay.disabled = false;

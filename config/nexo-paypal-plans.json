@@ -1,4 +1,5 @@
 {
+  "pricingModel": "per_user_v1",
   "clientId": null,
   "monthlyPlanId": null,
   "annualPlanId": null

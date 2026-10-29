@@ -68,3 +68,11 @@
 .nexo-billing-note{font-size:.8rem;color:#535A6B;line-height:1.7;margin:14px 0;}
 .nexo-billing-note a{color:#1A2560;text-decoration:underline;}
 @media(max-width:560px){.nexo-billing-options{grid-template-columns:minmax(0,1fr);}.nexo-plans{padding:48px 0;}}
+.nexo-seat-control{grid-column:1 / -1;min-width:0;padding:0 0 8px;}
+.nexo-billing-options .nexo-seat-control label{display:block;padding:0;margin:0 0 8px;border:0;background:none;font-size:.95rem;font-weight:600;color:#0D1840;}
+.nexo-billing-options .nexo-seat-control input{display:block;width:140px;max-width:100%;height:46px;margin:0;padding:10px 12px;border:1px solid #A9B5CB;border-radius:8px;background:#fff;color:#14181F;font:600 1rem system-ui,sans-serif;}
+.nexo-seat-control input[aria-invalid="true"]{border-color:#B42318;}
+.nexo-seat-control>small{display:block;font-size:.8rem;line-height:1.6;margin-top:8px;color:#535A6B;}
+.nexo-seat-control [data-nexo-users-error]{font-size:.82rem;color:#B42318;margin:8px 0 0;}
+.nexo-seat-control [data-nexo-users-error]:empty{display:none;}
+.nexo-billing-options .nexo-estimate{font-weight:700;color:#1A2560;}
