@@ -1,5 +1,4 @@
-@font-face{font-family:'Tescora';src:url('../assets/fonts/tescora-circuit.woff') format('woff');font-weight:600;font-display:swap;}
-@font-face{font-family:'Oidala';src:url('../assets/fonts/oidala-sans.woff') format('woff');font-weight:400;font-display:swap;}
+/* Fonts loaded via <link> in HTML: Plus Jakarta Sans + DM Sans + JetBrains Mono */
 
 :root{
   --indigo:#2C3E82;
@@ -25,7 +24,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Oidala',ui-sans-serif,system-ui,sans-serif;
+  font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;
   color:var(--ink);background:var(--paper);
   line-height:1.6;-webkit-font-smoothing:antialiased;
 }
@@ -33,8 +32,8 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
 h1,h2,h3,h4{
-  font-family:'Tescora',serif;font-weight:600;
-  line-height:1.15;color:var(--indigo-deep);letter-spacing:-.01em;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
+  line-height:1.15;color:var(--indigo-deep);letter-spacing:-.02em;
 }
 h1{font-size:clamp(2.1rem,4vw,3.2rem)}
 h2{font-size:clamp(1.6rem,3vw,2.3rem)}
@@ -268,7 +267,7 @@ header{
 .plan-card .plan-price{margin:16px 0}
 .plan-card .plan-price .from{font-size:.8rem;color:var(--ink-soft);display:block;margin-bottom:2px}
 .plan-card .plan-price .amount{
-  font-family:'Tescora',serif;font-size:1.8rem;color:var(--indigo-deep);
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;color:var(--indigo-deep);
   display:block;line-height:1;
 }
 .plan-card .plan-price .period{font-size:.8rem;color:var(--ink-soft)}
@@ -316,7 +315,7 @@ header{
   width:100%;text-align:left;padding:20px 24px;
   color:var(--indigo-deep);background:none;border:none;cursor:pointer;
   display:flex;justify-content:space-between;align-items:center;
-  font-size:1rem;font-family:'Tescora',serif;font-weight:600;
+  font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
 }
 .faq-q:hover{background:var(--cream)}
 .faq-q .plus{font-size:1.3rem;color:var(--indigo);transition:transform .2s}
@@ -364,7 +363,7 @@ header{
   transition:border-color .15s ease,background .15s ease;
   font-family:inherit;text-align:left;
 }
-.cat-tab .num{font-family:'Tescora',serif;font-size:1.3rem;color:var(--line);transition:color .15s}
+.cat-tab .num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:700;color:var(--line);transition:color .15s}
 .cat-tab strong{display:block;font-size:1.02rem;color:var(--ink)}
 .cat-tab span{display:block;font-size:.85rem;color:var(--ink-soft);margin-top:2px}
 .cat-tab.active{border-color:var(--forest);background:#F2F8F3}
@@ -389,9 +388,9 @@ header{
   border:1px solid var(--line);border-radius:12px;padding:26px 24px;
   display:flex;flex-direction:column;position:relative;background:#fff;
 }
-.price-card h3{font-size:1.1rem;font-family:'Oidala',sans-serif;font-weight:700;color:var(--ink);margin:0}
-.price-card .price{font-family:'Tescora',serif;font-size:1.7rem;color:var(--indigo-deep);margin-top:12px;line-height:1.2}
-.price-card .price small{font-family:'Oidala',sans-serif;font-size:.78rem;font-weight:500;color:var(--ink-soft)}
+.price-card h3{font-size:1.1rem;font-family:'DM Sans',sans-serif;font-weight:700;color:var(--ink);margin:0}
+.price-card .price{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.7rem;font-weight:700;color:var(--indigo-deep);margin-top:12px;line-height:1.2}
+.price-card .price small{font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;color:var(--ink-soft)}
 .price-card p.desc{color:var(--ink-soft);font-size:.92rem;margin-top:10px}
 .price-card ul{list-style:none;margin:16px 0 0;padding:0;flex-grow:1}
 .price-card li{
@@ -470,7 +469,7 @@ header{
   background:var(--paper);border:1px solid var(--line);border-radius:12px;
   padding:28px;display:flex;flex-direction:column;gap:8px;
 }
-.why-item h3{font-size:1rem;font-family:'Oidala',sans-serif;font-weight:700;color:var(--indigo-deep);margin:0}
+.why-item h3{font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:700;color:var(--indigo-deep);margin:0}
 .why-item p{font-size:.92rem;color:var(--ink-soft);margin:0;flex:1}
 .why-badge{display:inline-block;margin-top:4px;font-size:.75rem;font-weight:600;
   background:#F1F3FA;color:var(--indigo);border-radius:20px;padding:4px 12px;
@@ -509,7 +508,7 @@ footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
 .footer-cols{display:flex;gap:56px;flex-wrap:wrap}
 .footer-col h4{
   font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:#9BA8C8;margin:0 0 16px;font-family:'Oidala',sans-serif;
+  color:#9BA8C8;margin:0 0 16px;font-family:'DM Sans',sans-serif;
 }
 .footer-col a{
   display:block;font-size:.92rem;color:#C6CBE0;margin-bottom:10px;
