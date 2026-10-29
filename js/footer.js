@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="/">Inicio</a>
         <a href="/servicios">Servicios</a>
         <a href="/direct">Direct por dentro</a>
+        <a href="/nexo">Nexo: así funciona</a>
         <a href="/nosotros">Nosotros</a>
         <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
         <a href="/contacto">Contacto</a>
