@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
       const company = typeof body?.company === 'string' ? body.company.trim() : '';
       const email = typeof body?.email === 'string' ? body.email.trim() : '';
       const users = Number(body?.users);
-      if (company.length < 2 || company.length > 120 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !Number.isInteger(users) || users < 1 || users > 500 || !['monthly', 'annual'].includes(body?.period)) return res.status(400).json({ error: 'Revisa empresa, correo y usuarios (1–500).' });
+      if (company.length < 2 || company.length > 120 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !Number.isSafeInteger(users) || users < 1 || !['monthly', 'annual'].includes(body?.period)) return res.status(400).json({ error: 'Revisa empresa, correo y usuarios.' });
       body = { company, email, users, period: body.period };
     }
     const upstream = await fetch(ENDPOINT, {

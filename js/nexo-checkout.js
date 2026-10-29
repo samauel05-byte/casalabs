@@ -59,15 +59,10 @@
       target.replaceChildren();
       target.hidden = false;
       pay.hidden = false;
-      let requestedUsers = Number(usersInput.value);
-      if (Number.isFinite(requestedUsers) && requestedUsers > 500) {
-        requestedUsers = 500;
-        usersInput.value = '500';
-      }
       const candidate = pricing.quote(usersInput.value, selection());
-      const quote = candidate?.users <= 500 ? candidate : null;
+      const quote = candidate;
       usersInput.setAttribute('aria-invalid', String(!quote));
-      usersError.textContent = quote ? '' : 'Ingresa una cantidad válida de usuarios: un número entero entre 1 y 500.';
+      usersError.textContent = quote ? '' : 'Ingresa una cantidad válida de usuarios: un número entero, mínimo 1.';
       widget.querySelector('[data-nexo-monthly-total]').textContent = quote ? 'Total: ' + pricing.dollars(quote.monthly) + ' / mes' : 'Total: —';
       widget.querySelector('[data-nexo-annual-total]').textContent = quote ? 'Total: ' + pricing.dollars(quote.annual) + ' / año' : 'Total: —';
       widget.querySelector('[data-nexo-savings]').textContent = quote ? 'Pagas 11 meses y recibes 12. Ahorras ' + pricing.dollars(quote.savings) + ' al año.' : 'Un mes gratis por usuario con el plan anual.';
@@ -105,7 +100,7 @@
       const period = selection();
       const quote = pricing.quote(usersInput.value, period);
       const planId = planFor(period)?.planId;
-      if (!planId || !quote || quote.users > 500 || approved || !automaticReady || !detailsValid()) return;
+      if (!planId || !quote || approved || !automaticReady || !detailsValid()) return;
       const purchase = { company: companyInput.value.trim(), email: emailInput.value.trim(), users: quote.users, period };
       pay.disabled = true;
       status.textContent = 'Conectando con PayPal…';
