@@ -33,3 +33,7 @@
 .nexo-service p{max-width:70ch;margin-top:16px;line-height:1.8;color:#535A6B;}
 .nexo-service .btn{flex-shrink:0;}
 @media(max-width:700px){.nexo-hero,.nexo-content{padding:48px 0;}.nexo-grid,.nexo-ai-grid{grid-template-columns:minmax(0,1fr);}.nexo-card{padding:22px;}.nexo-ai-grid{gap:24px;}.nexo-ai h2 br{display:none;}.nexo-actions{flex-direction:column;}.nexo-actions .btn{justify-content:center;text-align:center;}.nexo-service .container{align-items:flex-start;flex-direction:column;}.nexo-flow{gap:8px;}.nexo-flow li{padding:8px 10px;}}
+
+.nexo-price{display:flex;align-items:baseline;gap:5px;margin:20px 0!important;color:#0D1840!important;}
+.nexo-price strong{font-size:2rem;font-weight:700;line-height:1.2;}
+.nexo-price span{font-size:1rem;color:#535A6B;}
