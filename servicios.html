@@ -634,6 +634,28 @@
 })();
 </script>
 
+<script>
+(() => {
+  const input = document.querySelector('[data-direct-seat-input]');
+  const price = document.querySelector('[data-direct-price]');
+  const interval = document.querySelector('[data-direct-interval]');
+  const usersText = document.querySelector('[data-direct-users]');
+  if (!input || !price || !interval || !usersText) return;
+  function updateDirectTotal() {
+    const users = Number(input.value);
+    const annual = document.querySelector('input[name="direct-billing"]:checked')?.value === 'annual';
+    const valid = Number.isSafeInteger(users) && users >= 1 && users <= 10;
+    input.setAttribute('aria-invalid', String(!valid));
+    price.textContent = valid ? 'US$ ' + (annual ? users * 220 : users * 20).toLocaleString('en-US') : 'US$ —';
+    interval.textContent = annual ? '/ año · se renueva automáticamente' : '/ mes · se renueva automáticamente';
+    usersText.textContent = valid ? users + (users === 1 ? ' usuario incluido en el cálculo.' : ' usuarios incluidos en el cálculo.') : 'Indica entre 1 y 10 usuarios.';
+  }
+  input.addEventListener('input', updateDirectTotal);
+  document.querySelectorAll('input[name="direct-billing"]').forEach(radio => radio.addEventListener('change', updateDirectTotal));
+  updateDirectTotal();
+})();
+</script>
+
 <script src="js/yerleny.js"></script>
 <script src="/js/payments.js"></script>
 <script src="/js/nexo-pricing.js"></script>
