@@ -26,6 +26,19 @@
   .price-card.web-single ul { border-bottom: 1px solid var(--line,#e8e5df); padding-bottom:14px; margin-bottom:0; }
   .price-card.web-single .addon-row { border:none; border-radius:0; padding:12px 0 0; margin-bottom:0; background:none; }
 
+  .direct-billing-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:16px 0 4px; }
+  .direct-billing-options label { display:block; padding:10px; border:1px solid var(--line,#e8e5df); border-radius:9px; cursor:pointer; font-size:.78rem; line-height:1.45; color:var(--ink,#1a1a2e); }
+  .direct-billing-options input { accent-color:var(--indigo,#2E3190); }
+  .direct-billing-options strong,.direct-billing-options span { display:block; margin-left:23px; }
+  .direct-billing-options strong { margin-top:-18px; }
+  .direct-billing-options span { color:var(--ink-soft,#6b6b6b); margin-top:3px; }
+  .direct-seat-control { margin:14px 0 4px; }
+  .direct-seat-control label { display:block; font-size:.84rem; font-weight:700; margin-bottom:6px; }
+  .direct-seat-control input { width:92px; height:42px; padding:8px 10px; border:1px solid var(--line,#e8e5df); border-radius:8px; font:600 1rem 'DM Sans',sans-serif; }
+  .direct-seat-control input[aria-invalid="true"] { border-color:#b42318; }
+  .direct-seat-control small { display:block; margin-top:5px; color:var(--ink-soft,#6b6b6b); font-size:.75rem; }
+  @media (max-width:480px) { .direct-billing-options { grid-template-columns:1fr; } }
+
   /* Plan selection */
   .web-plan { transition: box-shadow .2s, border-color .2s; }
   .web-plan.selected { border-color: var(--forest, #2F7A5B) !important; box-shadow: 0 0 0 3px rgba(47,122,91,.15); }
@@ -310,7 +323,13 @@
               <p><strong>Usuarios y permisos:</strong> un administrador decide qué módulos y qué empresas ve cada usuario.</p>
             </div>
           </details>
-          <div class="price">US$ 150 <small>/ mes · se renueva automáticamente</small></div>
+          <fieldset class="direct-billing-options" aria-label="Periodo de facturación de Direct">
+            <label><input type="radio" name="direct-billing" value="monthly" checked><strong>Mensual</strong><span>US$ 20 por usuario / mes</span></label>
+            <label><input type="radio" name="direct-billing" value="annual"><strong>Anual · un mes gratis</strong><span>US$ 220 por usuario / año</span></label>
+          </fieldset>
+          <div class="nexo-seat-control direct-seat-control"><label for="direct-user-count">Cantidad de usuarios</label><input id="direct-user-count" data-direct-seat-input type="number" min="1" max="10" step="1" value="1" inputmode="numeric" aria-describedby="direct-users-help"><small id="direct-users-help">De 1 a 10 usuarios. El total se ajusta a tu equipo.</small></div>
+          <div class="price"><span data-direct-price>US$ 20</span> <small data-direct-interval>/ mes · se renueva automáticamente</small></div>
+          <p class="desc" data-direct-users>1 usuario incluido en el cálculo.</p>
           <ul>
             <li>Credenciales cifradas en el navegador — el servidor nunca las ve</li>
             <li>Auto-login a DGII (con tarjeta de códigos y Token Digital), TSS, Ministerio de Trabajo, bancos y más</li>
@@ -488,7 +507,7 @@
 <!-- Direct plan PayPal subscription — SDK loaded dynamically to avoid conflict with one-time SDK -->
 <script type="text/plain" data-payment-script>
 (function () {
-  var DIRECT_PLAN_ID    = 'P-9A8869594F1326029NLQC5RY';
+  var DIRECT_PLAN_IDS   = { monthly: 'P-40C63856H2223050UNLRQ22A', annual: 'P-3Y610531YH220333YNLRQ22I' };
   var MAINT_PLAN_ID     = 'P-29626358SG0498353NLQC7NA';
   var TESCUCHO_PLAN_ID  = 'P-1AG61239YH377373NNLQCLFA';
   var CLIENT_ID      = 'BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY';
@@ -504,15 +523,20 @@
   var maintRendered = false;
   function renderDirectBtn() {
     if (!window.paypalSub || directRendered) return;
+    var selected = document.querySelector('input[name="direct-billing"]:checked');
+    var period = selected ? selected.value : 'monthly';
+    var planId = DIRECT_PLAN_IDS[period] || DIRECT_PLAN_IDS.monthly;
+    var users = Number(document.querySelector('[data-direct-seat-input]').value);
+    if (!Number.isSafeInteger(users) || users < 1 || users > 10) return;
     directRendered = true;
     window.paypalSub.Buttons({
       style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
       createSubscription: function(data, actions) {
-        return actions.subscription.create({ plan_id: DIRECT_PLAN_ID });
+        return actions.subscription.create({ plan_id: planId, quantity: String(users) });
       },
       onApprove: function(data) {
         document.getElementById('paypal-direct-btn').innerHTML =
-          '<div class="cat-note" style="text-align:center;margin:0;"><strong>✅ ¡Suscripción activa!</strong><br><small>ID: ' + data.subscriptionID + '</small></div>';
+          '<div class="cat-note" style="text-align:center;margin:0;"><strong>✅ Suscripción autorizada</strong><br><small>PayPal confirmará el cobro para ' + users + (users === 1 ? ' usuario' : ' usuarios') + ' y Direct enviará tu enlace de activación por correo.</small></div>';
       },
       onError: function(err) { console.error('PayPal Direct error:', err); alert('Error al procesar. Contáctanos por WhatsApp.'); }
     }).render('#paypal-direct-btn');
@@ -572,6 +596,24 @@
   }
 
   (function() {
+    function updateDirectPrice() {
+      var input = document.querySelector('[data-direct-seat-input]');
+      var users = Number(input.value);
+      var annual = document.querySelector('input[name="direct-billing"]:checked').value === 'annual';
+      var valid = Number.isSafeInteger(users) && users >= 1 && users <= 10;
+      input.setAttribute('aria-invalid', String(!valid));
+      document.querySelector('[data-direct-price]').textContent = valid ? 'US$ ' + (annual ? users * 220 : users * 20).toLocaleString('en-US') : 'US$ —';
+      document.querySelector('[data-direct-interval]').textContent = annual ? '/ año · se renueva automáticamente' : '/ mes · se renueva automáticamente';
+      document.querySelector('[data-direct-users]').textContent = valid ? users + (users === 1 ? ' usuario incluido en el cálculo.' : ' usuarios incluidos en el cálculo.') : 'Indica entre 1 y 10 usuarios.';
+      var area = document.getElementById('paypal-direct-btn');
+      area.replaceChildren();
+      directRendered = false;
+      if (valid) onSubSDKReady(renderDirectBtn);
+    }
+    document.querySelectorAll('input[name="direct-billing"]').forEach(function(input) {
+      input.addEventListener('change', updateDirectPrice);
+    });
+    document.querySelector('[data-direct-seat-input]').addEventListener('input', updateDirectPrice);
     // El SDK de suscripciones se carga después de activar una opción de pago.
     loadSubSDK(function() {
       if (document.getElementById('panel-fiscal').classList.contains('active')) renderDirectBtn();
