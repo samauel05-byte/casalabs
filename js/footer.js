@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   el.innerHTML = `
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="assets/img-hero-2.png" alt="CaSa Labs">
+      <img src="/assets/favicon-logo.png" alt="CaSa Labs">
       <p>Desarrollo web, automatización fiscal y gestión digital para negocios en República Dominicana.</p>
     </div>
     <div class="footer-cols">
