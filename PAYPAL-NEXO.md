@@ -63,3 +63,7 @@ node --test --test-isolation=none tests/nexo-payments.test.cjs
 Las pruebas de planes utilizan PayPal simulado; no hacen cargos. La creación real continúa requiriendo credenciales autorizadas. No describir planes o cobros reales como verificados hasta ejecutarlos y comprobarlos en la cuenta.
 
 Referencia técnica: especificación oficial de PayPal, `plan_request_POST.quantity_supported` y `subscription_request_post.quantity`, en https://github.com/paypal/paypal-rest-api-specifications/blob/main/openapi/billing_subscriptions_v1.json.
+
+## Producción verificada
+
+El 29 de octubre de 2026 se crearon y verificaron en PayPal Live los dos planes de Nexo por usuario. Se confirmaron estado activo, USD 14 mensuales / USD 154 anuales, soporte de cantidades y renovación ilimitada. Una segunda ejecución conservó los mismos identificadores públicos en `config/nexo-paypal-plans.json`. Pasaron las seis pruebas automatizadas locales. No se crearon suscripciones de clientes ni se hicieron cargos reales para validar esta configuración.
