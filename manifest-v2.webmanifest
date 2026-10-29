@@ -11,10 +11,22 @@
   "theme_color": "#2E3190",
   "icons": [
     {
-      "src": "/assets/casalabs-mobile-icon-v2.png",
-      "sizes": "1254x1254",
+      "src": "/assets/casalabs-icon-v3-192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/assets/casalabs-icon-v3-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/casalabs-maskable-v3-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
