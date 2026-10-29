@@ -39,3 +39,22 @@ a.wa-float.whatsapp-link{display:flex;justify-content:center;gap:0;background:#2
 a.wa-float.whatsapp-link .whatsapp-icon{width:32px;height:32px;flex-basis:32px;color:#fff;}
 a.wa-float.whatsapp-link:hover{background:#1DA851;}
 @media(max-width:880px){a.nav-cta.whatsapp-link{display:none;}}
+/* Contact links share one alignment and a comfortable touch target. */
+.footer-cols{max-width:100%;min-width:0;}
+.footer-contact-column{width:280px;max-width:100%;min-width:0;}
+.footer-contact-column h4{color:#DCE5F5;font-size:.8rem;letter-spacing:.12em;margin-bottom:16px;}
+.footer-contact-column .footer-contact-item{display:block;margin:0 0 4px;}
+.footer-contact-column a.footer-contact-link{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;margin:0;padding:6px 8px;border-radius:12px;color:#DCE5F5;font-size:.9rem;line-height:1.5;text-decoration:none;transition:background .18s,color .18s;}
+.footer-contact-link .footer-contact-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;flex:0 0 36px;border:1px solid #FFFFFF12;border-radius:10px;background:#FFFFFF08;}
+.footer-contact-link .footer-contact-icon svg{display:block;width:19px;height:19px;flex:0 0 19px;color:#B9C8E4;}
+.footer-contact-link[data-contact="whatsapp"] .footer-contact-icon{background:#25D36612;border-color:#25D36626;}
+.footer-contact-link[data-contact="whatsapp"] .footer-contact-icon svg{width:21px;height:21px;flex-basis:21px;color:#25D366;}
+.footer-contact-link[data-contact="instagram"] .footer-contact-icon{background:#D998EB10;border-color:#D998EB24;}
+.footer-contact-link[data-contact="instagram"] .footer-contact-icon svg{color:#DEA8EF;}
+.footer-contact-link[data-contact="facebook"] .footer-contact-icon{background:#78ACFF10;border-color:#78ACFF24;}
+.footer-contact-link[data-contact="facebook"] .footer-contact-icon svg{color:#8FB7FF;}
+.footer-contact-text{min-width:0;overflow-wrap:anywhere;}
+.footer-contact-column a.footer-contact-link:hover{background:#FFFFFF09;color:#fff;}
+.footer-contact-column a.footer-contact-link:focus-visible{outline:2px solid #C5A35A;outline-offset:3px;background:#FFFFFF09;}
+@media(max-width:560px){.footer-contact-column{width:100%;}.footer-contact-column a.footer-contact-link{padding-inline:0;}}
+@media(prefers-reduced-motion:reduce){.footer-contact-column a.footer-contact-link{transition:none;}}
