@@ -29,3 +29,12 @@ body{overflow-x:clip;}
 .payment-activate{display:block;width:100%;margin:12px 0;}
 .payment-notice{font-size:.85rem;line-height:1.6;color:#535A6B;margin:12px 0;}
 @media(max-width:560px){#consent-banner{padding:16px;} .consent-actions button{flex:1 1 140px;} .legal-content{padding:32px 20px 56px;} .legal-links{gap:14px 20px;padding-inline:20px;}}
+
+/* Shared WhatsApp brand glyph: never stretch, crop or filter the symbol. */
+a.whatsapp-link{display:inline-flex;align-items:center;gap:9px;}
+.whatsapp-icon{display:block;width:22px;height:22px;flex:0 0 22px;fill:currentColor;filter:none;}
+a.whatsapp-link .whatsapp-icon{color:#25D366;}
+a.whatsapp-link:is(.nav-cta,.btn,.btn-wa,.btn-wa-hero) .whatsapp-icon{color:inherit;}
+a.wa-float.whatsapp-link{display:flex;justify-content:center;gap:0;background:#25D366;color:#fff;}
+a.wa-float.whatsapp-link .whatsapp-icon{width:32px;height:32px;flex-basis:32px;color:#fff;}
+a.wa-float.whatsapp-link:hover{background:#1DA851;}
