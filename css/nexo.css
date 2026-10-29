@@ -76,3 +76,13 @@
 .nexo-seat-control [data-nexo-users-error]{font-size:.82rem;color:#B42318;margin:8px 0 0;}
 .nexo-seat-control [data-nexo-users-error]:empty{display:none;}
 .nexo-billing-options .nexo-estimate{font-weight:700;color:#1A2560;}
+.nexo-featured{margin:36px 0 0;border:1px solid #DDE1EB;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px #0D18400D;}
+.nexo-featured img{display:block;width:100%;height:auto;}
+.nexo-featured figcaption{padding:12px 18px;font-size:.8rem;color:#535A6B;}
+.nexo-gallery .capture-image{background:#102B46;}
+.nexo-gallery .capture-filters button[aria-pressed="true"]{background:#153C74;border-color:#153C74;}
+.nexo-gallery-preview{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:28px;padding:26px;margin:0 0 32px;border:1px solid #DDE1EB;border-radius:18px;background:#F6F4EE;}
+.nexo-gallery-preview h3{font-size:1.45rem;line-height:1.3;}
+.nexo-gallery-preview p{font-size:.95rem;line-height:1.7;margin:14px 0 20px;color:#535A6B;}
+.nexo-gallery-preview img{display:block;width:100%;height:auto;border-radius:12px;}
+@media(max-width:700px){.nexo-gallery-preview{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px;}.nexo-featured{margin-top:28px;}}
