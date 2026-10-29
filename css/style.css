@@ -480,7 +480,7 @@ header{
 /* About grid */
 .about-grid{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
 .about-logo{
-  background:#fff;border-radius:14px;padding:16px;
+  background:transparent;border-radius:14px;padding:16px;
   display:flex;align-items:center;justify-content:center;
   min-width:200px;max-width:260px;
 }
@@ -505,7 +505,7 @@ footer{background:var(--indigo-night);color:#fff;padding:56px 0 0}
   border-bottom:1px solid rgba(255,255,255,.1);
 }
 .footer-brand{max-width:260px}
-.footer-brand .footer-logo{display:block;width:220px;height:76px;max-width:100%;object-fit:cover;object-position:center;filter:none;background:#fff;border-radius:10px;margin-bottom:18px;}
+.footer-brand .footer-logo{display:block;width:220px;height:76px;max-width:100%;object-fit:cover;object-position:center;filter:none;background:transparent;border-radius:0;margin-bottom:18px;}
 .footer-brand p{color:#9BA8C8;font-size:.9rem;line-height:1.6;margin:0}
 .footer-cols{display:flex;gap:56px;flex-wrap:wrap}
 .footer-col h4{

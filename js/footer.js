@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   el.innerHTML = `
   <div class="footer-top">
     <div class="footer-brand">
-      <img class="footer-logo" src="/assets/logo-casalabs.png" alt="CaSa Labs — Desarrollo web y tecnología" width="1672" height="941">
+      <img class="footer-logo" src="/assets/logo-casalabs-transparent.png" alt="CaSa Labs — Desarrollo web y tecnología" width="1672" height="941">
       <p>Desarrollo web, automatización fiscal y gestión digital para negocios en República Dominicana.</p>
     </div>
     <div class="footer-cols">
