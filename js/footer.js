@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="footer-bottom">
     <span>© <span id="year"></span> CaSa Labs. Todos los derechos reservados.</span>
     <span>Calle Doña Leonor #218, Edif. Ibercub Local 2 · Bávaro, Punta Cana, RD</span>
-  </div>`;
+  </div>
+  <nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal">Aviso legal</a><a href="/politica-privacidad">Privacidad</a><a href="/politica-cookies">Cookies</a><button type="button" data-cookie-settings>Preferencias de cookies</button></nav>`;
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 });

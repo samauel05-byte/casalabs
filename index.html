@@ -247,11 +247,11 @@
   .about-inner h2{font-size:clamp(1.7rem,2.6vw,2.3rem);margin-bottom:18px;}
   .about-inner p{color:var(--ink-soft);font-size:1.02rem;margin-top:14px;}
   .about-inner strong{color:var(--indigo-deep);}
-  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+  .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:32px;}
   .stat-item{padding:18px 20px;background:#fff;border-radius:14px;border:1px solid rgba(44,62,130,0.07);box-shadow:0 2px 10px rgba(44,62,130,0.05);}
   .stat-item strong{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:2.6rem;font-weight:700;color:var(--indigo-deep);line-height:1;letter-spacing:-0.02em;}
-  .stat-item > span{font-size:0.72rem;font-weight:600;color:var(--ink-soft);margin-top:7px;display:block;text-transform:uppercase;letter-spacing:0.05em;line-height:1.3;}
-  @media(max-width:560px){.stat-item{padding:14px 14px;} .stat-item strong{font-size:1.9rem;}}
+  .stat-item > span{overflow-wrap:anywhere;font-size:0.72rem;font-weight:600;color:var(--ink-soft);margin-top:7px;display:block;text-transform:uppercase;letter-spacing:0.05em;line-height:1.3;}
+  @media(max-width:560px){.stat-item{padding:14px 10px;} .stat-item strong{font-size:clamp(1.2rem,6vw,1.9rem);} .sr.left,.sr.right{transform:translateY(20px);}}
   .tech-strip{display:flex;align-items:center;gap:24px;margin-top:28px;flex-wrap:wrap;}
   .tech-strip-label{font-size:.68rem;font-weight:700;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;margin-right:4px;}
   .tech-strip img{height:21px;width:auto;opacity:.58;filter:grayscale(1);transition:opacity .2s,filter .2s;}
@@ -314,40 +314,6 @@
   .wa-float:hover{background:#1fbd5a;transform:translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,0.55);}
 
   /* COOKIE BANNER */
-  #cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;width:min(680px,calc(100vw - 32px));background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.14),0 2px 8px rgba(0,0,0,0.08);padding:24px 28px;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;}
-  #cookie-banner.hidden{display:none;}
-  .cookie-text{flex:1;min-width:200px;}
-  .cookie-text strong{display:block;font-size:1rem;color:var(--indigo-deep);margin-bottom:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;}
-  .cookie-text p{margin:0;font-size:0.88rem;color:var(--ink-soft);line-height:1.6;}
-  .cookie-text a{color:var(--indigo);text-decoration:underline;}
-  .cookie-actions{display:flex;flex-direction:column;gap:10px;min-width:160px;}
-  .cookie-actions .btn-cookie-accept{background:var(--indigo-deep);color:#fff;border:none;border-radius:var(--radius-s);padding:11px 20px;font-size:0.9rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s;}
-  .cookie-actions .btn-cookie-accept:hover{background:var(--indigo);}
-  .cookie-actions .btn-cookie-pref{background:#F1F1F1;color:var(--ink);border:none;border-radius:var(--radius-s);padding:11px 20px;font-size:0.9rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .15s;}
-  .cookie-actions .btn-cookie-pref:hover{background:#E4E4E4;}
-  #cookie-prefs{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;}
-  #cookie-prefs.open{display:flex;}
-  .cookie-modal{background:#fff;border-radius:14px;padding:32px;max-width:460px;width:calc(100% - 40px);box-shadow:0 20px 60px rgba(0,0,0,0.18);}
-  .cookie-modal h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--indigo-deep);margin:0 0 8px;font-size:1.2rem;}
-  .cookie-modal p{color:var(--ink-soft);font-size:0.9rem;margin:0 0 20px;line-height:1.6;}
-  .cookie-toggle-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);}
-  .cookie-toggle-row:first-of-type{border-top:1px solid var(--line);}
-  .cookie-toggle-row span{font-size:0.9rem;font-weight:500;color:var(--ink);}
-  .cookie-toggle-row small{font-size:0.8rem;color:var(--ink-soft);display:block;margin-top:2px;}
-  .cookie-switch{position:relative;width:42px;height:24px;flex-shrink:0;}
-  .cookie-switch input{opacity:0;width:0;height:0;}
-  .cookie-switch-track{position:absolute;inset:0;background:#ccc;border-radius:24px;cursor:pointer;transition:background .2s;}
-  .cookie-switch input:checked+.cookie-switch-track{background:var(--indigo);}
-  .cookie-switch-track::before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;}
-  .cookie-switch input:checked+.cookie-switch-track::before{transform:translateX(18px);}
-  .cookie-switch input:disabled+.cookie-switch-track{background:var(--forest);opacity:0.6;cursor:not-allowed;}
-  .cookie-modal-actions{display:flex;gap:12px;margin-top:24px;}
-  .cookie-modal-actions button{flex:1;padding:11px;border:none;border-radius:var(--radius-s);font-weight:600;font-size:0.9rem;cursor:pointer;transition:background .15s;}
-  .btn-save-prefs{background:var(--indigo-deep);color:#fff;}
-  .btn-save-prefs:hover{background:var(--indigo);}
-  .btn-accept-all{background:var(--forest);color:#fff;}
-  .btn-accept-all:hover{background:var(--forest-deep);}
-
   /* PRODUCTS SECTION */
   .products-section{background:var(--indigo-night);padding:96px 0;position:relative;overflow:hidden;}
   .products-section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle,rgba(255,255,255,.028) 1px,transparent 1px);background-size:30px 30px;pointer-events:none;}
@@ -422,12 +388,11 @@
     .why-item p{grid-column:1 / -1;font-size:.92rem;line-height:1.65;}
     .why-badge{grid-column:1 / -1;justify-self:start;margin-top:0;max-width:100%;}
     .why-item:hover{transform:none;}
-    #cookie-banner{flex-direction:column;gap:16px;}
-    .cookie-actions{flex-direction:row;}
-    .cookie-actions button{flex:1;}
     .stats-row{gap:10px;}
   }
 </style>
+<link rel="stylesheet" href="/css/privacy.css">
+<script src="/js/consent.js" defer></script>
 </head>
 <body>
 
@@ -935,6 +900,7 @@
       <span>Calle Doña Leonor #218, Edif. Ibercub Local 2 · Bávaro, Punta Cana, RD</span>
     </div>
   </div>
+<nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal">Aviso legal</a><a href="/politica-privacidad">Privacidad</a><a href="/politica-cookies">Cookies</a><button type="button" data-cookie-settings>Preferencias de cookies</button></nav>
 </footer>
 
 <a class="wa-float" href="https://wa.me/18494088173" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
@@ -1064,72 +1030,6 @@
       });
     }, {threshold: 0.5});
     counters.forEach(function(el){ io2.observe(el); });
-  })();
-</script>
-
-<!-- Cookie Banner -->
-<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
-  <div class="cookie-text">
-    <strong>Utilizamos cookies</strong>
-    <p>Este sitio web utiliza cookies esenciales para garantizar su correcto funcionamiento, y cookies de analítica y de marketing para comprender cómo interactuas con él. <a href="/politica-cookies">Política de cookies</a>.</p>
-  </div>
-  <div class="cookie-actions">
-    <button class="btn-cookie-accept" id="cookieAcceptAll">Aceptar cookies</button>
-    <button class="btn-cookie-pref" id="cookieOpenPrefs">Preferencias</button>
-  </div>
-</div>
-
-<div id="cookie-prefs" role="dialog" aria-modal="true" aria-label="Preferencias de cookies">
-  <div class="cookie-modal">
-    <h3>Preferencias de cookies</h3>
-    <p>Puedes elegir qué tipos de cookies deseas aceptar. Las cookies esenciales siempre están activas.</p>
-    <div class="cookie-toggle-row">
-      <div><span>Esenciales</span><small>Necesarias para el funcionamiento del sitio</small></div>
-      <label class="cookie-switch"><input type="checkbox" checked disabled><span class="cookie-switch-track"></span></label>
-    </div>
-    <div class="cookie-toggle-row">
-      <div><span>Analítica</span><small>Nos ayudan a entender cómo usas el sitio</small></div>
-      <label class="cookie-switch"><input type="checkbox" id="analyticsToggle"><span class="cookie-switch-track"></span></label>
-    </div>
-    <div class="cookie-toggle-row">
-      <div><span>Marketing</span><small>Usadas para mostrarte anuncios relevantes</small></div>
-      <label class="cookie-switch"><input type="checkbox" id="marketingToggle"><span class="cookie-switch-track"></span></label>
-    </div>
-    <div class="cookie-modal-actions">
-      <button class="btn-save-prefs" id="cookieSavePrefs">Guardar preferencias</button>
-      <button class="btn-accept-all" id="cookieAcceptAllModal">Aceptar todo</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  (function() {
-    var COOKIE_KEY = 'cl_cookie_consent';
-    var banner = document.getElementById('cookie-banner');
-    var prefsModal = document.getElementById('cookie-prefs');
-    function hideBanner() { banner.classList.add('hidden'); }
-    function openPrefs() { prefsModal.classList.add('open'); }
-    function closePrefs() { prefsModal.classList.remove('open'); }
-    function saveConsent(analytics, marketing) {
-      try { localStorage.setItem(COOKIE_KEY, JSON.stringify({v:1,analytics:analytics,marketing:marketing,ts:Date.now()})); } catch(e) {}
-      hideBanner(); closePrefs();
-    }
-    try {
-      var stored = JSON.parse(localStorage.getItem(COOKIE_KEY) || 'null');
-      if (stored && stored.v === 1) { hideBanner(); return; }
-    } catch(e) {}
-    document.getElementById('cookieAcceptAll').addEventListener('click', function() { saveConsent(true, true); });
-    document.getElementById('cookieOpenPrefs').addEventListener('click', openPrefs);
-    document.getElementById('cookieAcceptAllModal').addEventListener('click', function() {
-      document.getElementById('analyticsToggle').checked = true;
-      document.getElementById('marketingToggle').checked = true;
-      saveConsent(true, true);
-    });
-    document.getElementById('cookieSavePrefs').addEventListener('click', function() {
-      saveConsent(document.getElementById('analyticsToggle').checked, document.getElementById('marketingToggle').checked);
-    });
-    prefsModal.addEventListener('click', function(e) { if (e.target === prefsModal) closePrefs(); });
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrefs(); });
   })();
 </script>
 

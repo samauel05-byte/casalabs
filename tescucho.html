@@ -87,6 +87,8 @@
     margin: 0 auto;
   }
 </style>
+<link rel="stylesheet" href="/css/privacy.css">
+<script src="/js/consent.js" defer></script>
 </head>
 <body>
 
@@ -174,13 +176,14 @@
   </div>
 </div>
 
-<footer id="footer-placeholder"></footer>
+<footer id="footer-placeholder"><nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal">Aviso legal</a><a href="/politica-privacidad">Privacidad</a><a href="/politica-cookies">Cookies</a><button type="button" data-cookie-settings>Preferencias de cookies</button></nav>
+</footer>
 <a href="https://wa.me/18494088173" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar por WhatsApp"></a>
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
 
-<script src="https://www.paypal.com/sdk/js?client-id=BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY&vault=true&intent=subscription&enable-funding=card&currency=USD" data-sdk-integration-source="button-factory"></script>
-<script>
+<script type="text/plain" data-payment-script data-src="https://www.paypal.com/sdk/js?client-id=BAAwv9dZ95vMy5KcTD_5wat68tsVLhXtC9yeOEwEcNLvDJe-KVhrLz02G8t8zcAqP7rJ8HagmFeSO1LIOY&vault=true&intent=subscription&enable-funding=card&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script type="text/plain" data-payment-script>
   var PLAN_ID = 'P-1AG61239YH377373NNLQCLFA';
 
   function onPayPalApprove(data) {
@@ -207,5 +210,6 @@
 
 </script>
 
+<script src="/js/payments.js"></script>
 </body>
 </html>

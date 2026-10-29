@@ -111,7 +111,7 @@
       '</div>' +
       '<div id="yl-msgs"></div>' +
       '<div id="yl-form">' +
-        '<textarea id="yl-inp" rows="1" placeholder="Escribe tu pregunta…" aria-label="Mensaje"></textarea>' +
+        '<textarea id="yl-inp" aria-describedby="yl-privacy" rows="1" placeholder="Escribe tu pregunta…" aria-label="Mensaje"></textarea>' +
         '<button id="yl-snd" aria-label="Enviar">' +
           '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
           '<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>' +
@@ -126,6 +126,11 @@
   var panel = document.getElementById('yl-panel');
   var close = document.getElementById('yl-close');
   var msgs  = document.getElementById('yl-msgs');
+  var privacy = document.createElement('p');
+  privacy.id = 'yl-privacy';
+  privacy.style.cssText = 'font:11px/1.5 system-ui,sans-serif;margin:8px 14px;color:#535A6B';
+  privacy.innerHTML = 'La consulta puede enviarse a un proveedor de IA. No incluyas datos sensibles. <a href="/politica-privacidad">Privacidad</a>';
+  document.getElementById('yl-form').insertAdjacentElement('beforebegin', privacy);
   var inp   = document.getElementById('yl-inp');
   var snd   = document.getElementById('yl-snd');
 

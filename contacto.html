@@ -68,6 +68,8 @@
 @media(max-width:860px){.contact-channels{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.contact-channels{grid-template-columns:1fr;}.wa-cta-box{flex-direction:column;}.wa-cta-box .btn-wa{width:100%;justify-content:center;}}
 </style>
+<link rel="stylesheet" href="/css/privacy.css">
+<script src="/js/consent.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -228,7 +230,8 @@
           </div>
           <button type="submit" class="btn btn-accent form-submit">Enviar por WhatsApp</button>
           <p class="form-note">Al continuar se abrirá WhatsApp con tu mensaje listo para enviar.</p>
-        </form>
+        <p class="payment-notice">Al enviar se abrirá WhatsApp con los datos que indiques para atender tu consulta. Consulta nuestra <a href="/politica-privacidad">política de privacidad</a>.</p>
+</form>
       </div>
     </div>
   </div>
@@ -244,7 +247,8 @@
 
 </main>
 
-<footer id="footer-placeholder"></footer>
+<footer id="footer-placeholder"><nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal">Aviso legal</a><a href="/politica-privacidad">Privacidad</a><a href="/politica-cookies">Cookies</a><button type="button" data-cookie-settings>Preferencias de cookies</button></nav>
+</footer>
 <a href="https://wa.me/18494088173" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar por WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.82L2 22l5.4-1.36a9.9 9.9 0 004.64 1.18h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.06h-.01a8.16 8.16 0 01-4.16-1.14l-.3-.18-3.1.78.83-3.02-.19-.31a8.14 8.14 0 01-1.25-4.28c0-4.5 3.66-8.15 8.17-8.15 2.18 0 4.23.85 5.77 2.4a8.1 8.1 0 012.39 5.77c0 4.5-3.67 8.13-8.15 8.13zm4.47-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.68-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg></a>
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
