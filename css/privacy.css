@@ -38,3 +38,4 @@ a.whatsapp-link:is(.nav-cta,.btn,.btn-wa,.btn-wa-hero) .whatsapp-icon{color:inhe
 a.wa-float.whatsapp-link{display:flex;justify-content:center;gap:0;background:#25D366;color:#fff;}
 a.wa-float.whatsapp-link .whatsapp-icon{width:32px;height:32px;flex-basis:32px;color:#fff;}
 a.wa-float.whatsapp-link:hover{background:#1DA851;}
+@media(max-width:880px){a.nav-cta.whatsapp-link{display:none;}}

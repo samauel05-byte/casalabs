@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <h4>Navegación</h4>
         <a href="/">Inicio</a>
         <a href="/servicios">Servicios</a>
+        <a href="/direct">Direct por dentro</a>
         <a href="/nosotros">Nosotros</a>
         <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
         <a href="/contacto">Contacto</a>
