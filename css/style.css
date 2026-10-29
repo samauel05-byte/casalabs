@@ -484,7 +484,7 @@ header{
   display:flex;align-items:center;justify-content:center;
   min-width:200px;max-width:260px;
 }
-.about-logo img{width:100%;height:auto;filter:none;}
+.about-logo img{display:block;width:100%;max-width:240px;height:auto;aspect-ratio:1;object-fit:contain;border-radius:50%;filter:none;}
 @media(max-width:760px){
   .about-grid{grid-template-columns:1fr}
   .about-logo{width:100%;max-width:320px;margin:0 auto}
