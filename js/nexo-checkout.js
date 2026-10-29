@@ -59,6 +59,11 @@
       target.replaceChildren();
       target.hidden = false;
       pay.hidden = false;
+      let requestedUsers = Number(usersInput.value);
+      if (Number.isFinite(requestedUsers) && requestedUsers > 500) {
+        requestedUsers = 500;
+        usersInput.value = '500';
+      }
       const candidate = pricing.quote(usersInput.value, selection());
       const quote = candidate?.users <= 500 ? candidate : null;
       usersInput.setAttribute('aria-invalid', String(!quote));
