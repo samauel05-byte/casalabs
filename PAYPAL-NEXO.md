@@ -52,7 +52,7 @@ Servicios y Nexo permiten elegir cantidad de usuarios y frecuencia. PayPal solo 
 
 La frecuencia y la cantidad se bloquean mientras se autoriza en PayPal. Sin un plan válido por usuario, no se inicia un pago con otro producto o importe. Las páginas siguen mostrando la calculadora y el contacto para contratar.
 
-La autorización del navegador no verifica un cobro ni activa automáticamente una cuenta. La activación se confirma con CaSa Labs: comprobar en PayPal el plan, estado, importe y cantidad de usuarios antes de habilitar plazas. Automatizar las altas y cambios de usuarios requiere verificación de suscripciones y webhooks autenticados en el servicio Nexo. Este selector contrata nuevas suscripciones; no modifica las que ya existan.
+La autorización del navegador no verifica un cobro ni activa automáticamente una cuenta. El nuevo checkout exige que el backend de Nexo esté listo antes de cobrar: el webhook verifica el plan, estado, importe y cantidad de usuarios antes de habilitar plazas. Automatizar las altas y cambios de usuarios requiere verificación de suscripciones y webhooks autenticados en el servicio Nexo. Este selector contrata nuevas suscripciones; no modifica las que ya existan.
 
 ## Verificación
 
@@ -67,3 +67,11 @@ Referencia técnica: especificación oficial de PayPal, `plan_request_POST.quant
 ## Producción verificada
 
 El 29 de octubre de 2026 se crearon y verificaron en PayPal Live los dos planes de Nexo por usuario. Se confirmaron estado activo, USD 14 mensuales / USD 154 anuales, soporte de cantidades y renovación ilimitada. Una segunda ejecución conservó los mismos identificadores públicos en `config/nexo-paypal-plans.json`. Pasaron las seis pruebas automatizadas locales. No se crearon suscripciones de clientes ni se hicieron cargos reales para validar esta configuración.
+
+## Alta automática de empresas (29/10/2026)
+
+El formulario en Nexo y Servicios ahora solicita empresa, correo de administración y plazas (1–500). El botón muestra el importe exacto. `/api/nexo-checkout` conecta con la función del mismo nombre en el proyecto Supabase de `samauel05-byte/Nexo`: ese servidor registra la compra y crea la suscripción; el navegador solo recibe el ID de PayPal.
+
+El botón de cobro requiere que la función responda `ready:true`, con el mismo client ID y modelo que los planes publicados. Mientras no esté desplegada/configurada, se conserva la calculadora y se indica contratar por contacto, sin cobrar una suscripción que aún no pueda darse de alta automáticamente.
+
+El webhook, migración de base de datos, alta con invitación, correos pendientes y control de licencias están en el repositorio Nexo. Instrucciones: `docs/ACTIVAR-SUSCRIPCIONES.md` en ese repositorio. El push de esta web no publica funciones Supabase. El aviso del navegador tras aprobar PayPal no confirma por sí solo una licencia ni un cargo; solo el servidor puede hacerlo después de verificar firma, suscripción y cobro.

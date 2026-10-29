@@ -7,6 +7,7 @@
     if (!response.ok) throw new Error('Plans unavailable');
     return response.json();
   });
+  const readiness = fetch('/api/nexo-checkout', { cache: 'no-store' }).then(r => r.ok ? r.json() : { ready: false }).catch(() => ({ ready: false }));
   function loadSDK(clientId) {
     if (window.paypalNexo) return Promise.resolve(window.paypalNexo);
     if (sdkPromise) return sdkPromise;
@@ -29,6 +30,10 @@
   widgets.forEach(widget => {
     const fieldset = widget.querySelector('fieldset');
     const usersInput = widget.querySelector('[data-nexo-users]');
+    const companyInput = widget.querySelector('[data-nexo-company]');
+    const emailInput = widget.querySelector('[data-nexo-email]');
+    let automaticReady = false;
+    const detailsValid = () => companyInput.value.trim().length >= 2 && companyInput.checkValidity() && emailInput.checkValidity();
     const usersError = widget.querySelector('[data-nexo-users-error]');
     const pay = widget.querySelector('[data-nexo-pay]');
     const target = widget.querySelector('[data-nexo-paypal]');
@@ -54,9 +59,10 @@
       target.replaceChildren();
       target.hidden = false;
       pay.hidden = false;
-      const quote = pricing.quote(usersInput.value, selection());
+      const candidate = pricing.quote(usersInput.value, selection());
+      const quote = candidate?.users <= 500 ? candidate : null;
       usersInput.setAttribute('aria-invalid', String(!quote));
-      usersError.textContent = quote ? '' : 'Ingresa una cantidad válida de usuarios: un número entero, mínimo 1.';
+      usersError.textContent = quote ? '' : 'Ingresa una cantidad válida de usuarios: un número entero entre 1 y 500.';
       widget.querySelector('[data-nexo-monthly-total]').textContent = quote ? 'Total: ' + pricing.dollars(quote.monthly) + ' / mes' : 'Total: —';
       widget.querySelector('[data-nexo-annual-total]').textContent = quote ? 'Total: ' + pricing.dollars(quote.annual) + ' / año' : 'Total: —';
       widget.querySelector('[data-nexo-savings]').textContent = quote ? 'Pagas 11 meses y recibes 12. Ahorras ' + pricing.dollars(quote.savings) + ' al año.' : 'Un mes gratis por usuario con el plan anual.';
@@ -77,21 +83,25 @@
         }
       } else summary.textContent = 'Indica cuántas personas usarán Nexo para calcular el total de tu equipo.';
       const plan = planFor(selection());
-      pay.disabled = !quote || !plan;
-      status.textContent = !quote ? 'Revisa la cantidad de usuarios para continuar.' : configurationFailed ? 'No se pudieron cargar las opciones de pago. Recarga la página o contacta con CaSa Labs.' : !config ? 'Cargando opciones de pago…' : plan
+      pay.disabled = !quote || !plan || !automaticReady || !detailsValid();
+      pay.textContent = quote ? 'Pagar ' + pricing.dollars(quote.total) + (quote.period === 'annual' ? ' / año' : ' / mes') + ' con PayPal' : 'Continuar con PayPal';
+      status.textContent = !quote ? 'Revisa la cantidad de usuarios para continuar.' : configurationFailed ? 'No se pudieron cargar las opciones de pago. Recarga la página o contacta con CaSa Labs.' : !config ? 'Cargando opciones de pago…' : !automaticReady ? 'El alta automática está en preparación. Contacta con CaSa Labs para contratar Nexo.' : !detailsValid() ? 'Escribe el nombre de tu empresa y un correo válido para recibir tu licencia.' : plan
         ? 'El total se calcula según tus usuarios. Continúa para autorizar la suscripción en PayPal.'
         : 'El pago en línea de este plan no está disponible por el momento. Contáctanos para contratar Nexo.';
     }
     usersInput.addEventListener('input', update);
+    companyInput.addEventListener('input', update);
+    emailInput.addEventListener('input', update);
     fieldset.addEventListener('change', update);
     update();
-    configuration.then(value => { config = value; update(); }).catch(() => { configurationFailed = true; update(); });
+    Promise.all([configuration, readiness]).then(([value, health]) => { config = value; automaticReady = health.ready === true && health.clientId === value.clientId && health.pricingModel === pricing.model; update(); }).catch(() => { configurationFailed = true; update(); });
     pay.addEventListener('click', async () => {
       const current = ++generation;
       const period = selection();
       const quote = pricing.quote(usersInput.value, period);
       const planId = planFor(period)?.planId;
-      if (!planId || !quote || approved) return;
+      if (!planId || !quote || quote.users > 500 || approved || !automaticReady || !detailsValid()) return;
+      const purchase = { company: companyInput.value.trim(), email: emailInput.value.trim(), users: quote.users, period };
       pay.disabled = true;
       status.textContent = 'Conectando con PayPal…';
       try {
@@ -100,13 +110,19 @@
         const instance = paypal.Buttons({
           style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
           onClick: () => { fieldset.disabled = true; },
-          createSubscription: (_data, actions) => actions.subscription.create({ plan_id: planId, quantity: String(quote.users) }),
+          createSubscription: async () => {
+            const response = await fetch('/api/nexo-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(purchase) });
+            if (!response.ok) throw new Error('No se pudo preparar la compra');
+            const result = await response.json();
+            if (!/^I-[A-Z0-9]+$/.test(result.subscriptionId || '')) throw new Error('Respuesta no válida');
+            return result.subscriptionId;
+          },
           onApprove: data => {
             approved = true;
             fieldset.disabled = true;
             pay.hidden = true;
             target.hidden = true;
-            status.textContent = 'Autorización de suscripción ' + (period === 'annual' ? 'anual' : 'mensual') + ' para ' + quote.users + (quote.users === 1 ? ' usuario' : ' usuarios') + ' recibida en PayPal. Referencia: ' + String(data.subscriptionID || 'consulta tu cuenta de PayPal') + '. Conserva la confirmación; la activación del servicio se confirma con CaSa Labs.';
+            status.textContent = 'Autorización de suscripción ' + (period === 'annual' ? 'anual' : 'mensual') + ' para ' + quote.users + (quote.users === 1 ? ' usuario' : ' usuarios') + ' recibida en PayPal. Referencia: ' + String(data.subscriptionID || 'consulta tu cuenta de PayPal') + '. Al confirmar el cobro, Nexo enviará a ' + purchase.email + ' el correo «Tu licencia de Nexo está lista» con el botón «Crear mi usuario». La aprobación del navegador no activa la licencia.';
           },
           onCancel: () => { fieldset.disabled = false; status.textContent = 'No se completó la autorización. Puedes volver a intentarlo o cambiar tu selección.'; },
           onError: () => { fieldset.disabled = false; status.textContent = 'No se pudo completar la operación. Revisa tu cuenta de PayPal antes de reintentar o contacta con CaSa Labs.'; }

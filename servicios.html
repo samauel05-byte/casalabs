@@ -394,7 +394,9 @@
         </ul>
         <section class="nexo-checkout" aria-label="Suscripción a Nexo" data-nexo-checkout>
   <fieldset class="nexo-billing-options"><legend>Calcula el plan para tu equipo</legend>
-    <div class="nexo-seat-control"><label for="nexo-user-count">Cantidad de usuarios</label><input id="nexo-user-count" data-nexo-users type="number" min="1" step="1" value="1" inputmode="numeric" aria-describedby="nexo-users-help nexo-users-error"><small id="nexo-users-help">US$ 14 por usuario al mes. El total se ajusta a tu equipo.</small><p id="nexo-users-error" data-nexo-users-error role="status"></p></div>
+    <div class="nexo-seat-control"><label for="nexo-company">Nombre de tu empresa</label><input id="nexo-company" data-nexo-company name="organization" type="text" autocomplete="organization" minlength="2" maxlength="120" required></div>
+    <div class="nexo-seat-control"><label for="nexo-email">Correo de administración</label><input id="nexo-email" data-nexo-email name="email" type="email" autocomplete="email" maxlength="254" required><small>Usaremos este correo para enviarte el enlace personal de creación de tu usuario.</small></div>
+    <div class="nexo-seat-control"><label for="nexo-user-count">Cantidad de usuarios</label><input id="nexo-user-count" data-nexo-users type="number" max="500" min="1" step="1" value="1" inputmode="numeric" aria-describedby="nexo-users-help nexo-users-error"><small id="nexo-users-help">US$ 14 por usuario al mes. El total se ajusta a tu equipo.</small><p id="nexo-users-error" data-nexo-users-error role="status"></p></div>
     <label><input type="radio" name="nexo-billing" value="monthly" checked><span><strong>Mensual</strong><span>US$ 14 por usuario / mes</span><span class="nexo-estimate" data-nexo-monthly-total>Total: US$ 14 / mes</span></span></label>
     <label><input type="radio" name="nexo-billing" value="annual"><span><strong>Anual · un mes gratis</strong><span>US$ 154 por usuario / año</span><span class="nexo-estimate" data-nexo-annual-total>Total: US$ 154 / año</span><small data-nexo-savings>Pagas 11 meses y recibes 12. Ahorras US$ 14 al año.</small></span></label>
   </fieldset>
